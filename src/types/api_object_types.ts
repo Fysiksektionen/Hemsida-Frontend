@@ -5,6 +5,7 @@
  * Do not add related types that are not returned by the server.
  */
 import { SiteFooterCT, SiteHeaderCT } from './content_objects/content_trees/site';
+import { ContentObject } from './content_objects/content_object_types';
 
 type IDDetail = {
     id: number,
@@ -64,64 +65,6 @@ export type Redirect = IDDetail & {
 export type Image = IDDetail & {
     href: string
 } // More to be defined later
-
-// TODO: Flytta till content_objects mappen
-type ContentObjectDBType = 'text' | 'image' | 'menu' | 'page' | 'dict' | 'list'
-
-type ContentObjectBase = {
-    id: number,
-    dbType: ContentObjectDBType,
-}
-
-export type ContentObject = ContentText | ContentImage | ContentMenu | ContentPage | ContentDict | ContentList
-
-export type ContentText = ContentObjectBase & {
-    dbType: 'text',
-    text: string,
-    attributes: object
-}
-
-export type ContentImage = ContentObjectBase & {
-    dbType: 'image',
-    image: Image,
-    attributes: object
-}
-
-export type ContentMenu = ContentObjectBase & {
-    dbType: 'menu',
-    menu: Menu,
-    attributes: object
-}
-
-export type ContentPage = ContentObjectBase & {
-    dbType: 'page',
-    page: MinimalPage,
-    attributes: object
-}
-
-export type newContentDict<T extends NodeJS.Dict<ContentObject>, A = {}> = ContentObjectBase & {
-    dbType: 'dict',
-    items: T,
-    attributes: A
-}
-
-export type ContentDict = ContentObjectBase & {
-    dbType: 'dict',
-    items: NodeJS.Dict<ContentObject>,
-    attributes: {}
-}
-
-export type newContentList<T extends ContentObject, A = {}> = ContentObjectBase & {
-    dbType: 'list',
-    items: T[],
-    attributes: A
-}
-
-export type ContentList = ContentObjectBase & {
-    dbType: 'list',
-    items: ContentObject[],
-    attributes: {}
-}
 
 export type User = IDDetail & {
     userType: '' | 'student' | 'senior' | 'external' | 'admin',

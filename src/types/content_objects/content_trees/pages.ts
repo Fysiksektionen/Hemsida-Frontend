@@ -1,11 +1,3 @@
-import {
-    ContentDict,
-    ContentImage,
-    ContentText,
-    newContentDict,
-    newContentList
-} from '../../api_object_types';
-import { BlockFeed, HeadingBlock, RichTextBlock } from '../blocks';
 
 /**
  *# ContentTrees used in pageTemplates. Commented sections use the related pageType as title.
@@ -14,7 +6,9 @@ import { BlockFeed, HeadingBlock, RichTextBlock } from '../blocks';
 /* -----------------------
          frontpage
  ------------------------- */
-export type OrangeInfoBoxCT = newContentDict<
+import { ContentDict } from '../content_object_types';
+
+export type OrangeInfoBoxCT = ContentDict<
     {
         title: RichTextBlock,
         text: RichTextBlock,

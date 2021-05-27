@@ -1,5 +1,5 @@
 import { ContentDict, ContentImage, ContentList, ContentMenu, ContentText } from '../../api_object_types';
-import { BodyTextBlock } from '../blocks';
+import { RichTextBlock } from '../blocks';
 
 /**
  * ContentTrees of the site object
@@ -15,8 +15,8 @@ export type SiteHeaderCT = ContentDict & {
 
 export type SiteFooterQuickAccessMenuCT = ContentDict & {
     items: {
-        header: BodyTextBlock & { attributes: { richTextEditorType: 'none' } }
-        info: BodyTextBlock & { attributes: { richTextEditorType: 'body-text' } }
+        header: RichTextBlock & { attributes: { richTextEditorType: 'none' } }
+        info: RichTextBlock & { attributes: { richTextEditorType: 'body-text' } }
     }
 }
 

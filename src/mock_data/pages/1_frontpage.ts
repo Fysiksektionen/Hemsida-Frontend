@@ -10,7 +10,7 @@ const contentSv: FrontPageCT = mockDict<FrontPageItems>(
             [
                 mockDict<OrangeInfoBoxCT['items'], OrangeInfoBoxCT['attributes']>(
                     {
-                        title: mockRichText('<p><span>Vill du hitta på något?</span></p>', 'heading', 'none'),
+                        title: mockRichText('<p><span>Vill du hitta på något?</span></p>', 'bodyText', 'none'),
                         text: mockRichText('', 'bodyText', 'only-marks'),
                         button: mockText('Engagera dig')
                     },
@@ -20,7 +20,7 @@ const contentSv: FrontPageCT = mockDict<FrontPageItems>(
                 ),
                 mockDict<OrangeInfoBoxCT['items'], OrangeInfoBoxCT['attributes']>(
                     {
-                        title: mockRichText('<p><span>Vill du hitta på något?</span></p>', 'heading', 'none'),
+                        title: mockRichText('<p><span>Vill du hitta på något?</span></p>', 'bodyText', 'none'),
                         text: mockRichText('', 'bodyText', 'only-marks'),
                         button: mockText('Engagera dig')
                     },
