@@ -1,0 +1,15 @@
+version: '2'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dev.Dockerfile
+    image: fsh:frontend-dev
+    container_name: fsh-frontend
+    environment:
+      NODE_ENV: "development"
+    volumes:
+      - ".:/home/fsh"
+    ports:
+      - "3000:3000"
+    entrypoint: ["npm", "start"]
