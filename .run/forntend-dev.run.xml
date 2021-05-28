@@ -3,7 +3,7 @@
     <deployment type="dockerfile">
       <settings>
         <option name="imageTag" value="frontend-dev" />
-        <option name="containerName" value="frontend-dev2" />
+        <option name="containerName" value="frontend-dev1" />
         <option name="portBindings">
           <list>
             <DockerPortBindingImpl>
@@ -16,8 +16,8 @@
         <option name="volumeBindings">
           <list>
             <DockerVolumeBindingImpl>
-              <option name="containerPath" value="/opt/app/src" />
-              <option name="hostPath" value="C:\Users\chris\src\Hemsida-Frontend\src" />
+              <option name="containerPath" value="/opt/app" />
+              <option name="hostPath" value="$PROJECT_DIR$" />
             </DockerVolumeBindingImpl>
           </list>
         </option>
