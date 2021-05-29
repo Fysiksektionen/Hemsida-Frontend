@@ -1,0 +1,50 @@
+version: '2.4'
+services:
+  nginx: 
+    image: nginx:alpine
+    container_name: nginx-router
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      # This routes localhost:3010 to nginx container port 80.
+      - 3010:80
+    networks:
+    - fsh-net
+    mem_limit: 32m
+  
+
+  frontend:
+    build:
+        context: ..
+        dockerfile: docker/Dev.Dockerfile
+    image: fsh:frontend-dev-2
+    container_name: fsh-frontend-dev
+    volumes:
+      - ../src:/home/fsh/src
+      - ../public:/home/fsh/public
+      - ../tsconfig.json:/home/fsh/tsconfig.json
+    networks:
+      - fsh-net
+    mem_limit: 2g
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/MockApi.Dockerfile
+    image: fsh:mock-api
+    entrypoint: ""
+    #image: vimagick/json-server
+    #command: -p 3000 -w db.json
+    container_name: fsh-mock-api
+    volumes:
+      - ../src/mock_data/mock-db.json:/data/db.json
+    networks:
+      - fsh-net
+    mem_limit: 32m
+
+
+
+networks:
+  fsh-net:
+
+    #https://github.com/clue/docker-json-server

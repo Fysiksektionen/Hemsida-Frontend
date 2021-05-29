@@ -1,6 +1,17 @@
-# Hemsida client
-Built with node v16.
+# Frontend
+## Körning
+För närvarande krävs docker-compose för att köra denna branch, då den för närvarande kräver en router för att skicka api-requests till en separat container. Se mappen [docker](docker). Detta bör förhoppningsvis ändras inom kort. Notera att den använder port 30**1**0 istället för port 3000. Du bör alltså gå till [http://localhost:3010](http://localhost:3010), efter att docker-stacken har startats.
 
+## Nuvarande status
+Följande sidor servas via json-servern:
+* [`/`](http://localhost:3010) (och alias för denna)
+* [`/styret`](http://localhost:3010/styret)
+* [`/nyheter`](http://localhost:3010/nyheter)
+* [`/newsarticle`](http://localhost:3010/newsarticle)
+* [`/fcom`]](http://localhost:3010/fcom)
+`/fortroendevalda` servas för närvarande inte alls, då den ej lagrats i JSON i koden.
+
+# Gammalt
 ## Available Scripts
 
 In the project directory, you can run:
