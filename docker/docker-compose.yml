@@ -17,7 +17,7 @@ services:
     build:
         context: ..
         dockerfile: docker/Dev.Dockerfile
-    image: fsh:frontend-dev-2
+    image: fsh:frontend-dev-2a
     container_name: fsh-frontend-dev
     volumes:
       - ../src:/home/fsh/src
@@ -34,7 +34,7 @@ services:
     image: fsh:mock-api
     entrypoint: ""
     #image: vimagick/json-server
-    #command: -p 3000 -w db.json
+    #command: -H $(hostname -i) -p 3000 -w db.json
     container_name: fsh-mock-api
     volumes:
       - ../src/mock_data/mock-db.json:/data/db.json
@@ -46,5 +46,3 @@ services:
 
 networks:
   fsh-net:
-
-    #https://github.com/clue/docker-json-server
