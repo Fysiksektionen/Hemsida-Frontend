@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Locale, LocaleContext, locales } from './contexts';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
 import './App.css';
+import {adminRootPath} from './config';
 
 // Import fake data
 import { mockSiteResp } from './mock_data/mock_site_response';
@@ -22,7 +23,8 @@ function App() {
         <div className="App">
             <LocaleContext.Provider value={locale}>
                 <Switch>
-                    <Route path="/admin">
+                    <Route exact={true} path={adminRootPath}><Redirect to={adminRootPath + '/pages/'} /></Route>
+                    <Route path={adminRootPath}>
                         <Admin />
                     </Route>
                     <Route>

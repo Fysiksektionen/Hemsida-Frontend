@@ -1,0 +1,578 @@
+{
+    "pages": [
+        {
+            "code": 200,
+            "id": 1,
+            "data":         {
+                "id": 1,
+                "detailUrl": "https://f.kth.se/api/pages/2/",
+                "name": "Startsidan",
+                "slug": "",
+                "pageType": "frontpage",
+                "parent": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/pages/2/",
+                  "name": "Startsidan"
+                },
+                "children": [
+                  {
+                    "id": 2,
+                    "detailUrl": "https://f.kth.se/api/pages/2/",
+                    "name": "Styret"
+                  },
+                  {
+                    "id": 3,
+                    "detailUrl": "https://f.kth.se/api/pages/3/",
+                    "name": "Nyhetsflöde"
+                  }
+                ],
+                "published": true,
+                "publishedAt": "2021-03-15",
+                "lastEditedAt": "2021-03-15",
+                "contentSv": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {
+                    "orangeBoxes": {
+                      "id": 2,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "list",
+                      "attributes": {},
+                      "items": [
+                        {
+                          "id": 3,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#ff642b"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 4,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>Vill du hitta på något?</p>"
+                            },
+                            "text": {
+                              "id": 13,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>Vill du vara med och ta emot de som börjar till hösten? Vill du anordna en fest? Vill du gå på en fest? Vill du förbättra utbildningen? Vill du jobba på dina företagskontakter? Vill du bara hänga med andra som pluggar fysik och matte? På Fysiksektionen finns det mängder med sätt att vara med och engagera sig. </span><span><strong>Läs mer om hur du kan vara med genom att följa länken.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 5,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/engagera-dig/"
+                              },
+                              "text": "Engagera dig"
+                            }
+                          }
+                        },
+                        {
+                          "id": 8,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#dc3545"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 9,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>Vad är Fysiksektionen?</p>"
+                            },
+                            "text": {
+                              "id": 10,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>Fysiksektionen är en organisation som hittar på roliga, nyttiga, annorlunda, och viktiga saker för alla de som studerar Teknisk fysik och Teknisk matematik vid KTH. Målet är att det ska finnas mer än något för alla som vill ha mer än något. </span><span><strong>Vill du veta mer om Fysiksektionen? Följ då länken nedan.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 11,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/fysiksektionen/"
+                              },
+                              "text": "0m sektionen"
+                            }
+                          }
+                        },
+                        {
+                          "id": 14,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#ff642b"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 15,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>Vad händer nu?</p>"
+                            },
+                            "text": {
+                              "id": 16,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>På Fysiksektionen är det hela tiden saker på gång. Vi har fester titt som tätt, det hålls bokcirklar, en arbetsmarknadsdag anordnas, ett spex sätts ihop, Åre besöks, de nyantagna tas emot och även om det inte är något annat så kan du räkna med att det är en pub i Konsultatet varje tisdag. </span><span><strong>Vill du veta mer om vilka evenemang som är på gång just nu? Följ länken nedan.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 17,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/event/"
+                              },
+                              "text": "Event"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "sponsorLogo": {
+                      "id": 20,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "image",
+                      "attributes": {},
+                      "image": {
+                        "id": 1,
+                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                        "href": "/static/ERI_vertical_RGB.png"
+                      }
+                    }
+                  }
+                },
+                "contentEn": {
+                  "id": 21,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {
+                    "orangeBoxes": {
+                      "id": 22,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "list",
+                      "attributes": {},
+                      "items": [
+                        {
+                          "id": 23,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#ff642b"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 24,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>Want to do something?</p>"
+                            },
+                            "text": {
+                              "id": 25,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>Do you want to join and receive those who start to autumn? Do you want to organize a party? Do you want to go to a party? Do you want to improve education? Do you want to work on your business contacts? Do you just want to hang out with others like study physics and math? In the Physics section there islots of ways to get involved and get involved. </span><span><strong>Read more about how to join by following the link.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 26,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/engagera-dig/"
+                              },
+                              "text": "Get involved"
+                            }
+                          }
+                        },
+                        {
+                          "id": 27,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#dc3545"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 28,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>What is the Physics Chapter?</p>"
+                            },
+                            "text": {
+                              "id": 29,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>The Physics Chapter is an organization that invents fun, useful, different, and important things for all those whostudies Technical Physics and Technical Mathematics at KTH. The goal is that there should be more than something for everyone who wantshave more than anything. </span><span><strong>Want to know more about the Physics Chapter? Then follow the link below.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 30,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/fysiksektionen/"
+                              },
+                              "text": "About the chapter"
+                            }
+                          }
+                        },
+                        {
+                          "id": 31,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "dict",
+                          "attributes": {
+                            "color": "#ff642b"
+                          },
+                          "items": {
+                            "title": {
+                              "id": 32,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "heading",
+                                "richTextEditorType": "none"
+                              },
+                              "text": "<p>What's up next?</p>"
+                            },
+                            "text": {
+                              "id": 33,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "blockType": "bodyText",
+                                "richTextEditorType": "only-marks"
+                              },
+                              "text": "<p><span>At the Physics Chapter, things are always going on. We have parties look like tight, book circles are held, alabor market day is arranged, a spex is put together, Årevisited, the newly admitted are received and even if it is notsomething else, you can count on it being a pub inThe consultation every Tuesday. </span><span><strong>Want to know more about which events going on right now? Follow the link below.</strong></span></p>"
+                            },
+                            "button": {
+                              "id": 34,
+                              "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                              "dbType": "text",
+                              "attributes": {
+                                "link": "https://f.kth.se/event/"
+                              },
+                              "text": "Events"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "sponsorLogo": {
+                      "id": 35,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "image",
+                      "attributes": {},
+                      "image": {
+                        "id": 1,
+                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                        "href": "/static/ERI_vertical_RGB.png"
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        {
+            "code": 200,
+            "id": 2,
+            "data":           {
+                "id": 2,
+                "detailUrl": "https://f.kth.se/api/pages/2/",
+                "name": "Styret",
+                "slug": "styret",
+                "pageType": "styret",
+                "parent": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/pages/1/",
+                  "name": "Startsidan"
+                },
+                "children": [],
+                "published": true,
+                "publishedAt": "2021-03-15",
+                "lastEditedAt": "2021-03-15",
+                "contentSv": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                },
+                "contentEn": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                }
+              }
+        },
+        {
+            "code": 200,
+            "id": 3,
+            "data":           {
+                "id": 3,
+                "detailUrl": "https://f.kth.se/api/pages/3/",
+                "name": "Nyhetsflöde",
+                "slug": "nyheter",
+                "pageType": "news_feed",
+                "parent": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/pages/1/",
+                  "name": "Startsidan"
+                },
+                "children": [],
+                "published": true,
+                "publishedAt": "2021-03-15",
+                "lastEditedAt": "2021-03-15",
+                "contentSv": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                },
+                "contentEn": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                }
+              }
+        },
+        {
+            "code": 200,
+            "id": 4,
+            "data":           {
+                "id": 4,
+                "detailUrl": "https://f.kth.se/api/pages/3/",
+                "name": "Nyhetsartikel",
+                "slug": "newsarticle",
+                "pageType": "newsArticle",
+                "parent": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/pages/1/",
+                  "name": "Startsidan"
+                },
+                "children": [],
+                "published": true,
+                "publishedAt": "2021-03-15",
+                "lastEditedAt": "2021-03-15",
+                "contentSv": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                },
+                "contentEn": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {}
+                }
+              }
+        },
+        {
+            "code": 200,
+            "id": 5,
+            "data":           {
+                "id": 4,
+                "detailUrl": "https://f.kth.se/api/pages/2/",
+                "name": "Nämndsida - Fcom",
+                "slug": "fcom",
+                "pageType": "namnd",
+                "parent": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/pages/2/",
+                  "name": "Startsidan"
+                },
+                "children": [],
+                "published": true,
+                "publishedAt": "2021-03-15",
+                "lastEditedAt": "2021-03-15",
+                "contentSv": {
+                  "id": 1,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {
+                    "title": {
+                      "id": 2,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "text",
+                      "attributes": {
+                        "blockType": "heading",
+                        "richTextEditorType": "none"
+                      },
+                      "text": "<p>Fcom</p>"
+                    },
+                    "content": {
+                      "id": 3,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "list",
+                      "attributes": {},
+                      "items": [
+                        {
+                          "id": 4,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "image",
+                          "attributes": {
+                            "blockType": "image",
+                            "alignment": "center",
+                            "width": "100%"
+                          },
+                          "image": {
+                            "id": 1,
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "href": "/static/Fcom-ikoner.png"
+                          }
+                        },
+                        {
+                          "id": 5,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "text",
+                          "attributes": {
+                            "blockType": "heading",
+                            "richTextEditorType": "only-headings"
+                          },
+                          "text": "<h3>Om Kommunikationsnämnden Fcom</h3>"
+                        },
+                        {
+                          "id": 6,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "text",
+                          "attributes": {
+                            "blockType": "bodyText",
+                            "richTextEditorType": "body-text"
+                          },
+                          "text": "<p><span>Fysiksektionens Kommunikationsnämnd, även kallad </span><span><strong>Fcom</strong></span><span> arbetar med att stödja sektionen inom allt som är kommunikationsrelaterat. Vår huvuduppgift är att upprätthålla sektionens kommunikationskanaler, och se till att dessa används på rätt sätt. Dessutom är vi ansvariga för att utveckla sektionens IT-resurser, producera och publicera sektionstidningen Force, och ta fram och sälja profilsaker. Vi hjälper också gärna till med diverse kommunikationsrelaterade saker, så som grafisk design, fotografi, och mejlutskick. Hör gärna av dig till kommunikationsnämnden på kommunikation@f.kth.se om du eller din nämnd vill ha hjälp med någonting.</span></p>"
+                        },
+                        {
+                          "id": 7,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "text",
+                          "attributes": {
+                            "blockType": "heading",
+                            "richTextEditorType": "only-headings"
+                          },
+                          "text": "<h3>Engagera dig</h3>"
+                        },
+                        {
+                          "id": 8,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "text",
+                          "attributes": {
+                            "blockType": "bodyText",
+                            "richTextEditorType": "body-text"
+                          },
+                          "text": "<p><span>Har du varit </span><span><strong>intresserad</strong></span><span> av att engagera dig i Fysiksektionen, men känt att tiden inte riktigt räcker till? Då erbjuder Fcom ett ypperligt tillfälle att prova på att vara sektionsaktiv utan att binda sig vid något ansvar. Du behöver inte ha några förkunskaper för att gå med, så länge du är intresserad av att lära dig! Som medlem i Fcom finns det en otrolig variation bland sakerna du kan göra, från foto och design till skrivande och programmering. Dessutom är du alltid välkommen att delta på nämndens möten, och att vara med i någon av nämndens undergrupper; Force-redaktionen och programmeringsgruppen F.dev. Fyll i detta formulär om du vill gå med i Fcom!</span></p>"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "contentEn": {
+                  "id": 21,
+                  "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                  "dbType": "dict",
+                  "attributes": {},
+                  "items": {
+                    "title": {
+                      "id": 22,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "text",
+                      "attributes": {
+                        "blockType": "heading",
+                        "richTextEditorType": "none"
+                      },
+                      "text": "<p>Fcom</p>"
+                    },
+                    "content": {
+                      "id": 23,
+                      "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                      "dbType": "list",
+                      "attributes": {},
+                      "items": [
+                        {
+                          "id": 24,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "image",
+                          "attributes": {
+                            "blockType": "image",
+                            "alignment": "center",
+                            "width": "100%"
+                          },
+                          "image": {
+                            "id": 1,
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "href": "/static/Fcom-ikoner.png"
+                          }
+                        },
+                        {
+                          "id": 25,
+                          "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                          "dbType": "text",
+                          "attributes": {
+                            "blockType": "heading",
+                            "richTextEditorType": "only-headings"
+                          },
+                          "text": "<h3>Some heading</h3>"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+        }
+    ]
+
+}

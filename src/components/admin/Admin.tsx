@@ -10,7 +10,8 @@ import SettingsAdminPage from './settings/Settings';
 import ToolsAdminPage from './tools/Tools';
 import GroupsAdminPage from './groups/Groups';
 import PageNotFound from '../../pages/PageNotFound';
-import { adminRootPath, setAddressField } from './utils';
+import { setAddressField } from './utils';
+import { adminRootPath } from '../../config';
 import logo from '../../mediafiles/placeholder_images/Fysiksektionen_logo.svg';
 
 type AdminMenuItem = {

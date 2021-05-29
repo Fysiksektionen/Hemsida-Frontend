@@ -1,4 +1,4 @@
-export const adminRootPath = '/admin/';
+import { adminRootPath } from '../../config';
 
 /**
  * Function creating search string from 1-lvl (not nested) object.
