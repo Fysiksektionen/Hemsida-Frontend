@@ -8,8 +8,9 @@ Följande sidor servas via json-servern:
 * [`/styret`](http://localhost:3010/styret)
 * [`/nyheter`](http://localhost:3010/nyheter)
 * [`/newsarticle`](http://localhost:3010/newsarticle)
-* [`/fcom`]](http://localhost:3010/fcom)
-`/fortroendevalda` servas för närvarande inte alls, då den ej lagrats i JSON i koden.
+* [`/fcom`](http://localhost:3010/fcom)
+
+[`/fortroendevalda`](http://localhost:3010/fortroendevalda) servas för närvarande inte alls, då den ej lagrats i JSON i koden.
 
 # Gammalt
 ## Available Scripts
