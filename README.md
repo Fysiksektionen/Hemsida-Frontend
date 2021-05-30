@@ -32,7 +32,12 @@ Hej och välkommen till repot för frontenden av Fysiksektionens hemsida! Med et
 
 --------------------------------------------
 ## Installera och kör
+Det finns många olika sätt att jobba med frontend-projektet. Vad som passar just dig går inte att säga, utan det beror på din enviroment, vad du är van vid och helt enkelt egen preferens. Nedan listar vi två sätt som du kan jobba med projektet, men se till att hitta det sätt som paassar dig bäst!
+
 ### Med Docker (rekommenderat)
+Docker är ett system för att skapa små väldefinierade kontainrar på din dator. I dessa går det att köra prrogram utan att de påverkas av dina egna instaällningar eller annat som kan störa. Det är ett bra sätt att lösa problemet "men det funkar ju på min dator...". Känner du inte till docker sen tidigar rekommenderar vi att du läser på lite först. Se info under [Docker](#docker).
+
+
 
 ### Lokalt
 
