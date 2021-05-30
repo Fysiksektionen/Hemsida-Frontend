@@ -37,20 +37,49 @@ Det finns många olika sätt att jobba med frontend-projektet. Vad som passar ju
 ### Med Docker (rekommenderat)
 Docker är ett system för att skapa små väldefinierade kontainrar på din dator. I dessa går det att köra prrogram utan att de påverkas av dina egna instaällningar eller annat som kan störa. Det är ett bra sätt att lösa problemet "men det funkar ju på min dator...". Känner du inte till docker sen tidigar rekommenderar vi att du läser på lite först. Se info under [Docker](#docker).
 
+Nedan följer instruktioenr för att använda Docker tillsammans med VSCode.
 
+1. Installera Docker Engine och Docker Compose på din dator.
+     - Windows: [Install Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
+     - Mac: [Install Docker Desktop on Mac](https://docs.docker.com/docker-for-mac/install/)
+     - Linux: [Install Docker Engine](https://docs.docker.com/engine/install/) och [Install Docker Compose](https://docs.docker.com/compose/install/)
+2. Klona repot till en mapp på din dator.
+3. Öppna mappen i VSCode.
+4. Installera Docker-stöd samt stöd för kontainrar. Det görs under Extentions och paketen som ska installeras heter `ms-vscode-remote.remote-containers` och `ms-azuretools.vscode-docker`.
+5. Klicka på den gröna knappen längst ned till vänster och välj "Reopen folder in container". (OBS detta kan ta lång tid första gången det ska göras. Därefter kommer det gå snabbare tack vare cachening).
+6. Nu finns en server som kör projektet på localhost:3000 :D
 
 ### Lokalt
 
 
 --------------------------------------------
 ## Resurser
+Här har vi samlat länkar som relaterar till projektet. Dessa kan användas för att komma igång med att skriva kod till projektet eller bara för att enkelt kunna navigera till vanliga resurser.
+
 ### Hur funkar hemsidan?
+- [Nya hemsidan - Hur funkar det?](https://docs.google.com/document/d/1T447S6-wQkiHaMsznp7zZLlhvQuiFR7D7veq_GSpV7w/edit?usp=sharing) - Ger övergripande introduktion till projektet samt en något mer ingående förklaring till de stora koncepten inom projektet.
+- [Hur funkar en hemsida?](https://docs.google.com/presentation/d/108EhkgI9oQ9c-gYYEzZpaNbk7iC9T2lgNGNW6eerLNw/edit?usp=sharing) - Ger en introduktion till att bygga en hemsida. Vad behöver göras?
 
 ### Dokumentation
+- [Hemsidan-Docs](https://github.com/Fysiksektionen/Hemsida-Docs) - Documentation av det gemensamma API som delas mellan front- och backenden.
+- [Hemsidan-Frontend/docs](https://github.com/Fysiksektionen/Hemsida-Frontend/tree/main/docs) - Innehåller noggran och specifik dokumentationtion av koncept och implementaioner begränsade till frontenden.
 
 ### React
+React är det framework som ligger till grund för hela frontenden. För att jobba med projektet måste du ha kunskap om viktiga koncept inom React.
+
+- [Getting Started](https://reactjs.org/docs/getting-started.html)
+- [Tutorial: Intro to React](https://reactjs.org/tutorial/tutorial.html)
 
 ### Bootstrap
+Bootstrap är ett CSS- och Javascript-bibiliotek som används för att designa och styla vårt projekt. Bootstrap innehåller både metoder för positionering och styling av komponenter och kan även användas sirrekt i React tack vare andra bibiliotek. Vi försöker använda Bootstrap som styling så mycke tsom möjligt.
+
+- [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap - Flex](https://getbootstrap.com/docs/5.0/utilities/flex/)
+- [Bootstrap - Grid system](https://getbootstrap.com/docs/5.0/layout/grid/)
+- [Bootstrap - Columns](https://getbootstrap.com/docs/5.0/layout/columns/)
+- [React bootstrap](https://react-bootstrap.github.io/components/alerts/)
+
+
 
 ### Docker
 
