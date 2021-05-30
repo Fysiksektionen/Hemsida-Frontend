@@ -12,6 +12,8 @@ import { adminRootPath } from './config';
 // Import fake data
 import { mockSiteResp } from './mock_data/mock_site_response';
 
+const pathlib = require('path');
+
 function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);
 
@@ -23,8 +25,8 @@ function App() {
         <div className="App">
             <LocaleContext.Provider value={locale}>
                 <Switch>
-                    <Route exact={true} path={adminRootPath}><Redirect to={adminRootPath + '/pages/'} /></Route>
-                    <Route path={adminRootPath}>
+                    <Route exact={true} path={adminRootPath}><Redirect to={pathlib.join(adminRootPath, '/pages/')} /></Route>
+                    <Route path={pathlib.join(adminRootPath, '/')}>
                         <Admin />
                     </Route>
                     <Route>

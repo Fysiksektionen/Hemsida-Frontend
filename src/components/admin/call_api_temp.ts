@@ -2,6 +2,7 @@ import { getGETParamsStringFromObject } from './utils';
 import { APIResponse } from '../../types/general';
 import { mockSiteResp } from '../../mock_data/mock_site_response';
 import { mockPageResp } from '../../mock_data/pages/mock_pages_response';
+import { apiRootUrl } from '../../config';
 
 /**
  * This file is just a placeholder to a real APIMethod.
@@ -12,7 +13,6 @@ type CallApiProps = {
     getParams: NodeJS.Dict<string|undefined>
 }
 
-const apiRootUrl = 'http://f.kth.se/api/';
 const callDelay = 1000; // ms
 
 const apiPathToResp: NodeJS.Dict<{response: APIResponse<any>}> = {

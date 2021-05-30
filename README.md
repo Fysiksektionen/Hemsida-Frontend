@@ -1,6 +1,9 @@
 # Frontend
 ## Körning
-För närvarande krävs docker-compose för att köra denna branch, då den för närvarande kräver en router för att skicka api-requests till en separat container. Se mappen [docker](docker). Detta bör förhoppningsvis ändras inom kort. Notera att den använder port 30**1**0 istället för port 3000. Du bör alltså gå till [http://localhost:3010](http://localhost:3010), efter att docker-stacken har startats.
+### Docker
+För närvarande krävs docker-compose för att köra denna branch med docker, då den använder en router för att skicka api-requests till en separat container. Se mappen [docker](docker). Detta bör förhoppningsvis ändras inom kort. Notera att den använder port 30**1**0 istället för port 3000. Du bör alltså gå till [http://localhost:3010](http://localhost:3010), efter att docker-stacken har startats.
+### Npm
+Kör `npm start` samt `npm run start-mock-api`.
 
 ## Nuvarande status
 Följande sidor servas via json-servern:

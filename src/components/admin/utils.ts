@@ -1,4 +1,5 @@
 import { adminRootPath } from '../../config';
+const pathlib = require('path');
 
 /**
  * Function creating search string from 1-lvl (not nested) object.
@@ -61,7 +62,7 @@ export function GETParamsToDict(searchString: string): NodeJS.Dict<string | unde
  */
 export function setAddressField({ path, getParams }: {path: string, getParams: NodeJS.Dict<string|undefined>}) {
     const getParamsString = getGETParamsStringFromObject(getParams);
-    const fullUrl = window.location.origin + adminRootPath + path;
+    const fullUrl = window.location.origin + pathlib.join('/', adminRootPath, path);
     window.history.replaceState(
         window.history.state?.data,
         window.history.state?.title,

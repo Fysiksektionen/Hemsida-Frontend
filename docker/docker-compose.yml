@@ -20,6 +20,7 @@ services:
     image: fsh:frontend-dev-2a
     container_name: fsh-frontend-dev
     volumes:
+      - ./config.ts:/home/fsh/src/config.ts
       - ../src:/home/fsh/src
       - ../public:/home/fsh/public
       - ../tsconfig.json:/home/fsh/tsconfig.json

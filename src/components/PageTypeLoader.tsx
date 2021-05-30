@@ -5,12 +5,13 @@ import PageNotFound from '../pages/PageNotFound';
 // import { APIResponse } from '../types/general';
 import { LocaleContext, locales } from '../contexts';
 import { Page } from '../types/api_object_types';
-import { apiRootPath } from '../config';
+import { apiRootUrl } from '../config';
 
 // Import fake data
-// eslint-disable-next-line
 import { emptyResp, pathToResp, pathToId, emptyPage } from '../mock_data/pages/mock_PageTypeLoader';
 import { Col, Container, Row } from 'react-bootstrap';
+
+const pathlib = require('path');
 
 type PageTypeLoaderProps = {
     page?: Page
@@ -44,44 +45,44 @@ function loadPage(page: Page): JSX.Element {
  * @returns {JSX} Div containing correct component for URL or PageNotFound
  *  component if no matching component was found.
  */
-// TODO: we are not dealing with the non-undefined case for page.
-export default function PageTypeLoader({ page } : PageTypeLoaderProps): JSX.Element {
+export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
 
     const [isLoading, setIsLoading] = useState(true);
     const [pageData, setPageData] = useState(emptyPage);
-    const pageId: number = (location.pathname in pathToResp) ? pathToId[location.pathname] : 0;
 
+    const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToResp) ? pathToId[location.pathname] : 0);
     useEffect(() => {
-        // TODO number -> string conversion is ugly
-        fetch(apiRootPath + 'pages/' + (pageId as unknown as string), {})
-          .then((res) => res.json())
-          .then((response) => {
-            setPageData(response.data);
-            setIsLoading(false);
-          })
-          .catch((error) => console.log(error));
-      }, [pageId]);
+        const path: string = apiRootUrl + pathlib.join('/', 'pages', pageId.toString());
+        console.log('Fetching: ' + path);
+        fetch(path, {})
+            .then((res) => res.json())
+            .then((response) => {
+                setPageData(response.data);
+                setIsLoading(false);
+            })
+            .catch((error) => console.log(error));
+    }, [pageId]);
 
-      // TODO: perhaps "Laddar..." shouldn't be hard-coded.
+    // TODO: perhaps "Laddar..." shouldn't be hard-coded.
     return (
         <>
-        {!isLoading && loadPage(pageData)}
-        {isLoading &&
-            <LocaleContext.Consumer>
-                {locale =>
-                    <div id="dynamic_page_content" className='w-100'>
-                    <Container>
-                        <Row className='justify-content-center'>
-                            <Col xl={8} md={10} xs={11}>
-                                <h1>{ locale === locales.sv ? 'Laddar...' : 'Loading...' }</h1>
-                            </Col>
-                        </Row>
-                    </Container>
-                    </div>
-                }
-            </LocaleContext.Consumer>
-        }
-      </>
+            {!isLoading && loadPage(pageData)}
+            {isLoading &&
+                <LocaleContext.Consumer>
+                    {locale =>
+                        <div id="dynamic_page_content" className='w-100'>
+                            <Container>
+                                <Row className='justify-content-center'>
+                                    <Col xl={8} md={10} xs={11}>
+                                        <h1>{locale === locales.sv ? 'Laddar...' : 'Loading...'}</h1>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                    }
+                </LocaleContext.Consumer>
+            }
+        </>
     );
 }

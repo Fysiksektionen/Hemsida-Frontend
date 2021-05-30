@@ -14,6 +14,8 @@ import { setAddressField } from './utils';
 import { adminRootPath } from '../../config';
 import logo from '../../mediafiles/placeholder_images/Fysiksektionen_logo.svg';
 
+const pathlib = require('path');
+
 type AdminMenuItem = {
     name: string,
     icon: string,
@@ -100,8 +102,9 @@ export default function Admin() {
         });
 
         // Remove adminRootPath from the path
-        if (path.startsWith(adminRootPath)) {
-            path = path.substring(adminRootPath.length);
+        const adminRootPath2 = pathlib.join('/', adminRootPath, '/');
+        if (path.startsWith(adminRootPath2)) {
+            path = path.substring(adminRootPath2.length);
         }
 
         return { path: path, getParams: getParamsReturn };
