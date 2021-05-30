@@ -7,6 +7,5 @@ docker-compose.yml
 .vscode
 .idea
 .git
-README.md
 LICENSE
 node_modules
