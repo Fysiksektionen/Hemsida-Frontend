@@ -7,7 +7,7 @@ import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
 import './App.css';
-import {adminRootPath} from './config';
+import { adminRootPath } from './config';
 
 // Import fake data
 import { mockSiteResp } from './mock_data/mock_site_response';

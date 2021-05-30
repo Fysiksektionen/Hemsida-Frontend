@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import pageTypeMap from '../pages/PageTypeMap';
 import PageNotFound from '../pages/PageNotFound';
-//import { APIResponse } from '../types/general';
+// import { APIResponse } from '../types/general';
 import { LocaleContext, locales } from '../contexts';
 import { Page } from '../types/api_object_types';
 import { apiRootPath } from '../config';
@@ -47,14 +47,14 @@ function loadPage(page: Page): JSX.Element {
 // TODO: we are not dealing with the non-undefined case for page.
 export default function PageTypeLoader({ page } : PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
-    
+
     const [isLoading, setIsLoading] = useState(true);
     const [pageData, setPageData] = useState(emptyPage);
-    const pageId: number = (location.pathname in pathToResp) ? pathToId[location.pathname]:0;
-    
+    const pageId: number = (location.pathname in pathToResp) ? pathToId[location.pathname] : 0;
+
     useEffect(() => {
         // TODO number -> string conversion is ugly
-        fetch(apiRootPath + "pages/" + (pageId as unknown as string), {})
+        fetch(apiRootPath + 'pages/' + (pageId as unknown as string), {})
           .then((res) => res.json())
           .then((response) => {
             setPageData(response.data);
@@ -67,14 +67,14 @@ export default function PageTypeLoader({ page } : PageTypeLoaderProps): JSX.Elem
     return (
         <>
         {!isLoading && loadPage(pageData)}
-        {isLoading && 
+        {isLoading &&
             <LocaleContext.Consumer>
                 {locale =>
                     <div id="dynamic_page_content" className='w-100'>
                     <Container>
                         <Row className='justify-content-center'>
                             <Col xl={8} md={10} xs={11}>
-                                <h1>{ locale === locales.sv ? "Laddar..." : "Loading..." }</h1>
+                                <h1>{ locale === locales.sv ? 'Laddar...' : 'Loading...' }</h1>
                             </Col>
                         </Row>
                     </Container>
@@ -83,5 +83,5 @@ export default function PageTypeLoader({ page } : PageTypeLoaderProps): JSX.Elem
             </LocaleContext.Consumer>
         }
       </>
-    )
+    );
 }

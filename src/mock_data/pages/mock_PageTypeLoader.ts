@@ -56,7 +56,6 @@ export const pathToResp: { [key: string]: APIResponse<Page> } = {
     '/fortroendevalda': { code: 200, data: representativesPage }
 };
 
-
 export const pathToId: { [key: string]: number } = {
     '/': 1,
     '/start': 1,
@@ -66,6 +65,6 @@ export const pathToId: { [key: string]: number } = {
     '/styret': 2,
     '/nyheter': 3,
     '/newsarticle': 4,
-    '/fcom': 5,
-    //'/fortroendevalda': { code: 200, data: representativesPage }
-}
+    '/fcom': 5
+    // '/fortroendevalda': { code: 200, data: representativesPage }
+};
