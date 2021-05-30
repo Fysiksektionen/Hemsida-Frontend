@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Col, Image } from 'react-bootstrap';
+import React, { useCallback, useMemo } from 'react';
+// import { Col, Image } from 'react-bootstrap';
 import { useDropzone } from 'react-dropzone';
 
 // Based on:
@@ -7,7 +7,7 @@ import { useDropzone } from 'react-dropzone';
 
 // TODO check if there are built-in types for these.
 type CSSDict = { [key: string]: (string | number)};
-type PreviewableFile = File & {preview: string};
+// type PreviewableFile = File & {preview: string};
 
 const baseStyle:CSSDict = {
     display: 'flex',
@@ -36,12 +36,12 @@ const rejectStyle:CSSDict = {
 };
 
 function ImageDropUpload({ onUpload }:any) {
-    const [files, setFiles] = useState([]);
+    // const [files, setFiles] = useState([]);
 
     const onDrop = useCallback(acceptedFiles => {
         // setFiles(acceptedFiles.map((file: File) => Object.assign(file, {preview: URL.createObjectURL(file)})));
         onUpload(URL.createObjectURL(acceptedFiles[0]));
-    }, []);
+    }, [onUpload]);
 
     const {
         getRootProps,
@@ -72,15 +72,15 @@ function ImageDropUpload({ onUpload }:any) {
     )); */
 
     // clean up
-    useEffect(() => () => {
-        files.forEach((file: PreviewableFile) => URL.revokeObjectURL(file.preview));
-    }, [files]);
+    /* useEffect(() => () => {
+    /    files.forEach((file: PreviewableFile) => URL.revokeObjectURL(file.preview));
+    }, [files]); */
 
     return (
         <section className="mt-3">
             <div {...getRootProps({ style })} className="mb-2">
                 <input {...getInputProps()} />
-                {files.length === 0 && (<div>Släpp din bild här</div>)}
+                {/* files.length === 0 && */(<div>Släpp din bild här</div>)}
                 {/* files && (<>{ thumbs }</>) */}
             </div>
         </section>

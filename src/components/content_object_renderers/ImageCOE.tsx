@@ -15,6 +15,20 @@ type ImageCOEProps = {
     content: ContentImage
 }
 
+function getDummyImages(n: number):string[] {
+    function getRandomResolution():string { return Math.floor(Math.random() * 1000 + 100).toString() + 'x' + Math.floor(Math.random() * 500 + 50).toString(); }
+    function getRandomColor():string { // https://www.tutorialspoint.com/generating-random-hex-color-in-javascript
+        let color = '';
+        for (let i = 0; i < 3; i++) {
+            const random = Math.random();
+            const bit = (random * 16) | 0;
+            color += (bit).toString(16);
+        };
+        return color;
+    }
+    return [...new Array(n)].map(() => 'https://dummyimage.com/' + getRandomResolution() + '/' + getRandomColor() + '/' + getRandomColor());
+}
+
 /**
  * Popup image-picker for a ContentImage.
  * @param show Weather to show the popup or not
@@ -23,7 +37,8 @@ type ImageCOEProps = {
  * @constructor
  */
 export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
-    const images = [defaultLogo, img1, img2, img3, img4];
+    const images: string[] = [defaultLogo, img1, img2, img3, img4, ...getDummyImages(50)];
+
     const CTDispatcher = useContext(ContentTreeContext);
 
     function updateImage(imgHref: string) {
