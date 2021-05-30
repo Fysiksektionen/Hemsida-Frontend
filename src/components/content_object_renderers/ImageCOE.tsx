@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Col, Modal, Image, Row } from 'react-bootstrap';
+import { Col, Modal, Image, Row, Tabs, Tab } from 'react-bootstrap';
 import defaultLogo from '../../mediafiles/placeholder_images/Fysiksektionen_logo.svg';
 import img1 from '../../mediafiles/placeholder_images/news_placeholder.jpg';
 import img2 from '../../mediafiles/placeholder_images/news_placeholder1.jpg';
@@ -7,6 +7,7 @@ import img3 from '../../mediafiles/placeholder_images/news_placeholder2.jpg';
 import img4 from '../../mediafiles/placeholder_images/news_placeholder3.jpg';
 import { ContentTreeContext } from '../../contexts';
 import { ContentImage } from '../../types/api_object_types';
+import ImageDropUpload from './ImageDropUpload';
 
 type ImageCOEProps = {
     show: boolean,
@@ -40,16 +41,30 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
             animation={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title id="image-picker">Pick an image!</Modal.Title>
+                <Modal.Title id="image-picker">Välj en bild</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row className="justify-content-between h-100">
-                    {images.map((imgSrc, index) => (
-                        <Col key={index} xs={2} className="my-auto">
-                            <Image fluid={true} src={imgSrc} onClick={() => { updateImage(imgSrc); setShow(false); }}/>
-                        </Col>
-                    ))}
-                </Row>
+                <Tabs
+                // id="controlled-tab-example"
+                // activeKey={key}
+                // onSelect={(k) => setKey(k)}
+                >
+                    <Tab eventKey="files" title="Alla filer">
+                        <Row className="justify-content-between h-100 mt-4">
+                            {images.map((imgSrc, index) => (
+                                <Col key={index} xs={2} className="my-auto">
+                                    <Image fluid={true} src={imgSrc} onClick={() => { updateImage(imgSrc); setShow(false); }} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </Tab>
+                    <Tab eventKey="upload" title="Ladda upp">
+                        <ImageDropUpload onUpload={(imgSrc: string) => { updateImage(imgSrc); setShow(false); }}></ImageDropUpload>
+                    </Tab>
+                    <Tab eventKey="my_files" title="Mina filer" disabled>
+                        Varde tomt!
+                    </Tab>
+                </Tabs>
             </Modal.Body>
             <Modal.Footer>
 
