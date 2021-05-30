@@ -6,8 +6,7 @@
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.cwd": "${containerWorkspaceFolder}",
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.cwd": "${containerWorkspaceFolder}"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
