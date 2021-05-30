@@ -7,19 +7,34 @@
 Hej och välkommen till repot för frontenden av Fysiksektionens hemsida! Med ett gränssnitt mot vårt API definierat i [Hemsida-Docs](https://github.com/Fysiksektionen/Hemsida-Docs) och [Hemsida-Backend](https://github.com/Fysiksektionen/Hemsida-Backend) är målet att bygga en snygg och välfungerade hemsida för allt möjligt som sektionen vill ha.
 
 ### Innehåll
-- [Installera och kör](#installera-och-k-r)
-- [Resurser](#resurser)
-    * [Hur funkar hemsidan?](#hur-funkar-hemsidan-)
-    * [Dokumentation](#dokumentation)
-    * [React](#react)
-    * [Bootstrap](#bootstrap)
-    * [Docker](#docker)
-    * [Övrigt](#-vrigt)
-- [Licens](#licens)
-- [Kontakt](#kontakt)
+- [Hemsida client](#hemsida-client)
+    - [Innehåll](#innehåll)
+  - [Installera och kör](#installera-och-kör)
+    - [Med Docker (rekommenderat)](#med-docker-rekommenderat)
+    - [Lokalt](#lokalt)
+  - [Resurser](#resurser)
+    - [Hur funkar hemsidan?](#hur-funkar-hemsidan)
+    - [Dokumentation](#dokumentation)
+    - [React](#react)
+    - [Bootstrap](#bootstrap)
+    - [Docker](#docker)
+    - [Övrigt](#övrigt)
+  - [Licens](#licens)
+  - [Kontakt](#kontakt)
+- [Old stuff](#old-stuff)
+  - [Available Scripts](#available-scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run docs-serve`](#npm-run-docs-serve)
+    - [`npm run lint-check`](#npm-run-lint-check)
+    - [`npm run lint-fix`](#npm-run-lint-fix)
 
 --------------------------------------------
 ## Installera och kör
+### Med Docker (rekommenderat)
+
+### Lokalt
 
 
 --------------------------------------------
@@ -39,11 +54,11 @@ Hej och välkommen till repot för frontenden av Fysiksektionens hemsida! Med et
 
 --------------------------------------------
 ## Licens
-
+Detta projekt lyder under standardformatet av MIT License. Du finner licensen här: [LICENSE](LICENSE).
 
 --------------------------------------------
 ## Kontakt
-
+Vill du veta mer om projektet, har frågor eller av annan anledning nå den ansvariga? Kontakta [webmaster(at)f.kth.se](mailto:webmaster@f.kth.se).
 
 --------------------------------------------
 # Old stuff

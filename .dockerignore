@@ -1,0 +1,11 @@
+.dockerignore
+Dockerfile
+docker-compose.yml
+.eslintcache
+.devcontainer
+.run
+.vscode
+.idea
+README.md
+LICENSE
+node_modules
