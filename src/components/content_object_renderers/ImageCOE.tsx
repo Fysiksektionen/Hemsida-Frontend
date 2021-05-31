@@ -62,15 +62,16 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
                     </Col>
                     <Col xs={3} className="border-left">
                         <h3>Egenskaper:</h3>
-                        <p style={{ overflowWrap: 'anywhere' }}>
+                        <p style={{ overflow: 'scroll' }}>
                             {selectedImageIdx > -1 && (<>Filnamn: {images[selectedImageIdx]}</>)}
+                            {selectedImageIdx === -1 && 'Klicka på en fil för att välja den'}
                         </p>
-                        <Button onClick={() => { updateImage(images[selectedImageIdx]); setShow(false); }}>Välj</Button>
                     </Col>
                 </Row>
             </Modal.Body>
             <Modal.Footer>
-
+                <Button variant="secondary" onClick={() => { setShow(false); }}>Avbryt</Button>
+                <Button disabled={selectedImageIdx === -1} onClick={() => { updateImage(images[selectedImageIdx]); setShow(false); }}>Välj denna bild</Button>
             </Modal.Footer>
         </Modal>
     );
