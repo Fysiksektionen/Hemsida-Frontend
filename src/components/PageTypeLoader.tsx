@@ -12,8 +12,6 @@ import { emptyResp, pathToResp, pathToId, emptyPage } from '../mock_data/pages/m
 import { Col, Container, Row, Image } from 'react-bootstrap';
 import SVG from 'react-inlinesvg';
 import logo from '../mediafiles/placeholder_images/Fysiksektionen_logo.a.svg';
-import './loadingAnimation.scss';
-
 const pathlib = require('path');
 
 type PageTypeLoaderProps = {

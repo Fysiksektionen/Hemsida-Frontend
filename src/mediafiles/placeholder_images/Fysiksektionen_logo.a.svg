@@ -171,4 +171,21 @@
        id="path1625"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccsssssccsssssccsssscsssssssssssssssssscsssssccssssssssssssssssssssssccssssssssssssscssssccssssssssssssssccsssssscsscsssccssssscssscsssssssssscsssssssssssssssssccssssssssssssssssssssssssssscsssssssssssssscssssssssscsssssscscscssccsssssssssccssssssccssssssssssssssscscccsssccssssssssssssssssccsssssssssccscsssssscsssssssscssssssscsccssscssccccc" />
-       </g></svg>
+       </g><style type="text/css">@keyframes rotate360 {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+  }
+
+  g#gearcontainer {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation-name: rotate360;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+  }
+
+g#g51 {
+  transform: scaleX(1.020952380952381/*536/525*/) scale(0.97);
+}
+</style></svg>
