@@ -7,7 +7,7 @@ import img3 from '../../mediafiles/placeholder_images/news_placeholder2.jpg';
 import img4 from '../../mediafiles/placeholder_images/ERI_vertical_RGB.png';
 import { ContentTreeContext } from '../../contexts';
 import { ContentImage } from '../../types/api_object_types';
-import SingleImageDropUpload from './SingleImageDropUpload';
+import ImageDropUpload from './ImageDropUpload';
 
 type ImageCOEProps = {
     show: boolean,
@@ -50,7 +50,8 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
                     <Col>
                         <Row>
                             <Col xs={4} className="py-2">
-                                <SingleImageDropUpload onUpload={(imgs: File[]) => { setImages([...images, ...imgs.map((img) => URL.createObjectURL(img))]); }} dropZoneProps={{}}></SingleImageDropUpload>
+                                <ImageDropUpload onUpload={(imgs: File[]) => { setImages([...images, ...imgs.map((img) => URL.createObjectURL(img))]); }}
+                                    dropZoneProps={{}}></ImageDropUpload>
                             </Col>
 
                             {images.map((imgSrc, index) => (
@@ -62,7 +63,7 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
                     </Col>
                     <Col xs={3} className="border-left">
                         <h3>Egenskaper:</h3>
-                        <p style={{ overflow: 'scroll' }}>
+                        <p style={{ overflow: 'auto' }}>
                             {selectedImageIdx > -1 && (<>Filnamn: {images[selectedImageIdx]}</>)}
                             {selectedImageIdx === -1 && 'Klicka på en fil för att välja den'}
                         </p>

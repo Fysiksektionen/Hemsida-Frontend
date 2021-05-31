@@ -32,11 +32,11 @@ type SIDUProps = {
 }
 
 /**
- * Dropzone that accepts a single image and returns the uploaded file as a PreviewableFile (File & {preview: string}) to the provided callback function (hook) onUpload.
+ * Dropzone that accepts images and returns the uploaded files as an array of File objects to the provided callback function (hook): onUpload.
  * @param onUpload Callback function.
  * @constructor
  */
-export default function SingleImageDropUpload({ onUpload, dropZoneProps }:SIDUProps) {
+export default function ImageDropUpload({ onUpload, dropZoneProps }:SIDUProps) {
     // TODO make dropZoneProps non-required, with a default value of {accept: 'image/jpeg, image/png, image/gif'}
     const onDrop = useCallback(onUpload, [onUpload]);
 
