@@ -9,7 +9,10 @@ import { apiRootUrl } from '../config';
 
 // Import fake data
 import { emptyResp, pathToResp, pathToId, emptyPage } from '../mock_data/pages/mock_PageTypeLoader';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Image } from 'react-bootstrap';
+import SVG from 'react-inlinesvg';
+import logo from '../mediafiles/placeholder_images/Fysiksektionen_logo.a.svg';
+import './loadingAnimation.scss';
 
 const pathlib = require('path');
 
@@ -65,6 +68,7 @@ export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Eleme
     }, [pageId]);
 
     // TODO: perhaps "Laddar..." shouldn't be hard-coded.
+    console.log(logo);
     return (
         <>
             {!isLoading && loadPage(pageData)}
@@ -74,9 +78,9 @@ export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Eleme
                         <div id="dynamic_page_content" className='w-100'>
                             <Container>
                                 <Row className='justify-content-center'>
-                                    <Col xl={8} md={10} xs={11}>
-                                        <h1>{locale === locales.sv ? 'Laddar...' : 'Loading...'}</h1>
-                                    </Col>
+                                    <div className="mx-auto">
+                                        <SVG src={logo} style={{ maxHeight: '5cm', marginBottom: '2cm', marginTop: '1cm' }}></SVG>
+                                    </div>
                                 </Row>
                             </Container>
                         </div>
