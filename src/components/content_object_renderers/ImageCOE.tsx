@@ -49,13 +49,13 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
                 <Row className="h-100 mt-4">
                     <Col>
                         <Row>
-                            <Col xs={4} className="py-2">
+                            <Col xs={8} lg={3} className="py-2">
                                 <ImageDropUpload onUpload={(imgs: File[]) => { setImages([...images, ...imgs.map((img) => URL.createObjectURL(img))]); }}
                                     dropZoneProps={{}}></ImageDropUpload>
                             </Col>
 
                             {images.map((imgSrc, index) => (
-                                <Col key={index} xs={2} className={'my-auto' + (index === selectedImageIdx ? ' border' : '')}>
+                                <Col key={index} xs={4} lg={3} className={'my-auto' + (index === selectedImageIdx ? ' border' : '')}>
                                     <Image className="m-2" fluid={true} src={imgSrc} onClick={() => { setSelectedImageIdx(index); }} />
                                 </Col>
                             ))}

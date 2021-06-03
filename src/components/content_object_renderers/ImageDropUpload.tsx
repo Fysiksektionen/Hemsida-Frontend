@@ -26,7 +26,7 @@ const activeStyle:CSSDict = { borderColor: '#2196f3' };
 const acceptStyle:CSSDict = { borderColor: '#00e676' };
 const rejectStyle:CSSDict = { borderColor: '#ff1744' };
 
-type SIDUProps = {
+type IDUProps = {
     onUpload: (images: File[]) => void,
     dropZoneProps: object
 }
@@ -36,7 +36,7 @@ type SIDUProps = {
  * @param onUpload Callback function.
  * @constructor
  */
-export default function ImageDropUpload({ onUpload, dropZoneProps }:SIDUProps) {
+export default function ImageDropUpload({ onUpload, dropZoneProps }:IDUProps) {
     // TODO make dropZoneProps non-required, with a default value of {accept: 'image/jpeg, image/png, image/gif'}
     const onDrop = useCallback(onUpload, [onUpload]);
 
