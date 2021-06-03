@@ -22,10 +22,10 @@ Hej och välkommen till repot för frontenden av Fysiksektionens hemsida! Med et
 
 --------------------------------------------
 ## Installera och kör
-Det finns många olika sätt att jobba med frontend-projektet. Vad som passar just dig går inte att säga, utan det beror på din enviroment, vad du är van vid och helt enkelt egen preferens. Nedan listar vi två sätt som du kan jobba med projektet, men se till att hitta det sätt som paassar dig bäst!
+Det finns många olika sätt att jobba med frontend-projektet. Vad som passar just dig går inte att säga, utan det beror på din environment, vad du är van vid och helt enkelt egen preferens. Nedan listar vi två sätt som du kan jobba med projektet, men se till att hitta det sätt som paassar dig bäst!
 
 ### Med Docker (rekommenderat)
-Docker är ett system för att skapa små väldefinierade kontainrar på din dator. I dessa går det att köra prrogram utan att de påverkas av dina egna instaällningar eller annat som kan störa. Det är ett bra sätt att lösa problemet "men det funkar ju på min dator...". Känner du inte till docker sen tidigar rekommenderar vi att du läser på lite först. Se info under [Docker](#docker).
+Docker är ett system för att skapa små väldefinierade kontainrar på din dator. I dessa går det att köra program utan att de påverkas av dina egna inställningar eller annat som kan störa. Det är ett bra sätt att lösa problemet "men det funkar ju på min dator...". Känner du inte till docker sen tidigare rekommenderar vi att du läser på lite först. Se info under [Docker](#docker).
 
 Nedan följer instruktioenr för att använda Docker tillsammans med VSCode.
 
@@ -35,7 +35,7 @@ Nedan följer instruktioenr för att använda Docker tillsammans med VSCode.
      - Linux: [Install Docker Engine](https://docs.docker.com/engine/install/) och [Install Docker Compose](https://docs.docker.com/compose/install/) (båda behöver installeras)
 2. Klona repot till en mapp på din dator.
 3. Öppna mappen i VSCode.
-4. Installera Docker-stöd samt stöd för kontainrar. Det görs under Extentions och paketen som ska installeras heter `ms-vscode-remote.remote-containers` och `ms-azuretools.vscode-docker`.
+4. Installera Docker-stöd samt stöd för kontainrar. Det görs under Extentions och paketen som ska installeras heter [`ms-vscode-remote.remote-containers`](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) och [`ms-azuretools.vscode-docker`](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
 5. Klicka på den gröna knappen längst ned till vänster och välj "Reopen folder in container". (OBS detta kan ta lång tid första gången det ska göras. Därefter kommer det gå snabbare tack vare cachening).
 6. Nu finns en server som kör projektet på localhost:3000 :D
 
@@ -63,7 +63,7 @@ Varje avsnitt har en kort introduktion, en lista på saker som du måste känna 
 
 ### Dokumentation
 - [Hemsidan-Docs](https://github.com/Fysiksektionen/Hemsida-Docs) - Documentation av det gemensamma API som delas mellan front- och backenden.
-- [Hemsidan-Frontend/docs](https://github.com/Fysiksektionen/Hemsida-Frontend/tree/main/docs) - Innehåller noggran och specifik dokumentationtion av koncept och implementaioner begränsade till frontenden.
+- [Hemsidan-Frontend/docs](https://github.com/Fysiksektionen/Hemsida-Frontend/tree/main/docs) - Innehåller noggrann och specifik dokumentationtion av koncept och implementaioner begränsade till frontenden.
 
 ### React
 React är det framework som ligger till grund för hela frontenden.
@@ -80,7 +80,7 @@ React är det framework som ligger till grund för hela frontenden.
 - [Tutorial: Intro to React](https://reactjs.org/tutorial/tutorial.html)
 
 ### Bootstrap
-Bootstrap är ett CSS- och Javascript-bibiliotek som används för att designa och styla vårt projekt. Bootstrap innehåller både metoder för positionering och styling av komponenter och kan även användas sirrekt i React tack vare andra bibiliotek. Vi försöker använda Bootstrap som styling så mycket som möjligt.
+Bootstrap är ett CSS- och Javascript-bibiliotek som används för att designa och styla vårt projekt. Bootstrap innehåller både metoder för positionering och styling av komponenter och kan även användas direkt i React tack vare andra bibiliotek. Vi försöker använda Bootstrap som styling så mycket som möjligt.
 
 #### Viktiga koncept
 - Layout med Bootstrap-klasser. Hur funkar *Grid*, *breakpoints* och *Flex*?
@@ -97,7 +97,7 @@ Bootstrap är ett CSS- och Javascript-bibiliotek som används för att designa o
 
 
 ### Docker
-Docker är industristandarden för att jobba med kontainer-utveckling. Det är ett sätt att tydligt kunna definiera och distribuera en hel projektstruktur, vilket gör utveckling och lancering supersmidigt.
+Docker är industristandarden för att jobba med kontainer-utveckling. Det är ett sätt att tydligt kunna definiera och distribuera en hel projektstruktur, vilket gör utveckling och lansering supersmidigt.
 
 #### Viktiga koncept
 - Vad är en *Container*, *Image*, *Host-machine*?
