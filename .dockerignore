@@ -6,6 +6,5 @@ docker-compose.yml
 .run
 .vscode
 .idea
-.git
 LICENSE
 node_modules
