@@ -13,6 +13,7 @@ services:
     volumes:
       - ./src:/opt/app/src
       - ./public:/opt/app/public
+      - ./.git:/opt/app/.git
       - ./.gitignore:/opt/app/.gitignore
       - ./.eslintrc.json:/opt/app/.eslintrc.json
       - ./tsconfig.json:/opt/app/tsconfig.json
