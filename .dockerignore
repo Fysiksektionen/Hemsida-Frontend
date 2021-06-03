@@ -1,10 +1,6 @@
-.dockerignore
-Dockerfile
-docker-compose.yml
 .eslintcache
 .devcontainer
 .run
 .vscode
 .idea
-LICENSE
 node_modules
