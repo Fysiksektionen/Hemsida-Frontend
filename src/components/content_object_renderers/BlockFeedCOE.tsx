@@ -1,6 +1,6 @@
 import React, { CSSProperties, useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { ContentTreeAddIdContext, ContentTreeContext } from '../../contexts';
+import { ContentTreeAddIdContext, ContentTreeContext, getUniqueId } from '../../contexts';
 import { Block, BlockFeed, BlockType, ImageBlock, RichTextBlock, TableBlock } from '../../types/content_objects/blocks';
 import { Popover, SvgIconTypeMap } from '@material-ui/core';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
@@ -9,6 +9,7 @@ import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import FLargeIconButton from '../f-styled/buttons/FLargeIconButton';
 import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import BlockCOR from './blocks/BlockCOR';
+import { makeDefaultCell } from './blocks/tableCOE/TableCOE';
 
 /**
  * Array of available blocks in block chooser popup.
@@ -41,7 +42,7 @@ const blockIcons: { blockType: BlockType, text: string, icon: OverridableCompone
  */
 const defaultBlocks: {[key in BlockType]: Block} = {
     heading: {
-        id: -1,
+        id: getUniqueId(),
         detailUrl: '',
         dbType: 'text',
         attributes: {
@@ -51,7 +52,7 @@ const defaultBlocks: {[key in BlockType]: Block} = {
         text: '<h3></h3>'
     } as RichTextBlock,
     bodyText: {
-        id: -1,
+        id: getUniqueId(),
         detailUrl: '',
         dbType: 'text',
         attributes: {
@@ -61,7 +62,7 @@ const defaultBlocks: {[key in BlockType]: Block} = {
         text: '<p></p>'
     } as RichTextBlock,
     image: {
-        id: -1,
+        id: getUniqueId(),
         detailUrl: '',
         dbType: 'image',
         attributes: {
@@ -70,63 +71,40 @@ const defaultBlocks: {[key in BlockType]: Block} = {
             width: '100%'
         },
         image: {
-            id: -1,
+            id: getUniqueId(),
             detailUrl: '',
             href: ''
         }
     } as ImageBlock,
     table: {
-        id: -1,
+        id: getUniqueId(),
         detailUrl: '',
         dbType: 'list',
         attributes: {
             blockType: 'table',
             height: 2,
-            width: 2
+            width: 2,
+            cssClasses: { 'table-hover': null }
         },
         items: [
             {
-                id: -1,
+                id: getUniqueId(),
                 detailUrl: '',
                 attributes: {},
                 dbType: 'list',
                 items: [
-                    {
-                        id: -2,
-                        detailUrl: '',
-                        attributes: {},
-                        dbType: 'text',
-                        text: 'Default text'
-                    },
-                    {
-                        id: -3,
-                        detailUrl: '',
-                        attributes: {},
-                        dbType: 'text',
-                        text: 'Default text'
-                    }
+                    makeDefaultCell(),
+                    makeDefaultCell()
                 ]
             },
             {
-                id: -4,
+                id: getUniqueId(),
                 detailUrl: '',
                 attributes: {},
                 dbType: 'list',
                 items: [
-                    {
-                        id: -5,
-                        detailUrl: '',
-                        attributes: {},
-                        dbType: 'text',
-                        text: 'Default text'
-                    },
-                    {
-                        id: -6,
-                        detailUrl: '',
-                        attributes: {},
-                        dbType: 'text',
-                        text: 'Default text'
-                    }
+                    makeDefaultCell(),
+                    makeDefaultCell()
                 ]
             }]
     } as TableBlock
@@ -265,7 +243,7 @@ export default function BlockFeedCOE({ content }: BlockFeedCOEProps) {
             </Row>
             {content.items.map((obj, index) => {
                 return (
-                    <>
+                    <React.Fragment key={obj.id}>
                         <Row className='position-relative show-children-on-hover'>
                             <RemoveBlockButton index={index} content={content}
                                 style={{
@@ -280,7 +258,7 @@ export default function BlockFeedCOE({ content }: BlockFeedCOEProps) {
                         <Row>
                             <AddBlockButton index={index} content={content} />
                         </Row>
-                    </>
+                    </React.Fragment>
                 );
             })}
         </Col>

@@ -1,4 +1,4 @@
-import { ContentImage, ContentList, ContentObject, ContentText, newContentList } from '../api_object_types';
+import { ContentImage, ContentList, ContentText, newContentList } from '../api_object_types';
 import { ChangeKeyType } from '../general';
 
 /* -----------------------
@@ -41,17 +41,14 @@ export type TableBlock = newContentList<TableRow> & {
     attributes: {
         blockType: 'table',
         width: number,
-        height: number
+        height: number,
+        cssClasses: NodeJS.Dict<null>
     }
 }
 
 export type TableRow = newContentList<TableCell>;
 
-export type TableCell = ContentText & {
-    attributes: {
-        headerStyle?: boolean
-    }
-};
+export type TableCell = HeadingBlock;
 
 /* -----------------------
           General
