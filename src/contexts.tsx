@@ -45,6 +45,27 @@ export const ContentTreeAddIdContext = React.createContext<{ id: number, decreme
 );
 
 /**
+ * Returns a function responsible to creating globally unique id:s. This should be the *only* way to generate ids to
+ * guarantee that all ids are unique.
+ */
+function idGenerator(): (decrement?: number) => number {
+    let idCounter = -1;
+    return (decrement: number = -1) => {
+        decrement = -Math.abs(decrement);
+        idCounter += decrement;
+        return idCounter;
+    };
+}
+
+/**
+ * Returns a unique id. Optional parameter specifies how much to decrement the global id. This gives the possibilty
+ * to reserve a nr of unique ids. Example: If you call getUniqueId(-20) and it returns -100, then you have reserved
+ * ids -81 to -100 as unique ids that you can use.
+ */
+const getUniqueId = idGenerator();
+export { getUniqueId };
+
+/**
  * ContentObjectTree related providers and contexts.
  * =================================================
  *
