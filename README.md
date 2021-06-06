@@ -1,4 +1,5 @@
 # Hemsida client
+Built with node v16.
 
 ## Available Scripts
 
@@ -23,11 +24,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run docs-serve`
-
-Serves the API-files needed by the API-viewer located at `/api-docs`. 
-
 
 ### `npm run lint-check`
 

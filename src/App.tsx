@@ -6,7 +6,6 @@ import { Switch, Route } from 'react-router-dom';
 import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
-import APIDocs from './pages/APIDocs/APIDocs';
 import './App.css';
 
 // Import fake data
@@ -25,9 +24,6 @@ function App() {
                 <Switch>
                     <Route path="/admin">
                         <Admin />
-                    </Route>
-                    <Route path="/api-docs">
-                        <APIDocs />
                     </Route>
                     <Route>
                         {siteData &&
