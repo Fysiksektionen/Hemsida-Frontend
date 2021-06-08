@@ -1,0 +1,17 @@
+.imagedrop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-width: 2;
+    border-radius: 2;
+    border-color: #eeeeee;
+    border-style: dashed;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    transition: border .3s ease-in-out;
+}
+
+/* TODO: import colors from some central scss file. */
+.imagedrop.accept {border-color: #23A640;}
+.imagedrop.reject {border-color: #DC3545;}

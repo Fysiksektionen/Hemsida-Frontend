@@ -1,0 +1,16 @@
+.imageCOEModal .modal-dialog,
+.imageCOEModal .modal-content {
+    /* 80% of window height */
+    height: 80%;
+}
+
+.imageCOEModal .modal-body {
+    /* 100% = dialog height, 148px = header + footer */
+    max-height: calc(100% - 148px);
+}
+
+.imageCOEModal .imageGrid {
+    overflow-y: auto;
+    overflow-x: clip;
+    max-height: 100%;
+}
