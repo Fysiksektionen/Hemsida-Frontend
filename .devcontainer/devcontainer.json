@@ -1,0 +1,20 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.163.1/containers/javascript-node
+{
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.cwd": "${containerWorkspaceFolder}"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint"
+	],
+
+	"workspaceFolder": "/opt/app",
+
+	"postStartCommand": "npm start"
+}
