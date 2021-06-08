@@ -12,22 +12,22 @@ import img2 from '../../mediafiles/placeholder_images/news_placeholder1.jpg';
 import img3 from '../../mediafiles/placeholder_images/news_placeholder2.jpg';
 import img4 from '../../mediafiles/placeholder_images/ERI_vertical_RGB.png';
 
-import { language as inlinecsslangdef } from './InlineCSS.syntaxdef';
+import { language as inlineCSSSyntaxDef } from './InlineCSS.syntaxdef';
 
 const postcss = require('postcss');
 const postcssJs = require('postcss-js');
 
 // Configure Monaco syntax highlighting.
-// TODO: There may be a way to use Monaco's CSS intellisense for inline CSS. That would be cool.
+// TODO: There may be a way to use Monaco's CSS intellisense for inline CSS.
 languages.register({ id: 'icss' });
-languages.setMonarchTokensProvider('icss', inlinecsslangdef);
+languages.setMonarchTokensProvider('icss', inlineCSSSyntaxDef);
 
 /**
  * Checks whether a css-string is parseable by postcss.
  * @param css The css-string
  * @returns a boolean indicating if the string was parseable
  */
-function checkCSSValidity(css: string | undefined):boolean {
+function checkCSSParseability(css: string | undefined):boolean {
     if (css === undefined) { return false; };
     try {
         postcssJs.objectify(postcss.parse(css));
@@ -49,11 +49,17 @@ type ImageCOEProps = {
  * @constructor
  */
 export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
+    // Attempt to load the style into the CSS-editor.
+    // TODO: We use "as any", since content.attributes is schemaless. This is not ideal.
+    let cssStyle = '';
+    try { cssStyle = postcssJs.parse((content.attributes as any).style); } finally { /* eslint-disable-next-line */ }
+
     // States, contexts, and referencces
     const [images, setImages] = useState([defaultLogo, img1, img2, img3, img4]);
     const [selectedImageIdx, setSelectedImageIdx] = useState(-1);
     const CTDispatcher = useContext(ContentTreeContext);
     const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
+    const [cssValidity, setCssValidity] = useState(checkCSSParseability(cssStyle));
 
     //
     // Helper functions
@@ -62,7 +68,7 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
     /**
      * @returns the current css-text from the css-editor, or '' if the editor is not available.
      */
-    function getCSSFromMonaco():string {
+    function getCSSFromEditor():string {
         if (editorRef !== undefined && editorRef.current !== undefined) { return editorRef.current.getValue(); }
         return '';
     }
@@ -74,7 +80,7 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
      */
     function updateImage(imgHref: string):boolean {
         try {
-            const jss = postcssJs.objectify(postcss.parse(getCSSFromMonaco()));
+            const jss = postcssJs.objectify(postcss.parse(getCSSFromEditor()));
             const newImage = { ...content, image: { ...content.image, href: imgHref }, attributes: { ...content.attributes, style: jss } };
             CTDispatcher({ id: content.id, value: newImage });
             return true;
@@ -89,11 +95,6 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
         setImages([...imgs.map((img) => URL.createObjectURL(img)), ...images]);
         setSelectedImageIdx(0);
     }
-
-    // Attempt to load the style into the CSS-editor (I know, "as any" is kinda sketch, but this will do for now...)
-    let cssStyle = '';
-    try { cssStyle = postcssJs.parse((content.attributes as any).style); } finally { /* eslint-disable-next-line */ }
-    const [cssValidity, setCssValidity] = useState(checkCSSValidity(cssStyle));
 
     return (
         <Modal
@@ -164,7 +165,7 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
 
                                         onMount={(editor: monaco.editor.IStandaloneCodeEditor) => { editorRef.current = editor; }}
                                         onChange = {(value) => {
-                                            setCssValidity(checkCSSValidity(value));
+                                            setCssValidity(checkCSSParseability(value));
                                         }}
                                     />
                                 </Col>
