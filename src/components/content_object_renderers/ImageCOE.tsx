@@ -15,7 +15,12 @@ import img4 from '../../mediafiles/placeholder_images/ERI_vertical_RGB.png';
 import { language as inlinecsslangdef } from './InlineCSS.syntaxdef';
 
 const postcss = require('postcss');
-const postcssJs = require('postcss-js'); ;
+const postcssJs = require('postcss-js');
+
+// Configure Monaco syntax highlighting.
+// TODO: There may be a way to use Monaco's CSS intellisense for inline CSS. That would be cool.
+languages.register({ id: 'icss' });
+languages.setMonarchTokensProvider('icss', inlinecsslangdef);
 
 /**
  * Checks whether a css-string is parseable by postcss.
@@ -36,16 +41,6 @@ type ImageCOEProps = {
     content: ContentImage
 }
 
-function defineInlineCSS() {
-    languages.register({
-        id: 'icss',
-        extensions: ['.css'],
-        aliases: ['CSS', 'css'],
-        mimetypes: ['text/css']
-    });
-    languages.setMonarchTokensProvider('icss', inlinecsslangdef);
-}
-
 /**
  * Popup image-picker for a ContentImage.
  * @param show Weather to show the popup or not
@@ -54,7 +49,6 @@ function defineInlineCSS() {
  * @constructor
  */
 export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
-    defineInlineCSS();
     // States, contexts, and referencces
     const [images, setImages] = useState([defaultLogo, img1, img2, img3, img4]);
     const [selectedImageIdx, setSelectedImageIdx] = useState(-1);
@@ -66,7 +60,7 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
     //
 
     /**
-     * Returns the current css-text from the css-editor, or "" if the editor is not available.
+     * @returns the current css-text from the css-editor, or '' if the editor is not available.
      */
     function getCSSFromMonaco():string {
         if (editorRef !== undefined && editorRef.current !== undefined) { return editorRef.current.getValue(); }
@@ -79,18 +73,21 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
      * @returns a boolean inidcating the success of the update.
      */
     function updateImage(imgHref: string):boolean {
-        // TODO use JSS type-def.
-        let jss:object = {};
-
         try {
-            jss = postcssJs.objectify(postcss.parse(getCSSFromMonaco()));
+            const jss = postcssJs.objectify(postcss.parse(getCSSFromMonaco()));
+            const newImage = { ...content, image: { ...content.image, href: imgHref }, attributes: { ...content.attributes, style: jss } };
+            CTDispatcher({ id: content.id, value: newImage });
+            return true;
         } catch {
-            alert('Invalid CSS.');
+            alert('Could not update image. Check your CSS.');
             return false;
         }
-        const newImage = { ...content, image: { ...content.image, href: imgHref }, attributes: { ...content.attributes, style: jss } };
-        CTDispatcher({ id: content.id, value: newImage });
-        return true;
+    }
+
+    // Upload callback
+    function onUpload(imgs: File[]):void {
+        setImages([...imgs.map((img) => URL.createObjectURL(img)), ...images]);
+        setSelectedImageIdx(0);
     }
 
     // Attempt to load the style into the CSS-editor (I know, "as any" is kinda sketch, but this will do for now...)
@@ -116,12 +113,13 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
                     <Col>
                         <Row>
                             <Col xs={8} lg={3} className="py-2">
-                                <ImageDropUpload onUpload={(imgs: File[]) => { setImages([...images, ...imgs.map((img) => URL.createObjectURL(img))]); }} dropZoneProps={{}}></ImageDropUpload>
+                                <ImageDropUpload onUpload={onUpload} />
                             </Col>
 
                             {images.map((imgSrc, index) => (
                                 <Col key={index} xs={4} lg={3} className={'my-auto' + (index === selectedImageIdx ? ' border' : '')}>
-                                    <Image className="m-2" fluid={true} src={imgSrc} onClick={() => { setSelectedImageIdx(index); }} />
+                                    <Image className="m-2" fluid={true} src={imgSrc} style={{ maxHeight: '5cm' }}
+                                        onClick={() => { setSelectedImageIdx(index); }} />
                                 </Col>
                             ))}
                         </Row>
