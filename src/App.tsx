@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Locale, LocaleContext, locales } from './contexts';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
@@ -22,6 +22,7 @@ function App() {
         <div className="App">
             <LocaleContext.Provider value={locale}>
                 <Switch>
+                    <Route exact={true} path="/admin"><Redirect to={'/admin/pages/'} /></Route>
                     <Route path="/admin">
                         <Admin />
                     </Route>
