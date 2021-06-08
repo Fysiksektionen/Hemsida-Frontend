@@ -24,7 +24,12 @@ export default function ImageCOR(props: ImageCORProps) {
                     <ImageCOE content={props.content} show={showModal} setShow={setShowModal} />
                     <Image
                         src={props.content.image.href !== '' ? props.content.image.href : placeholder}
+                        // TODO: I suspect that this type casting is discarded at run-time, yielding a content="[Object object]" attribute for the tag.
+                        // This is probably not intended
                         {...(props as (ImageProps & React.RefAttributes<HTMLImageElement>))}
+                        // TODO: This almost definitely has the same problem as the line above
+                        // Basically, there should be a way to restrict what properties can be added as attributes here at render-time.
+                        {...(props.content.attributes as (ImageProps & React.RefAttributes<HTMLImageElement>))}
                         onClick={editing ? () => { setShowModal(true); } : () => {}}
                     />
                 </div>
