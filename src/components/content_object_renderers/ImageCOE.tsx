@@ -5,6 +5,7 @@ import { ContentImage } from '../../types/api_object_types';
 import ImageDropUpload from './ImageDropUpload';
 import Editor from '@monaco-editor/react';
 import monaco, { languages } from 'monaco-editor';
+import './ImageCOE.scss';
 // Mock stuff
 import defaultLogo from '../../mediafiles/placeholder_images/Fysiksektionen_logo.svg';
 import img1 from '../../mediafiles/placeholder_images/news_placeholder.jpg';
@@ -104,14 +105,15 @@ export default function ImageCOE({ show, setShow, content }: ImageCOEProps) {
             aria-labelledby="image-picker"
             centered
             animation={false}
+            className="imageCOEModal"
         >
             <Modal.Header closeButton>
                 <Modal.Title id="image-picker">Välj en bild</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row className="h-100 mt-4">
+                <Row className="h-100 mt-4 pb-2">
                     {/* Image list */}
-                    <Col>
+                    <Col className="imageGrid">
                         <Row>
                             <Col xs={8} lg={3} className="py-2">
                                 <ImageDropUpload onUpload={onUpload} />
