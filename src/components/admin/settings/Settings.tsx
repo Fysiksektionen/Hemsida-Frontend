@@ -2,12 +2,11 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { AdminPageProps } from '../../../types/admin_components';
 import { APIResponse } from '../../../types/general';
 import { Button, Col, Container, Form } from 'react-bootstrap';
-import callApi from '../call_api_temp';
 import HeaderEditor from './HeaderEditor';
 import { MinimalPage, Site } from '../../../types/api_object_types';
 import { SiteFooterCT, SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
 import FooterEditor from './FooterEditor';
-
+import { mockSiteResp } from '../../../mock_data/mock_site_response';
 // TODO: Add current state updated onChange
 type FormState<T> = {
     hasChanged: boolean,
@@ -40,7 +39,7 @@ type SettingsAdminPageState = {
 export default function SettingsAdminPage(props: AdminPageProps) {
     // Create state that contains the settings and content of header/footer separately.
     const [state, setState] = useState<SettingsAdminPageState>(() => {
-        const data = (callApi({ path: 'site/', getParams: {} }) as APIResponse<Site>).data;
+        const data = mockSiteResp.data;
         return ({
             settings: { hasChanged: false, initialData: data as SiteSettings },
             contents: { hasChanged: false, initialData: data as SiteContents }
