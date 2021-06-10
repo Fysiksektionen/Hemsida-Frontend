@@ -1,7 +1,7 @@
 # Fysiksektionens hemsida - Frontend
 
 <p align="center">
-    <img src="./src/mediafiles/placeholder_images/Fysiksektionen_logo.svg" width="300" height="300" alt=""/>
+    <img src="./public/mediafiles/placeholder_images/Fysiksektionen_logo.svg" width="300" height="300" alt=""/>
 </p>
 
 Hej och välkommen till repot för frontenden av Fysiksektionens hemsida! Med ett gränssnitt mot vårt API definierat i [Hemsida-Docs](https://github.com/Fysiksektionen/Hemsida-Docs) och [Hemsida-Backend](https://github.com/Fysiksektionen/Hemsida-Backend) är målet att bygga en snygg och välfungerade hemsida för allt möjligt som sektionen vill ha.
