@@ -61,6 +61,7 @@ export default function TextCOE({ show, setShow, content }: TextCOEProps) {
                             onChange={(event: ChangeEvent<any>) => {
                                 setInternalText(event.target.value);
                             }}
+                            autoFocus
                         />
                     </Form.Group>
                     <Button type={'submit'} variant={'success'}>
