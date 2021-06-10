@@ -4,7 +4,7 @@
 import { Page } from '../types/api_object_types';
 
 export const emptyPage: Page = {
-    id: 1,
+    id: 0,
     detailUrl: '',
     name: '',
     slug: '',
@@ -19,14 +19,14 @@ export const emptyPage: Page = {
     publishedAt: '',
     lastEditedAt: '',
     contentSv: {
-        id: 1,
+        id: 0,
         detailUrl: 'https://f.kth.se/api/content_objects/1',
         dbType: 'dict',
         attributes: {},
         items: {}
     },
     contentEn: {
-        id: 1,
+        id: 0,
         detailUrl: 'https://f.kth.se/api/content_objects/1',
         dbType: 'dict',
         attributes: {},

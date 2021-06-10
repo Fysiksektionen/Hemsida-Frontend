@@ -34,18 +34,20 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     // If we dont have page data, get page (mock data for now)
     if (page === undefined) {
         page = emptyPage;// Perhaps excessive
-        callApi({ path: 'pages/' + id + '/', getParams: {} }).then((resp) => {
-            if (resp.code === 200 && resp.data !== undefined) {
-                page = resp.data as Page;
-            }
-        });
     }
 
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
     // State of the saved data (that should have been sent to server).
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
-    const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
+    const [pageData, setPageData] = useState<Page>(page);
+
+    callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
+        if (resp.code === 200 && resp.data !== undefined) {
+            page = resp.data as Page;
+            setPageData(resp.data as Page);
+        }
+    });
 
     // Use the CTReducer to allow for child components to update the content tree.
     // Use this state when passing down content to children.
@@ -68,10 +70,12 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
 
     // Send page with updated content down for rendering in children.
     const pageWithNewContent = page !== undefined ? { ...pageData } : { ...emptyPage };
-    if (pageLocale === locales.sv) {
-        pageWithNewContent.contentSv = content;
-    } else {
-        pageWithNewContent.contentEn = content;
+    if (content) {
+        if (pageLocale === locales.sv) {
+            pageWithNewContent.contentSv = content;
+        } else {
+            pageWithNewContent.contentEn = content;
+        }
     }
 
     const [showMetaInfo, setShowMetaInfo] = useState(false);

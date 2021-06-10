@@ -50,7 +50,7 @@
                             "image": {
                                 "id": 1,
                                 "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "href": "/static/Fcom-ikoner.png"
+                                "href": "/mediafiles/placeholder_images/Fcom-ikoner.png"
                             }
                         },
                         {
@@ -131,7 +131,7 @@
                             "image": {
                                 "id": 1,
                                 "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "href": "/static/Fcom-ikoner.png"
+                                "href": "/mediafiles/placeholder_images/Fcom-ikoner.png"
                             }
                         },
                         {
