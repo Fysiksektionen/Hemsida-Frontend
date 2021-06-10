@@ -1,0 +1,41 @@
+import { getGETParamsStringFromObject } from '../components/admin/utils';
+import { APIResponse } from '../types/general';
+import { apiRootUrl, callDelay } from './config';
+import route from './mockRouter';
+
+/**
+ * This file is just a placeholder to a real APIMethod.
+ */
+
+type CallApiProps = {
+    path: string,
+    getParams: NodeJS.Dict<string|undefined>
+}
+
+/**
+ * Returns a static predefined value in apiPathToResp given a n api-path.
+ * @param path: Path relative to api-root to call
+ * @param getParams: Dict containing GET-args for the call.
+ */
+export default async function callApi({ path, getParams }: CallApiProps): Promise<APIResponse<any>> {
+    const getParamsString = getGETParamsStringFromObject(getParams);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const fullPath = apiRootUrl + path + getParamsString;
+
+    // BEGIN Mock code
+    const routedPath = apiRootUrl + route(path) + getParamsString;
+    console.log('Fetching:', routedPath, '. Routed from:', path);
+    const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<any>;
+
+    // Add delay
+    await new Promise(resolve => setTimeout(resolve, callDelay));
+
+    // END Mock code
+
+    return resp;
+};
+
+callApi.defaultProps = <CallApiProps>{
+    path: '',
+    getParams: {}
+};

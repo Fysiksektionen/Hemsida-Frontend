@@ -1,4 +1,6 @@
 export default function route(apiPath: string):string {
+    // Remove leading slash
+    if (apiPath.substr(0, 1) === '/') { apiPath = apiPath.substr(1); };
     const defaultRoutes:{[key: string]:string} = {
         'site/': 'site.json',
         'pages/': 'pages.json',
@@ -8,9 +10,5 @@ export default function route(apiPath: string):string {
         'pages/4': 'pages/4.json',
         'pages/5': 'pages/5.json'
     };
-    try {
-        return defaultRoutes[apiPath];
-    } catch {
-        return '404.json';
-    }
+    if (Object.keys(defaultRoutes).indexOf(apiPath) > -1) { return defaultRoutes[apiPath]; } else { return '404.json'; }
 }

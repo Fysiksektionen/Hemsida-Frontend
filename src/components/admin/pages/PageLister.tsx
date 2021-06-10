@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, FormControl, Col, Row, Card, Container } from 'react-bootstrap';
-import callApi from '../call_api_temp';
+import callApi from '../../../api/main';
 import { APIResponse } from '../../../types/general';
 import { Page } from '../../../types/api_object_types';
 import { AdminLocation } from '../../../types/admin_components';
@@ -18,7 +18,7 @@ export default function PageLister({ setLocationHook }: PageListerProps) {
     const [searchTerm, setSearchTerm] = useState<string>('');
 
     useEffect(() => {
-        setAllPages((callApi({ path: 'pages/', getParams: {} }) as APIResponse<Page[]>).data);
+        callApi({ path: 'pages/', getParams: {} }).then((resp) => setAllPages((resp as APIResponse<Page[]>).data));
     }, []);
 
     const pagesFiltered = searchTerm === '' ? allPages : allPages?.filter(page => page.name.includes(searchTerm));

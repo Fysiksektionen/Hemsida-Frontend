@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContentObject, Page } from '../../../types/api_object_types';
-import callApi from '../call_api_temp';
+import callApi from '../../../api/main';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import PageNotFound from '../../../pages/PageNotFound';
 import {
@@ -12,7 +12,7 @@ import {
     useCTReducer
 } from '../../../contexts';
 import PageTypeLoader from '../../PageTypeLoader';
-import { emptyPage } from '../../../mock_data/pages/mock_PageTypeLoader';
+import { emptyPage } from '../../../mock_data/mock_PageTypeLoader';
 import LocaleSelector from '../../LocaleSelector';
 import PageMetaForm from './PageMetaForm';
 import { AdminLocation } from '../../../types/admin_components';
@@ -33,18 +33,19 @@ type PageEditorProps = {
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
     // If we dont have page data, get page (mock data for now)
     if (page === undefined) {
-        page = emptyPage;
-        const resp = callApi({ path: 'pages/' + id + '/', getParams: {} });
-        if (resp.code === 200) {
-            page = resp.data as Page;
-        }
+        page = emptyPage;// Perhaps excessive
+        callApi({ path: 'pages/' + id + '/', getParams: {} }).then((resp) => {
+            if (resp.code === 200 && resp.data !== undefined) {
+                page = resp.data as Page;
+            }
+        });
     }
 
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
     // State of the saved data (that should have been sent to server).
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
-    const [pageData, setPageData] = useState<Page>(page);
+    const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
 
     // Use the CTReducer to allow for child components to update the content tree.
     // Use this state when passing down content to children.
