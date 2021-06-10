@@ -1,765 +1,768 @@
 {
-    "id": 1,
-    "detailUrl": "",
-    "name": "",
-    "slug": "",
-    "pageType": "representatives",
-    "parent": {
+    "code":200,
+    "data": {
         "id": 1,
         "detailUrl": "",
-        "name": ""
-    },
-    "children": [],
-    "published": true,
-    "publishedAt": "",
-    "lastEditedAt": "",
-    "contentSv": {
-        "id": 1,
-        "detailUrl": "https://f.kth.se/api/content_objects/1",
-        "dbType": "dict",
-        "attributes": {},
-        "items": {
-            "header": {
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "id": 48,
-                "dbType": "text",
-                "attributes": {},
-                "text": "Förtroendevalda"
-            },
-            "introText": {
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "id": 49,
-                "dbType": "text",
-                "attributes": {},
-                "text": "Letar du efter någon speciell person att kontakta inom Fysiksektionen? Då har du kommit rätt! Här nedan listar vi alla förtroendevalda inom Fysiksektionen med tillhörande kontaktuppgifter.\n\nVill du få bättre koll på vad de olika funktionärerna gör och ansvarar för? Kolla på sidan om sektionens nämnder. Där hittar du information om de olika grupperna och vad de jobbar med."
-            },
-            "sections": {
-                "attributes": {},
-                "id": 50,
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "dbType": "list",
-                "items": [
-                    {
-                        "dbType": "dict",
-                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                        "id": 16,
-                        "attributes": {},
-                        "items": {
-                            "email": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 1,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "styrelsen@mejl"
-                            },
-                            "name": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 2,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "Styrelsen"
-                            },
-                            "subsections": {
-                                "attributes": {},
-                                "id": 15,
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "dbType": "list",
-                                "items": [
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 14,
-                                        "attributes": {},
-                                        "items": {
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 13,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 7,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 3,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-20"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 4,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 5,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 6,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Cool name"
+        "name": "",
+        "slug": "",
+        "pageType": "representatives",
+        "parent": {
+            "id": 1,
+            "detailUrl": "",
+            "name": ""
+        },
+        "children": [],
+        "published": true,
+        "publishedAt": "",
+        "lastEditedAt": "",
+        "contentSv": {
+            "id": 1,
+            "detailUrl": "https://f.kth.se/api/content_objects/1",
+            "dbType": "dict",
+            "attributes": {},
+            "items": {
+                "header": {
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "id": 48,
+                    "dbType": "text",
+                    "attributes": {},
+                    "text": "Förtroendevalda"
+                },
+                "introText": {
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "id": 49,
+                    "dbType": "text",
+                    "attributes": {},
+                    "text": "Letar du efter någon speciell person att kontakta inom Fysiksektionen? Då har du kommit rätt! Här nedan listar vi alla förtroendevalda inom Fysiksektionen med tillhörande kontaktuppgifter.\n\nVill du få bättre koll på vad de olika funktionärerna gör och ansvarar för? Kolla på sidan om sektionens nämnder. Där hittar du information om de olika grupperna och vad de jobbar med."
+                },
+                "sections": {
+                    "attributes": {},
+                    "id": 50,
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "dbType": "list",
+                    "items": [
+                        {
+                            "dbType": "dict",
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "id": 16,
+                            "attributes": {},
+                            "items": {
+                                "email": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 1,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "styrelsen@mejl"
+                                },
+                                "name": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 2,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "Styrelsen"
+                                },
+                                "subsections": {
+                                    "attributes": {},
+                                    "id": 15,
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "dbType": "list",
+                                    "items": [
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 14,
+                                            "attributes": {},
+                                            "items": {
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 13,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 7,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 3,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-20"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 4,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 5,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 6,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Cool name"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 12,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 8,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 9,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role2"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 10,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 11,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
                                                             }
                                                         }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 12,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 8,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 9,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role2"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 10,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 11,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
+                                                    ]
+                                                }
                                             }
                                         }
-                                    }
-                                ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "dbType": "dict",
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "id": 47,
+                            "attributes": {},
+                            "items": {
+                                "name": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 17,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "Nämndfunktionärer"
+                                },
+                                "subsections": {
+                                    "attributes": {},
+                                    "id": 46,
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "dbType": "list",
+                                    "items": [
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 31,
+                                            "attributes": {},
+                                            "items": {
+                                                "name": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 18,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "Aktivitetsnämnden"
+                                                },
+                                                "email": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 19,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "aktivitet@kth.se"
+                                                },
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 30,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 24,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 20,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-17"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 21,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Ordförande"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 22,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 23,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Namn1"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 29,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 25,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 26,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role2"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 27,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 28,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 45,
+                                            "attributes": {},
+                                            "items": {
+                                                "name": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 32,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "Fysiklanes stabsledning"
+                                                },
+                                                "email": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 33,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "fysikalen@kth.se"
+                                                },
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 44,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 38,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 34,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-17"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 35,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Kommisare"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 36,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 37,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Namn1"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 43,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 39,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 40,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Kassör"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 41,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 42,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         }
-                    },
-                    {
-                        "dbType": "dict",
-                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                        "id": 47,
-                        "attributes": {},
-                        "items": {
-                            "name": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 17,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "Nämndfunktionärer"
-                            },
-                            "subsections": {
-                                "attributes": {},
-                                "id": 46,
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "dbType": "list",
-                                "items": [
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 31,
-                                        "attributes": {},
-                                        "items": {
-                                            "name": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 18,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "Aktivitetsnämnden"
-                                            },
-                                            "email": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 19,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "aktivitet@kth.se"
-                                            },
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 30,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 24,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 20,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-17"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 21,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Ordförande"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 22,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 23,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Namn1"
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 29,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 25,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 26,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role2"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 27,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 28,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 45,
-                                        "attributes": {},
-                                        "items": {
-                                            "name": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 32,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "Fysiklanes stabsledning"
-                                            },
-                                            "email": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 33,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "fysikalen@kth.se"
-                                            },
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 44,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 38,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 34,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-17"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 35,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Kommisare"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 36,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 37,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Namn1"
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 43,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 39,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 40,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Kassör"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 41,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 42,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                ]
+                    ]
+                }
             }
-        }
-    },
-    "contentEn": {
-        "id": 1,
-        "detailUrl": "https://f.kth.se/api/content_objects/1",
-        "dbType": "dict",
-        "attributes": {},
-        "items": {
-            "header": {
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "id": 48,
-                "dbType": "text",
-                "attributes": {},
-                "text": "Förtroendevalda"
-            },
-            "introText": {
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "id": 49,
-                "dbType": "text",
-                "attributes": {},
-                "text": "Letar du efter någon speciell person att kontakta inom Fysiksektionen? Då har du kommit rätt! Här nedan listar vi alla förtroendevalda inom Fysiksektionen med tillhörande kontaktuppgifter.\n\nVill du få bättre koll på vad de olika funktionärerna gör och ansvarar för? Kolla på sidan om sektionens nämnder. Där hittar du information om de olika grupperna och vad de jobbar med."
-            },
-            "sections": {
-                "attributes": {},
-                "id": 50,
-                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                "dbType": "list",
-                "items": [
-                    {
-                        "dbType": "dict",
-                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                        "id": 16,
-                        "attributes": {},
-                        "items": {
-                            "email": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 1,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "styrelsen@mejl"
-                            },
-                            "name": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 2,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "Styrelsen"
-                            },
-                            "subsections": {
-                                "attributes": {},
-                                "id": 15,
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "dbType": "list",
-                                "items": [
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 14,
-                                        "attributes": {},
-                                        "items": {
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 13,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 7,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 3,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-20"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 4,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 5,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 6,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Cool name"
+        },
+        "contentEn": {
+            "id": 1,
+            "detailUrl": "https://f.kth.se/api/content_objects/1",
+            "dbType": "dict",
+            "attributes": {},
+            "items": {
+                "header": {
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "id": 48,
+                    "dbType": "text",
+                    "attributes": {},
+                    "text": "Förtroendevalda"
+                },
+                "introText": {
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "id": 49,
+                    "dbType": "text",
+                    "attributes": {},
+                    "text": "Letar du efter någon speciell person att kontakta inom Fysiksektionen? Då har du kommit rätt! Här nedan listar vi alla förtroendevalda inom Fysiksektionen med tillhörande kontaktuppgifter.\n\nVill du få bättre koll på vad de olika funktionärerna gör och ansvarar för? Kolla på sidan om sektionens nämnder. Där hittar du information om de olika grupperna och vad de jobbar med."
+                },
+                "sections": {
+                    "attributes": {},
+                    "id": 50,
+                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                    "dbType": "list",
+                    "items": [
+                        {
+                            "dbType": "dict",
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "id": 16,
+                            "attributes": {},
+                            "items": {
+                                "email": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 1,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "styrelsen@mejl"
+                                },
+                                "name": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 2,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "Styrelsen"
+                                },
+                                "subsections": {
+                                    "attributes": {},
+                                    "id": 15,
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "dbType": "list",
+                                    "items": [
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 14,
+                                            "attributes": {},
+                                            "items": {
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 13,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 7,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 3,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-20"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 4,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 5,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 6,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Cool name"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 12,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 8,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 9,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role2"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 10,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 11,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
                                                             }
                                                         }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 12,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 8,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 9,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role2"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 10,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 11,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
+                                                    ]
+                                                }
                                             }
                                         }
-                                    }
-                                ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "dbType": "dict",
+                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                            "id": 47,
+                            "attributes": {},
+                            "items": {
+                                "name": {
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "id": 17,
+                                    "dbType": "text",
+                                    "attributes": {},
+                                    "text": "Nämndfunktionärer"
+                                },
+                                "subsections": {
+                                    "attributes": {},
+                                    "id": 46,
+                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                    "dbType": "list",
+                                    "items": [
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 31,
+                                            "attributes": {},
+                                            "items": {
+                                                "name": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 18,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "Aktivitetsnämnden"
+                                                },
+                                                "email": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 19,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "aktivitet@kth.se"
+                                                },
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 30,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 24,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 20,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-17"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 21,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Ordförande"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 22,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 23,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Namn1"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 29,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 25,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 26,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Role2"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 27,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 28,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "dbType": "dict",
+                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                            "id": 45,
+                                            "attributes": {},
+                                            "items": {
+                                                "name": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 32,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "Fysiklanes stabsledning"
+                                                },
+                                                "email": {
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "id": 33,
+                                                    "dbType": "text",
+                                                    "attributes": {},
+                                                    "text": "fysikalen@kth.se"
+                                                },
+                                                "members": {
+                                                    "attributes": {},
+                                                    "id": 44,
+                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                    "dbType": "list",
+                                                    "items": [
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 38,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 34,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-17"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 35,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Kommisare"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 36,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 37,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Namn1"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "dbType": "dict",
+                                                            "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                            "id": 43,
+                                                            "attributes": {},
+                                                            "items": {
+                                                                "yearCode": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 39,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "F-19"
+                                                                },
+                                                                "role": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 40,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Kassör"
+                                                                },
+                                                                "email": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 41,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "emailtothisperson@email"
+                                                                },
+                                                                "name": {
+                                                                    "detailUrl": "https://f.kth.se/api/content_objects/1/",
+                                                                    "id": 42,
+                                                                    "dbType": "text",
+                                                                    "attributes": {},
+                                                                    "text": "Other Cool name"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         }
-                    },
-                    {
-                        "dbType": "dict",
-                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                        "id": 47,
-                        "attributes": {},
-                        "items": {
-                            "name": {
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "id": 17,
-                                "dbType": "text",
-                                "attributes": {},
-                                "text": "Nämndfunktionärer"
-                            },
-                            "subsections": {
-                                "attributes": {},
-                                "id": 46,
-                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                "dbType": "list",
-                                "items": [
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 31,
-                                        "attributes": {},
-                                        "items": {
-                                            "name": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 18,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "Aktivitetsnämnden"
-                                            },
-                                            "email": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 19,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "aktivitet@kth.se"
-                                            },
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 30,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 24,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 20,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-17"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 21,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Ordförande"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 22,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 23,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Namn1"
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 29,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 25,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 26,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Role2"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 27,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 28,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "dbType": "dict",
-                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                        "id": 45,
-                                        "attributes": {},
-                                        "items": {
-                                            "name": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 32,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "Fysiklanes stabsledning"
-                                            },
-                                            "email": {
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "id": 33,
-                                                "dbType": "text",
-                                                "attributes": {},
-                                                "text": "fysikalen@kth.se"
-                                            },
-                                            "members": {
-                                                "attributes": {},
-                                                "id": 44,
-                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                "dbType": "list",
-                                                "items": [
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 38,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 34,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-17"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 35,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Kommisare"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 36,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 37,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Namn1"
-                                                            }
-                                                        }
-                                                    },
-                                                    {
-                                                        "dbType": "dict",
-                                                        "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                        "id": 43,
-                                                        "attributes": {},
-                                                        "items": {
-                                                            "yearCode": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 39,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "F-19"
-                                                            },
-                                                            "role": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 40,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Kassör"
-                                                            },
-                                                            "email": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 41,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "emailtothisperson@email"
-                                                            },
-                                                            "name": {
-                                                                "detailUrl": "https://f.kth.se/api/content_objects/1/",
-                                                                "id": 42,
-                                                                "dbType": "text",
-                                                                "attributes": {},
-                                                                "text": "Other Cool name"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                ]
+                    ]
+                }
             }
         }
     }
