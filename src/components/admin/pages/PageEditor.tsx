@@ -80,8 +80,9 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
 
     const [showMetaInfo, setShowMetaInfo] = useState(false);
 
-    return page !== undefined
-        ? (
+    return page === undefined
+        ? <PageNotFound />
+        : (
             <Container fluid>
                 <div style={{ height: '100px' }}/>
                 <Row className='justify-content-center'>
@@ -151,6 +152,5 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
                 </Row>
                 <div style={{ height: '100px' }}/>
             </Container>
-        )
-        : <PageNotFound />;
+        );
 }
