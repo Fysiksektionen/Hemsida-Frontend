@@ -16,17 +16,18 @@ type PageTypeLoaderProps = {
     page?: Page
 }
 
-function loadPage(page: Page): JSX.Element {
+function loadPage(pageData: Page): JSX.Element {
     // If defined in pageTypeMap, render page. Else give PageNotFound.
     // TODO: Add more checks
-    if (page !== undefined && page.pageType in pageTypeMap) {
+
+    if (pageData !== undefined && pageData.pageType in pageTypeMap) {
         return (
             <LocaleContext.Consumer>
                 {locale =>
                     <div id="dynamic_page_content" className='w-100'>
                         {
-                            page !== undefined
-                                ? pageTypeMap[page.pageType]((locale === locales.sv ? page.contentSv : page.contentEn))
+                            pageData !== undefined
+                                ? pageTypeMap[pageData.pageType]((locale === locales.sv ? pageData.contentSv : pageData.contentEn))
                                 : <></>
                         }
                     </div>
@@ -52,13 +53,15 @@ export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Eleme
 
     const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
     // TODO: Perhaps use useEffect instead of keeping track of an isLoading variable (used for re-render loop prevention).
-    if (isLoading) { callApi({ path: '/pages/' + pageId, getParams: {} }).then((response: APIResponse<Page>) => { setPageData(response.data); setIsLoading(false); }); }
-
+    if (isLoading && page === undefined) {
+        console.log('PageTypeLoader calling API. '); callApi({ path: '/pages/' + pageId, getParams: {} }).then((response: APIResponse<Page>) => { setPageData(response.data); setIsLoading(false); });
+    }
     // TODO: Add loader/spinner
     return (
         <>
-            {!isLoading && loadPage(pageData)}
-            {isLoading &&
+            {(page !== undefined) && loadPage(page)}
+            {(!isLoading && page === undefined) && loadPage(pageData)}
+            {(isLoading && page === undefined) &&
                 <LocaleContext.Consumer>
                     {locale =>
                         <div id="dynamic_page_content" className='w-100'>

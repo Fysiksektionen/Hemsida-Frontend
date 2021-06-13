@@ -23,6 +23,8 @@ type PageEditorProps = {
     page?: Page,
 }
 
+type PageEditorState = 'loading' | 'loaded' | 'error' | '404';
+
 /**
  * Editor component for a single page. Puts the page in editorial mode and has a menu to change non-content values.
  * @param setPagesLocation: Hook to navigate within the Pages admin-app.
@@ -31,23 +33,30 @@ type PageEditorProps = {
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
-    // If we dont have page data, get page (mock data for now)
-    if (page === undefined) {
-        page = emptyPage;// Perhaps excessive
-    }
+    // Loading
+    const [loadingState, setLoadingState] = useState<PageEditorState>(page === undefined ? 'loading' : 'loaded');
 
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
+
     // State of the saved data (that should have been sent to server).
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
-    const [pageData, setPageData] = useState<Page>(page);
+    const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
 
-    callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
-        if (resp.code === 200 && resp.data !== undefined) {
-            page = resp.data as Page;
-            setPageData(resp.data as Page);
-        }
-    });
+    if (loadingState === 'loading') {
+        // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed...
+        callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
+            console.log('PageEditor calling API.');
+
+            if (resp.code === 200 && resp.data !== undefined) {
+                page = resp.data as Page;
+                setLoadingState('loaded');
+                setPageData(resp.data as Page);
+            } else if (resp.code === 404) {
+                setLoadingState('404');
+            }
+        });
+    }
 
     // Use the CTReducer to allow for child components to update the content tree.
     // Use this state when passing down content to children.
@@ -69,7 +78,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     }
 
     // Send page with updated content down for rendering in children.
-    const pageWithNewContent = page !== undefined ? { ...pageData } : { ...emptyPage };
+    const pageWithNewContent = { ...pageData };
     if (content) {
         if (pageLocale === locales.sv) {
             pageWithNewContent.contentSv = content;
@@ -80,9 +89,12 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
 
     const [showMetaInfo, setShowMetaInfo] = useState(false);
 
-    return page === undefined
-        ? <PageNotFound />
-        : (
+    // TODO: Freshen up error and loading components.
+    if (loadingState === 'loading') return (<h3>Loading...</h3>);
+    else if (loadingState === '404') return (<PageNotFound/>);
+    else if (loadingState === 'error') return (<h3>Error.</h3>);
+    else {
+        return (
             <Container fluid>
                 <div style={{ height: '100px' }}/>
                 <Row className='justify-content-center'>
@@ -153,4 +165,5 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
                 <div style={{ height: '100px' }}/>
             </Container>
         );
+    }
 }

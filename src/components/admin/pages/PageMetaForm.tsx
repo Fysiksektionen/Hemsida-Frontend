@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { MinimalPage, Page } from '../../../types/api_object_types';
 import { Col, Form } from 'react-bootstrap';
 import pageTypeMap from '../../../pages/PageTypeMap';
-import { pathToId } from '../../../mock_data/mock_PageTypeLoader';
+import { pathToResp } from '../../../mock_data/mock_PageTypeLoader';
 
 export default function PageMetaForm(props: {page: Page, setPageHook: (page: Page) => void}) {
     return (
@@ -52,9 +52,9 @@ export default function PageMetaForm(props: {page: Page, setPageHook: (page: Pag
                             // TODO: FIX THIS!!!
                         }}
                     >
-                        {/* Object.entries(pathToResp).map((entry, index) => (
-                            <option key={index} value={entry[0]}>{entry[1].data.name}</option>
-                        )) */}
+                        {Object.entries(pathToResp).map((entry, index) => (
+                            <option key={index} value={entry[0]}>{entry[1].name}</option>
+                        ))}
                     </Form.Control>
                 </Form.Group>
             </Form>
