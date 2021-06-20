@@ -44,6 +44,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
     const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
 
+    // TODO: Use SWR
     if (loadingState === 'loading') {
         // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed at some point...
         callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {

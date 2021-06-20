@@ -17,6 +17,7 @@ export default function PageLister({ setLocationHook }: PageListerProps) {
     const [allPages, setAllPages] = useState<Page[]>();
     const [searchTerm, setSearchTerm] = useState<string>('');
 
+    // TODO: Use SWR
     useEffect(() => {
         callApi({ path: 'pages/', getParams: {} }).then((resp) => setAllPages((resp as APIResponse<Page[]>).data));
     }, []);

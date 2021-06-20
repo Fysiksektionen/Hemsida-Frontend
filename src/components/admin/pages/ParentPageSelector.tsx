@@ -9,7 +9,7 @@ type loadingStates = 'preparing' | 'waiting' | MinimalPage2[] | 'error';
 export default function ParentPageSelector(props: {page: Page, setPageHook: (page: Page) => void}) {
     const [loadingState, setLoadingState] = useState<loadingStates>('preparing');
 
-    // TODO: This is called twice. It's may be a problem with the parent component (PageEditor) reloading too many times.
+    // TODO: Use SWR
     if (loadingState === 'preparing') {
         // TODO: Implement more rigorous type-checks (that is, get rid of the "unknown" type conversion below).
         callApi({ path: 'pages/', getParams: {} }).then((resp) => {
