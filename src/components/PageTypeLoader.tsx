@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useSWR from 'swr';
 import { useLocation } from 'react-router-dom';
 import pageTypeMap from '../pages/PageTypeMap';
 import PageNotFound from '../pages/PageNotFound';
@@ -8,9 +9,8 @@ import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
-import { pathToId, emptyPage } from '../mock_data/mock_PageTypeLoader';
+import { pathToId } from '../mock_data/mock_PageTypeLoader';
 import callApi from '../api/main';
-import { APIResponse } from '../types/general';
 
 type PageTypeLoaderProps = {
     page?: Page
@@ -39,6 +39,20 @@ function loadPage(pageData: Page): JSX.Element {
     }
 }
 
+// TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty. We should check for it.
+function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
+    const location = useLocation();
+    const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
+    // TODO: user error handling.
+    const { data /*, error */ } = useSWR([pageId], (pageId) => callApi({ path: '/pages/' + pageId, getParams: {} }), {});
+    return (
+        <>
+            {(data !== undefined) && loadPage(data.data)}
+            {(data === undefined) && (<div id="dynamic_page_content" className='w-100'><CenteredLoadingBar/></div>)}
+        </>
+    );
+}
+
 /**
  * Component loading correct component depending on current URL.
  *
@@ -46,26 +60,9 @@ function loadPage(pageData: Page): JSX.Element {
  *  component if no matching component was found.
  */
 export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Element {
-    const location = useLocation();
-
-    const [isLoading, setIsLoading] = useState(true);
-    const [pageData, setPageData] = useState(emptyPage);
-
-    const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
-    // TODO: Perhaps use useEffect instead of keeping track of an isLoading variable (used for re-render loop prevention).
-    if (isLoading && page === undefined) {
-        console.log('PageTypeLoader calling API. '); callApi({ path: '/pages/' + pageId, getParams: {} }).then((response: APIResponse<Page>) => { setPageData(response.data); setIsLoading(false); });
+    if (page !== undefined) {
+        return loadPage(page);
+    } else {
+        return (<ExternalPageRenderer/>);
     }
-
-    return (
-        <>
-            {(page !== undefined) && loadPage(page)}
-            {(!isLoading && page === undefined) && loadPage(pageData)}
-            {(isLoading && page === undefined) && (
-                <div id="dynamic_page_content" className='w-100'>
-                    <CenteredLoadingBar/>
-                </div>
-            )}
-        </>
-    );
 }
