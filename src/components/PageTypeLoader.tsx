@@ -5,10 +5,10 @@ import PageNotFound from '../pages/PageNotFound';
 // import { APIResponse } from '../types/general';
 import { LocaleContext, locales } from '../contexts';
 import { Page } from '../types/api_object_types';
+import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
 import { pathToId, emptyPage } from '../mock_data/mock_PageTypeLoader';
-import { Container, Row } from 'react-bootstrap';
 import callApi from '../api/main';
 import { APIResponse } from '../types/general';
 
@@ -56,24 +56,16 @@ export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Eleme
     if (isLoading && page === undefined) {
         console.log('PageTypeLoader calling API. '); callApi({ path: '/pages/' + pageId, getParams: {} }).then((response: APIResponse<Page>) => { setPageData(response.data); setIsLoading(false); });
     }
-    // TODO: Add loader/spinner
+
     return (
         <>
             {(page !== undefined) && loadPage(page)}
             {(!isLoading && page === undefined) && loadPage(pageData)}
-            {(isLoading && page === undefined) &&
-                <LocaleContext.Consumer>
-                    {locale =>
-                        <div id="dynamic_page_content" className='w-100'>
-                            <Container>
-                                <Row className='justify-content-center'>
-                                    <h3>{(locale === locales.sv ? 'Laddar...' : 'Loading...')}</h3>
-                                </Row>
-                            </Container>
-                        </div>
-                    }
-                </LocaleContext.Consumer>
-            }
+            {(isLoading && page === undefined) && (
+                <div id="dynamic_page_content" className='w-100'>
+                    <CenteredLoadingBar/>
+                </div>
+            )}
         </>
     );
 }

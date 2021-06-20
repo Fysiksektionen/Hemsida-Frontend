@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { AdminPageProps } from '../../../types/admin_components';
-import { APIResponse } from '../../../types/general';
 import { Button, Col, Container, Form } from 'react-bootstrap';
 import HeaderEditor from './HeaderEditor';
-import { MinimalPage, Site } from '../../../types/api_object_types';
+import { MinimalPage } from '../../../types/api_object_types';
 import { SiteFooterCT, SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
 import FooterEditor from './FooterEditor';
 import { mockSiteResp } from '../../../mock_data/mock_site_response';

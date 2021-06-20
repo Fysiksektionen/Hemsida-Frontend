@@ -16,6 +16,7 @@ import { emptyPage } from '../../../mock_data/mock_PageTypeLoader';
 import LocaleSelector from '../../LocaleSelector';
 import PageMetaForm from './PageMetaForm';
 import { AdminLocation } from '../../../types/admin_components';
+import CenteredLoadingBar from '../../CenteredLoadingBar';
 
 type PageEditorProps = {
     setLocationHook: (props: AdminLocation) => void,
@@ -91,7 +92,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
 
     // TODO: Freshen up error and loading components.
     if (loadingState === 'loading') {
-        return (<Container fluid><Row className='justify-content-center mt-6'><h3>Laddar...</h3></Row></Container>);
+        return (<CenteredLoadingBar/>);
     } else if (loadingState === '404') return (<PageNotFound/>);
     else if (loadingState === 'error') {
         return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
