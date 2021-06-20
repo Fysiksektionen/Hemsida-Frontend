@@ -44,7 +44,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
 
     if (loadingState === 'loading') {
-        // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed...
+        // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed at some point...
         callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
             console.log('PageEditor calling API.');
 
@@ -62,7 +62,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     // Use this state when passing down content to children.
     // Alter postDispatchHook so that any updates to tree triggers an hasChanged=True state change.
     const [content, dispatch, addId, decrementAddIdHook] = useCTReducer({
-        content: pageLocale === locales.sv ? pageData.contentSv : pageData.contentEn,
+        content: (pageLocale === locales.sv ? pageData.contentSv : pageData.contentEn),
         postDispatchHook: () => {
             setPageDataHasChanged(true);
         }
@@ -90,10 +90,12 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     const [showMetaInfo, setShowMetaInfo] = useState(false);
 
     // TODO: Freshen up error and loading components.
-    if (loadingState === 'loading') return (<h3>Loading...</h3>);
-    else if (loadingState === '404') return (<PageNotFound/>);
-    else if (loadingState === 'error') return (<h3>Error.</h3>);
-    else {
+    if (loadingState === 'loading') {
+        return (<Container fluid><Row className='justify-content-center mt-6'><h3>Laddar...</h3></Row></Container>);
+    } else if (loadingState === '404') return (<PageNotFound/>);
+    else if (loadingState === 'error') {
+        return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
+    } else {
         return (
             <Container fluid>
                 <div style={{ height: '100px' }}/>
