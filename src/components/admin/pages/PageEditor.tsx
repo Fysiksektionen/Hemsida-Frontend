@@ -46,7 +46,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     if (loadingState === 'loading') {
         // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed at some point...
         callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
-            console.log('PageEditor calling API.');
+            console.log('PageEditor got response from API.');
 
             if (resp.code === 200 && resp.data !== undefined) {
                 page = resp.data as Page;
