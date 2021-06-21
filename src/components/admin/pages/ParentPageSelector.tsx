@@ -12,7 +12,7 @@ export default function ParentPageSelector(props: {page: Page, setPageHook: (pag
     // TODO: Use SWR
     if (loadingState === 'preparing') {
         // TODO: Implement more rigorous type-checks (that is, get rid of the "unknown" type conversion below).
-        callApi({ path: 'pages/', getParams: {} }).then((resp) => {
+        callApi<Page[]>({ path: 'pages/', getParams: {} }).then((resp) => {
             console.log('ParentPageSelector got response from API.');
             const minSiteList: MinimalPage2[] = [];
 
@@ -21,7 +21,6 @@ export default function ParentPageSelector(props: {page: Page, setPageHook: (pag
                     // TODO: Ideally, TypeScript would do the type casting, but idk how it's done. Using "as MinimalPage2" really only checks if it contains all properties, and does not remove excessive ones.
                     minSiteList.push({
                         id: site.id,
-                        IDDetail: site.IDDetail,
                         detailUrl: site.detailUrl,
                         name: site.name
                     } as unknown as MinimalPage2);

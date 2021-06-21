@@ -9,7 +9,7 @@ import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
-import { pathToId, emptyPage } from '../mock_data/mock_PageTypeLoader';
+import { pathToId } from '../mock_data/mock_PageTypeLoader';
 import callApi from '../api/main';
 
 type PageTypeLoaderProps = {
@@ -44,7 +44,7 @@ function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
     const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
     // TODO: user error handling.
-    const { data /*, error */ } = useSWR([pageId], (pageId) => callApi({ path: '/pages/' + pageId, getParams: {} }), {});
+    const { data /*, error */ } = useSWR([pageId], (pageId) => callApi<Page>({ path: '/pages/' + pageId, getParams: {} }), {});
     return (
         <>
             {(data !== undefined) && loadPage(data.data)}
@@ -61,11 +61,6 @@ function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
  */
 export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Element {
     if (page !== undefined) {
-        if (page === emptyPage) {
-            console.log('PageTypeLoader got an emptyPage. This is probably not intended.');
-        }
-        console.log('PTL-PageR:');
-        console.log(page);
         return loadPage(page);
     } else {
         return (<ExternalPageRenderer/>);

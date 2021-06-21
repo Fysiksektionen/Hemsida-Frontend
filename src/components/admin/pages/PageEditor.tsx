@@ -30,7 +30,13 @@ type PageEditorProps = {
  * (Should probably be moved to a separate file)
  */
 
-function MetaInfoDisplay({ pageData, setPageData }:{pageData: Page, setPageData: (page: Page) => void}): JSX.Element {
+/**
+ * Wrapper for PageMetaForm that controls whether the form is shown or not.
+ * @param pageData
+ * @param setPageData
+ * @returns
+ */
+function PageMetaFormWrapper({ pageData, setPageData }:{pageData: Page, setPageData: (page: Page) => void}): JSX.Element {
     const [showMetaInfo, setShowMetaInfo] = useState(false);
     return (
         <Row>
@@ -61,6 +67,13 @@ function MetaInfoDisplay({ pageData, setPageData }:{pageData: Page, setPageData:
     );
 }
 
+/**
+ * The main view for the page editor. Provides interactive content editing as well as a form for metadata.
+ * @param setPagesLocation: Hook to navigate within the Pages admin-app.
+ * @param id: Id of the page. Currently as string.
+ * @param page: The page object. Can be passed if already fetched.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
@@ -118,7 +131,7 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
                     </Row>
 
                     {/* Page meta info */}
-                    <MetaInfoDisplay pageData={pageData} setPageData={setPageData}/>
+                    <PageMetaFormWrapper pageData={pageData} setPageData={setPageData}/>
 
                     {/* Horizontal line */}
                     <Row className='justify-content-center my-5'>
@@ -155,7 +168,8 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
-    console.log('PageEditor, with page id: ' + id);
+    // This component is really just a wrapper for PageEditorMainView, since dynamic API calling is easier this way.
+
     const { data } = useSWR([id], () => callApi({ path: 'pages/' + id, getParams: {} }), {});
 
     // TODO: Type-check rigorously and error-handle.

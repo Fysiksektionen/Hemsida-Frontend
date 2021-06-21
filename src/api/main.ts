@@ -17,7 +17,7 @@ type CallApiProps = {
  * @param path: Path relative to api-root to call
  * @param getParams: Dict containing GET-args for the call.
  */
-export default async function callApi({ path, getParams }: CallApiProps): Promise<APIResponse<any>> {
+export default async function callApi<T>({ path, getParams }: CallApiProps): Promise<APIResponse<T>> {
     const getParamsString = getGETParamsStringFromObject(getParams);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const fullPath = apiRootUrl + path + getParamsString;
@@ -25,7 +25,8 @@ export default async function callApi({ path, getParams }: CallApiProps): Promis
     // BEGIN Mock code
     const routedPath = apiRootUrl + route(path) + getParamsString;
     console.log('Fetching:', routedPath, '. Routed from:', path);
-    const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<any>;
+    // TODO: Type-checks need to be done here.
+    const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
     // Add delay
     await new Promise(resolve => setTimeout(resolve, callDelay));
     // END Mock code
