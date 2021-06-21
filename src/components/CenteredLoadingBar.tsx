@@ -1,22 +1,16 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
-import { LocaleContext, locales } from '../contexts';
+import { Container, Row, Image } from 'react-bootstrap';
 
 /**
  * Shows a loading spinner, centered in the page. Mock for now.
  */
 export default function CenteredLoadingBar(): JSX.Element {
-    // TODO: Make this non-mock.
     return (
-        <LocaleContext.Consumer>
-            {
-                locale => (
-                    <Container>
-                        <Row className='justify-content-center'>
-                            <h3>{(locale === locales.sv ? 'Laddar...' : 'Loading...')}</h3>
-                        </Row>
-                    </Container>)
-            }
-        </LocaleContext.Consumer>
+        <Container className="my-6">
+            <Row className='justify-content-center'>
+                <Image src="/mediafiles/placeholder_images/Fysiksektionen_logo.a.svg" />
+            </Row>
+        </Container>
+
     );
 }
