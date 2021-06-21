@@ -17,6 +17,7 @@ import LocaleSelector from '../../LocaleSelector';
 import PageMetaForm from './PageMetaForm';
 import { AdminLocation } from '../../../types/admin_components';
 import CenteredLoadingBar from '../../CenteredLoadingBar';
+import useSWR from 'swr';
 
 type PageEditorProps = {
     setLocationHook: (props: AdminLocation) => void,
@@ -24,41 +25,49 @@ type PageEditorProps = {
     page?: Page,
 }
 
-type PageEditorState = 'loading' | 'loaded' | 'error' | '404';
-
-/**
- * Editor component for a single page. Puts the page in editorial mode and has a menu to change non-content values.
- * @param setPagesLocation: Hook to navigate within the Pages admin-app.
- * @param id: Id of the page. Currently as string.
- * @param page: The page object. Can be passed if already fetched.
+/*
+ * Helper components
+ * (Should probably be moved to a separate file)
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
-    // Loading
-    const [loadingState, setLoadingState] = useState<PageEditorState>(page === undefined ? 'loading' : 'loaded');
 
+function MetaInfoDisplay({ pageData, setPageData }:{pageData: Page, setPageData: (page: Page) => void}): JSX.Element {
+    const [showMetaInfo, setShowMetaInfo] = useState(false);
+    return (
+        <Row>
+            <Col>
+                <Row className={!showMetaInfo ? 'd-none' : ''}>
+                    <Col>
+                        <PageMetaForm
+                            page={pageData}
+                            setPageHook={(page: Page) => setPageData(page)}
+                        />
+                    </Col>
+                </Row>
+                <Row className='text-center'>
+                    <div
+                        className='w-100 d-flex flex-column'
+                        onClick={() => setShowMetaInfo(!showMetaInfo)}
+                        style={{ cursor: 'click' }}
+                    >
+                        {showMetaInfo ? '' : 'Redigera meta-info'}
+                        <span
+                            className={'fa fa-angle-' + (showMetaInfo ? 'up' : 'down')}
+                        />
+                        {showMetaInfo ? 'Stäng' : ''}
+                    </div>
+                </Row>
+            </Col>
+        </Row>
+    );
+}
+
+function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
 
     // State of the saved data (that should have been sent to server).
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
     const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
-
-    // TODO: Use SWR
-    if (loadingState === 'loading') {
-        // TODO: This ends up being called multiple times. Not a big deal, but should probably be fixed at some point...
-        callApi({ path: 'pages/' + id, getParams: {} }).then((resp) => {
-            console.log('PageEditor got response from API.');
-
-            if (resp.code === 200 && resp.data !== undefined) {
-                page = resp.data as Page;
-                setLoadingState('loaded');
-                setPageData(resp.data as Page);
-            } else if (resp.code === 404) {
-                setLoadingState('404');
-            }
-        });
-    }
 
     // Use the CTReducer to allow for child components to update the content tree.
     // Use this state when passing down content to children.
@@ -89,85 +98,69 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
         }
     }
 
-    const [showMetaInfo, setShowMetaInfo] = useState(false);
-
-    // TODO: Freshen up error and loading components.
-    if (loadingState === 'loading') {
-        return (<CenteredLoadingBar/>);
-    } else if (loadingState === '404') return (<PageNotFound/>);
-    else if (loadingState === 'error') {
-        return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
-    } else {
-        return (
-            <Container fluid>
-                <div style={{ height: '100px' }}/>
-                <Row className='justify-content-center'>
-                    <Col xs={10} xl={8} className='pl-5'>
-                        {/* Title and save */}
-                        <Row className='mb-4 justify-content-between'>
-                            <h1>Redigera sida</h1>
-                            <div className='d-flex flex-row'>
-                                <div className='my-auto'>
+    return (
+        <Container fluid>
+            <div style={{ height: '100px' }}/>
+            <Row className='justify-content-center'>
+                <Col xs={10} xl={8} className='pl-5'>
+                    {/* Title and save */}
+                    <Row className='mb-4 justify-content-between'>
+                        <h1>Redigera sida</h1>
+                        <div className='d-flex flex-row'>
+                            <div className='my-auto'>
                                     Språk: <LocaleSelector localeState={pageLocale} setLocaleHook={setPageLocale}/>
-                                </div>
-                                <div className='mx-4'/>
-                                <Button className='my-auto' onClick={saveContent} disabled={!pageDataHasChanged}>
-                                    Spara
-                                </Button>
                             </div>
-                        </Row>
+                            <div className='mx-4'/>
+                            <Button className='my-auto' onClick={saveContent} disabled={!pageDataHasChanged}>
+                                    Spara
+                            </Button>
+                        </div>
+                    </Row>
 
-                        {/* Page meta info */}
-                        <Row>
-                            <Col>
-                                <Row className={!showMetaInfo ? 'd-none' : ''}>
-                                    <Col>
-                                        <PageMetaForm
-                                            page={pageData}
-                                            setPageHook={(page: Page) => setPageData(page)}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row className='text-center'>
-                                    <div
-                                        className='w-100 d-flex flex-column'
-                                        onClick={() => setShowMetaInfo(!showMetaInfo)}
-                                        style={{ cursor: 'click' }}
-                                    >
-                                        {showMetaInfo ? '' : 'Redigera meta-info'}
-                                        <span
-                                            className={'fa fa-angle-' + (showMetaInfo ? 'up' : 'down')}
-                                        />
-                                        {showMetaInfo ? 'Stäng' : ''}
-                                    </div>
-                                </Row>
-                            </Col>
-                        </Row>
+                    {/* Page meta info */}
+                    <MetaInfoDisplay pageData={pageData} setPageData={setPageData}/>
 
-                        {/* Horizontal line */}
-                        <Row className='justify-content-center my-5'>
-                            <div className='border border-bottom' style={{ width: '85%' }}/>
-                        </Row>
+                    {/* Horizontal line */}
+                    <Row className='justify-content-center my-5'>
+                        <div className='border border-bottom' style={{ width: '85%' }}/>
+                    </Row>
 
-                        {/* Page */}
-                        <Row className='zoom-xs-10 zoom-xl-8'>
-                            <LocaleContext.Provider value={pageLocale}>
-                                <EditorialModeContext.Provider value={true}>
-                                    <ContentTreeContext.Provider value={dispatch}>
-                                        <ContentTreeAddIdContext.Provider value={{
-                                            id: addId,
-                                            decrementHook: decrementAddIdHook
-                                        }}>
-                                            <PageTypeLoader page={pageWithNewContent} />
-                                        </ContentTreeAddIdContext.Provider>
-                                    </ContentTreeContext.Provider>
-                                </EditorialModeContext.Provider>
-                            </LocaleContext.Provider>
-                        </Row>
-                    </Col>
-                </Row>
-                <div style={{ height: '100px' }}/>
-            </Container>
-        );
-    }
+                    {/* Page */}
+                    <Row className='zoom-xs-10 zoom-xl-8'>
+                        <LocaleContext.Provider value={pageLocale}>
+                            <EditorialModeContext.Provider value={true}>
+                                <ContentTreeContext.Provider value={dispatch}>
+                                    <ContentTreeAddIdContext.Provider value={{
+                                        id: addId,
+                                        decrementHook: decrementAddIdHook
+                                    }}>
+                                        <PageTypeLoader page={pageWithNewContent} />
+                                    </ContentTreeAddIdContext.Provider>
+                                </ContentTreeContext.Provider>
+                            </EditorialModeContext.Provider>
+                        </LocaleContext.Provider>
+                    </Row>
+                </Col>
+            </Row>
+            <div style={{ height: '100px' }}/>
+        </Container>
+    );
+}
+
+/**
+ * Editor component for a single page. Puts the page in editorial mode and has a menu to change non-content values.
+ * @param setPagesLocation: Hook to navigate within the Pages admin-app.
+ * @param id: Id of the page. Currently as string.
+ * @param page: The page object. Can be passed if already fetched.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
+    console.log('PageEditor, with page id: ' + id);
+    const { data } = useSWR([id], () => callApi({ path: 'pages/' + id, getParams: {} }), {});
+
+    // TODO: Type-check rigorously
+    if (data === undefined) return (<CenteredLoadingBar/>);
+    // else if (loadingState === '404') return (<PageNotFound/>);
+    // else if (loadingState === 'error') return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
+    else return (<PageEditorMainView id={id} page={data.data as unknown as Page} setLocationHook={setLocationHook}/>);
 }

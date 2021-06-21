@@ -9,7 +9,7 @@ import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
-import { pathToId } from '../mock_data/mock_PageTypeLoader';
+import { pathToId, emptyPage } from '../mock_data/mock_PageTypeLoader';
 import callApi from '../api/main';
 
 type PageTypeLoaderProps = {
@@ -61,6 +61,11 @@ function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
  */
 export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Element {
     if (page !== undefined) {
+        if (page === emptyPage) {
+            console.log('PageTypeLoader got an emptyPage. This is probably not intended.');
+        }
+        console.log('PTL-PageR:');
+        console.log(page);
         return loadPage(page);
     } else {
         return (<ExternalPageRenderer/>);
