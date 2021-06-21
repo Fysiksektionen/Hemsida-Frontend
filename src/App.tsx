@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useSWR from 'swr';
 import { Locale, LocaleContext, locales } from './contexts';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -7,16 +8,14 @@ import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
 import './App.css';
-
-// Import fake data
-import { mockSiteResp } from './mock_data/mock_site_response';
+import callApi from './api/main';
 
 function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);
 
-    // TODO: Replace by server call to /api/site/
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [siteData, setSiteData] = useState<Site>(mockSiteResp.data);
+    // TODO: user error handling and rigorous typing.
+    const { data /*, error */ } = useSWR(['/site/'], (path) => callApi({ path: path, getParams: {} }), {});
+    const siteData = (data === undefined) ? undefined : (data as any).data as Site;
 
     return (
         <div className="App">

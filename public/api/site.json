@@ -28,7 +28,7 @@
             "image":{
               "id":1,
               "detailUrl":"https://f.kth.se/api/images/1/",
-              "href":"/mediafiles/placeholder_images/Fysiksektionen_logo.png"
+              "href":"/mediafiles/placeholder_images/Fysiksektionen_logo.svg"
             }
           }
         }
@@ -54,7 +54,7 @@
             "image":{
               "id":1,
               "detailUrl":"https://f.kth.se/api/images/1/",
-              "href":"/mediafiles/placeholder_images/Fysiksektionen_logo.png"
+              "href":"/mediafiles/placeholder_images/Fysiksektionen_logo.svg"
             }
           }
         }
