@@ -377,7 +377,7 @@
             }
         },
         {
-            "id": 4,
+            "id": 5,
             "detailUrl": "https://f.kth.se/api/pages/2/",
             "name": "Nämndsida - Fcom",
             "slug": "fcom",
@@ -525,7 +525,7 @@
             }
         },
         {
-            "id": 1,
+            "id": 6,
             "detailUrl": "",
             "name": "",
             "slug": "",

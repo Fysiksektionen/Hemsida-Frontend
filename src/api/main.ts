@@ -26,10 +26,8 @@ export default async function callApi({ path, getParams }: CallApiProps): Promis
     const routedPath = apiRootUrl + route(path) + getParamsString;
     console.log('Fetching:', routedPath, '. Routed from:', path);
     const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<any>;
-
     // Add delay
     await new Promise(resolve => setTimeout(resolve, callDelay));
-
     // END Mock code
 
     return resp;

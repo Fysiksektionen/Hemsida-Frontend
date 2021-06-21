@@ -158,9 +158,9 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
     console.log('PageEditor, with page id: ' + id);
     const { data } = useSWR([id], () => callApi({ path: 'pages/' + id, getParams: {} }), {});
 
-    // TODO: Type-check rigorously
+    // TODO: Type-check rigorously and error-handle.
     if (data === undefined) return (<CenteredLoadingBar/>);
-    // else if (loadingState === '404') return (<PageNotFound/>);
+    else if (data.code === 404) return (<PageNotFound/>);
     // else if (loadingState === 'error') return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
     else return (<PageEditorMainView id={id} page={data.data as unknown as Page} setLocationHook={setLocationHook}/>);
 }
