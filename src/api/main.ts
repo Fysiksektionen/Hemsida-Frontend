@@ -9,7 +9,7 @@ import route from './mockRouter';
 
 type CallApiProps = {
     path: string,
-    getParams: NodeJS.Dict<string|undefined>
+    getParams?: NodeJS.Dict<string|undefined>
 }
 
 /**

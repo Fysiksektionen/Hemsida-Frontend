@@ -39,7 +39,7 @@ export default function PageMetaForm(props: {page: Page, setPageHook: (page: Pag
                         ))}
                     </Form.Control>
                 </Form.Group>
-                <ParentPageSelector page = {props.page} setPageHook = {props.setPageHook}/>{/* TODO: Automatic "broadcasting" of props would be cooler... */}
+                <ParentPageSelector {...props}/>
             </Form>
         </div>
     );

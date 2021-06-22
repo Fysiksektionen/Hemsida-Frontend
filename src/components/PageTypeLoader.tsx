@@ -43,7 +43,7 @@ function loadPage(pageData: Page): JSX.Element {
 function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
     const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
-    // TODO: user error handling.
+    // TODO: use error handling.
     const { data /*, error */ } = useSWR([pageId], (pageId) => callApi<Page>({ path: '/pages/' + pageId, getParams: {} }), {});
     return (
         <>
