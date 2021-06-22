@@ -102,6 +102,7 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
     }
 
     // Send page with updated content down for rendering in children.
+    // TODO: Make sure to use SWR-mutate for this as well.
     const pageWithNewContent = { ...pageData };
     if (content) {
         if (pageLocale === locales.sv) {
@@ -172,7 +173,7 @@ export default function PageEditor({ setLocationHook, id, page }: PageEditorProp
 
     const { data } = useSWR([id], () => callApi({ path: 'pages/' + id, getParams: {} }), {});
 
-    // TODO: Type-check rigorously and error-handle.
+    // TODO: Handle errors.
     if (data === undefined) return (<CenteredLoadingBar/>);
     else if (data.code === 404) return (<PageNotFound/>);
     // else if (loadingState === 'error') return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
