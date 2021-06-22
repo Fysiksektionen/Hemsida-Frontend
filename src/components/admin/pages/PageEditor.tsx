@@ -12,7 +12,6 @@ import {
     useCTReducer
 } from '../../../contexts';
 import PageTypeLoader from '../../PageTypeLoader';
-import { emptyPage } from '../../../mock_data/mock_PageTypeLoader';
 import LocaleSelector from '../../LocaleSelector';
 import PageMetaForm from './PageMetaForm';
 import { AdminLocation } from '../../../types/admin_components';
@@ -23,6 +22,12 @@ type PageEditorProps = {
     setLocationHook: (props: AdminLocation) => void,
     id: string,
     page?: Page,
+}
+
+type PageEditorMVProps = {
+    setLocationHook: (props: AdminLocation) => void,
+    id: string,
+    page: Page,
 }
 
 /*
@@ -71,16 +76,16 @@ function PageMetaFormWrapper({ pageData, setPageData }:{pageData: Page, setPageD
  * The main view for the page editor. Provides interactive content editing as well as a form for metadata.
  * @param setPagesLocation: Hook to navigate within the Pages admin-app.
  * @param id: Id of the page. Currently as string.
- * @param page: The page object. Can be passed if already fetched.
+ * @param page: The page object. Must be passed.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function PageEditorMainView({ setLocationHook, id, page }: PageEditorProps) {
+function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
     // Local context for editing
     const [pageLocale, setPageLocale] = useState(locales.sv);
 
     // State of the saved data (that should have been sent to server).
     const [pageDataHasChanged, setPageDataHasChanged] = useState(false);
-    const [pageData, setPageData] = useState<Page>(page === undefined ? emptyPage : page);
+    const [pageData, setPageData] = useState<Page>(page);
 
     // Use the CTReducer to allow for child components to update the content tree.
     // Use this state when passing down content to children.
