@@ -1,7 +1,7 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
 import { apiRootUrl, callDelay } from './config';
-import route from './mockRouter';
+import route from './mock/router';
 
 /**
  * This file is just a placeholder to a real APIMethod.
@@ -24,7 +24,7 @@ export default async function callApi<T>({ path, getParams }: CallApiProps): Pro
 
     // BEGIN Mock code
     const routedPath = apiRootUrl + route(path) + getParamsString;
-    console.log('Fetching:', routedPath, '. Routed from:', path);
+    console.log('[Mock-API] Fetching: ' + routedPath + '. Routed from:', path);
     // TODO: Type-checks need to be done here.
     const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
     // Add delay

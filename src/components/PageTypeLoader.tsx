@@ -9,7 +9,6 @@ import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
-import { pathToId } from '../mock_data/mock_PageTypeLoader';
 import callApi from '../api/main';
 
 type PageTypeLoaderProps = {
@@ -39,12 +38,12 @@ function loadPage(pageData: Page): JSX.Element {
     }
 }
 
-// TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty. We should check for it.
+// TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty when only an id is provided. We should check for it.
 function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
-    const pageId: number = (page !== undefined && page.id !== undefined) ? page.id : ((location.pathname in pathToId) ? pathToId[location.pathname] : 0);
     // TODO: use error handling.
-    const { data /*, error */ } = useSWR([pageId], (pageId) => callApi<Page>({ path: '/pages/' + pageId, getParams: {} }), {});
+    // TODO: Due to HTTP limitations, the following may cause problems with the root page not showing correctly when attaching to the real backend.
+    const { data /*, error */ } = useSWR([location.pathname], (pathname) => callApi<Page>({ path: '/resolve-url/' + pathname, getParams: {} }), {});
     return (
         <>
             {(data !== undefined) && loadPage(data.data)}

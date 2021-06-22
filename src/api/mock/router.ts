@@ -1,3 +1,5 @@
+import resolveUrl from './resolve-url';
+
 export default function route(apiPath: string):string {
     // Remove leading slash
     if (apiPath.substr(0, 1) === '/') { apiPath = apiPath.substr(1); };
@@ -10,5 +12,9 @@ export default function route(apiPath: string):string {
         'pages/4': 'pages/4.json',
         'pages/5': 'pages/5.json'
     };
-    if (Object.keys(defaultRoutes).indexOf(apiPath) > -1) { return defaultRoutes[apiPath]; } else { return '404.json'; }
+    if (Object.keys(defaultRoutes).indexOf(apiPath) > -1) {
+        return defaultRoutes[apiPath];
+    } else if (apiPath.substr(0, 11).toLowerCase() === 'resolve-url') {
+        return resolveUrl({ url: apiPath });
+    } else { return '404.json'; }
 }
