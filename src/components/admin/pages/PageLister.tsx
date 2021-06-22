@@ -87,7 +87,7 @@ function PageListerMainView({ setLocationHook, allPages }:PageListerMVProps) {
  * @param setPagesLocation: Hook to be able to change the location within the content_trees Admin-app.
  */
 export default function PageLister({ setLocationHook }: PageListerProps) {
-    const { data } = useSWR(['pages/'], (path) => callApi<Page[]>({ path: path, getParams: {} }), {});
+    const { data } = useSWR(['pages/'], (path) => callApi<Page[]>({ path: path }), {});
 
     return data !== undefined
         ? (

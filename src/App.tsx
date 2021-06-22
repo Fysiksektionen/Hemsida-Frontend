@@ -14,7 +14,7 @@ function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);
 
     // TODO: user error handling and rigorous typing.
-    const { data /*, error */ } = useSWR(['/site/'], (path) => callApi({ path: path, getParams: {} }), {});
+    const { data /*, error */ } = useSWR(['/site/'], (path) => callApi({ path: path }), {});
     const siteData = (data === undefined) ? undefined : (data as any).data as Site;
 
     return (

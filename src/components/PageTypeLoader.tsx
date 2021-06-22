@@ -41,13 +41,14 @@ function loadPage(pageData: Page): JSX.Element {
 // TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty when only an id is provided. We should check for it.
 function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
+    const apiPath = (page !== undefined && page.id > 0) ? page.id : '/resolve-url/' + location.pathname;
     // TODO: use error handling.
     // TODO: Due to HTTP limitations, the following may cause problems with the root page not showing correctly when attaching to the real backend.
-    const { data /*, error */ } = useSWR([location.pathname], (pathname) => callApi<Page>({ path: '/resolve-url/' + pathname, getParams: {} }), {});
+    const { data /*, error */ } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath }), {});
     return (
         <>
             {(data !== undefined) && loadPage(data.data)}
-            {(data === undefined) && (<div id="dynamic_page_content" className='w-100'><CenteredLoadingBar/></div>)}
+            {(data === undefined) && (<CenteredLoadingBar/>)}
         </>
     );
 }
