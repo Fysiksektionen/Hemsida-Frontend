@@ -2,13 +2,12 @@ import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
 import { apiRootUrl, callDelay } from './config';
 import route from './mock/router';
+import validateResponse, { responseValidatorTypes } from './responseValidtor';
 
-/**
- * This file is just a placeholder to a real APIMethod.
- */
-
+// TODO: Generalize to allow for POST requests, etc.
 type CallApiProps = {
     path: string,
+    validator: responseValidatorTypes,
     getParams?: NodeJS.Dict<string|undefined>
 }
 
@@ -17,7 +16,7 @@ type CallApiProps = {
  * @param path: Path relative to api-root to call
  * @param getParams: Dict containing GET-args for the call.
  */
-export default async function callApi<T>({ path, getParams }: CallApiProps): Promise<APIResponse<T>> {
+export default async function callApi<T>({ path, validator, getParams }: CallApiProps): Promise<APIResponse<T>> {
     const getParamsString = getGETParamsStringFromObject(getParams);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const fullPath = apiRootUrl + path + getParamsString;
@@ -25,11 +24,15 @@ export default async function callApi<T>({ path, getParams }: CallApiProps): Pro
     // BEGIN Mock code
     const routedPath = apiRootUrl + route(path) + getParamsString;
     console.log('[Mock-API] Fetching: ' + routedPath + '. Routed from:', path);
-    // TODO: Type-checks need to be done here.
-    const resp = (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
+    // TODO: Check that we got a valid APIResponse<any>.
+    const resp = await (await fetch(routedPath, {})).json() as unknown as APIResponse<any>;
     // Add delay
     await new Promise(resolve => setTimeout(resolve, callDelay));
     // END Mock code
+
+    // Validate schema.
+    const respIsValid = validateResponse({ response: resp, validator: validator });
+    console.log('[Mock-API] Response is ' + (respIsValid ? '' : 'in') + 'valid for ' + routedPath);
 
     return resp;
 };

@@ -140,6 +140,6 @@ function SettingsAdminPageMainView(props: AdminPageProps & {data: Site}) {
  * @param props: Object containing path information.
  */
 export default function SettingsAdminPage(props: AdminPageProps) {
-    const { data } = useSWR(['site/'], (path) => callApi<Site>({ path: path }), {});
+    const { data } = useSWR(['site/'], (path) => callApi<Site>({ path: path, validator: 'Site' }), {});
     return data === undefined ? (<CenteredLoadingBar/>) : (<SettingsAdminPageMainView {...props} data={data.data}/>);
 }

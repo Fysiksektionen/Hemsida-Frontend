@@ -1,0 +1,458 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "allOf": [
+        {
+            "properties": {
+                "detailUrl": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        {
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        {
+            "properties": {
+                "children": {
+                    "items": {
+                        "$ref": "#/definitions/MinimalPage"
+                    },
+                    "type": "array"
+                },
+                "contentEn": {
+                    "$ref": "#/definitions/ContentObject"
+                },
+                "contentSv": {
+                    "$ref": "#/definitions/ContentObject"
+                },
+                "lastEditedAt": {
+                    "type": "string"
+                },
+                "pageType": {
+                    "type": "string"
+                },
+                "parent": {
+                    "$ref": "#/definitions/MinimalPage"
+                },
+                "published": {
+                    "type": "boolean"
+                },
+                "publishedAt": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    ],
+    "definitions": {
+        "ContentObject": {
+            "anyOf": [
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "dict"
+                                    ],
+                                    "type": "string"
+                                },
+                                "items": {
+                                    "$ref": "#/definitions/NodeJS.Dict"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "text"
+                                    ],
+                                    "type": "string"
+                                },
+                                "text": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "image"
+                                    ],
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "$ref": "#/definitions/Image"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "menu"
+                                    ],
+                                    "type": "string"
+                                },
+                                "menu": {
+                                    "$ref": "#/definitions/Menu"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "page"
+                                    ],
+                                    "type": "string"
+                                },
+                                "page": {
+                                    "$ref": "#/definitions/MinimalPage"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "detailUrl": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "attributes": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                    },
+                                    "type": "object"
+                                },
+                                "dbType": {
+                                    "$ref": "#/definitions/ContentObjectDBType"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "dbType": {
+                                    "enum": [
+                                        "list"
+                                    ],
+                                    "type": "string"
+                                },
+                                "items": {
+                                    "items": {
+                                        "$ref": "#/definitions/ContentObject"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ]
+        },
+        "ContentObjectDBType": {
+            "enum": [
+                "dict",
+                "image",
+                "list",
+                "menu",
+                "page",
+                "text"
+            ],
+            "type": "string"
+        },
+        "Image": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Menu": {
+            "allOf": [
+                {
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "isMenu": {
+                            "type": "boolean"
+                        },
+                        "link": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "page": {
+                            "$ref": "#/definitions/MinimalPage"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "items": {
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "isMenu": {
+                                                "type": "boolean"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "page": {
+                                                "$ref": "#/definitions/MinimalPage"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/Menu"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "MinimalPage": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "NodeJS.Dict": {
+            "additionalProperties": {
+                "$ref": "#/definitions/T"
+            },
+            "type": "object"
+        },
+        "T": {
+            "type": "object"
+        }
+    }
+}
+

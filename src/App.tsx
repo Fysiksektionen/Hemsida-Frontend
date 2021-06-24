@@ -13,9 +13,9 @@ import callApi from './api/main';
 function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);
 
-    // TODO: user error handling and rigorous typing.
-    const { data /*, error */ } = useSWR(['/site/'], (path) => callApi({ path: path }), {});
-    const siteData = (data === undefined) ? undefined : (data as any).data as Site;
+    // TODO: add error handling.
+    const { data /*, error */ } = useSWR(['/site/'], (path) => callApi<Site>({ path: path, validator: 'Site' }), {});
+    const siteData = (data === undefined) ? undefined : data.data;
 
     return (
         <div className="App">

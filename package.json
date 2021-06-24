@@ -10,6 +10,7 @@
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
     "@types/slate": "^0.47.8",
+    "ajv": "^6.12.6",
     "bootstrap": "4.6.0",
     "html-react-parser": "^1.2.4",
     "node-sass": "^6.0.0",
@@ -54,8 +55,10 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.23",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-standard": "^16.0.2",
-    "slate-hyperscript": "^0.62.0"
+    "slate-hyperscript": "^0.62.0",
+    "typescript-json-schema": "^0.50.1"
   }
 }

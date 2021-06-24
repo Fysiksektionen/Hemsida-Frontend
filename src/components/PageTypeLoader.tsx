@@ -44,7 +44,7 @@ function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const apiPath = (page !== undefined && page.id > 0) ? page.id : '/resolve-url/' + location.pathname;
     // TODO: use error handling.
     // TODO: Due to HTTP limitations, the following may cause problems with the root page not showing correctly when attaching to the real backend.
-    const { data /*, error */ } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath }), {});
+    const { data /*, error */ } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath, validator: 'Page' }), {});
     return (
         <>
             {(data !== undefined) && loadPage(data.data)}

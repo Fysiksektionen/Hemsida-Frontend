@@ -11,9 +11,8 @@ export default function ParentPageSelector(props: {page: Page, setPageHook: (pag
 
     // TODO: Use SWR
     if (loadingState === 'preparing') {
-        // TODO: Implement more rigorous type-checks (that is, get rid of the "unknown" type conversion below).
-        callApi<Page[]>({ path: 'pages/', getParams: {} }).then((resp) => {
-            console.log('ParentPageSelector got response from API.');
+        callApi<Page[]>({ path: 'pages/', validator: 'Page[]' }).then((resp) => {
+            // console.log('ParentPageSelector got response from API.');
             const minSiteList: MinimalPage2[] = [];
 
             if (resp.code === 200) {
@@ -23,12 +22,12 @@ export default function ParentPageSelector(props: {page: Page, setPageHook: (pag
                         id: site.id,
                         detailUrl: site.detailUrl,
                         name: site.name
-                    } as unknown as MinimalPage2);
+                    } as MinimalPage2);
                 }
             }
             if (minSiteList.length > 0) {
                 setLoadingState(minSiteList);
-                console.log(minSiteList);
+                // console.log(minSiteList);
             } else {
                 setLoadingState('error');
             }

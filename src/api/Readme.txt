@@ -1,1 +1,0 @@
-Denna mapp innehåller filer, etc. som interagerar med api:et.
