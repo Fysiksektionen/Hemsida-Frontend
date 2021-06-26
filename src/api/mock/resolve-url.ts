@@ -13,11 +13,11 @@ const pathToPageId: { [key: string]: number } = {
 };
 
 export default function resolveUrl({ url }:{url: string}):string {
-    const lookupUrl = url.endsWith('/') ? url.substr(12, url.length - 13) : url.substr(12);
+    const lookupUrl = new URLSearchParams(url.split('?')[1].split('#')[0]).get('path');
 
-    // console.log('[Mock-API/resolveURL] Lookup URL is: ' + url2);
+    console.log('[API] (Mock-ResolveUrl) Lookup URL is: ' + lookupUrl);
 
-    if (Object.keys(pathToPageId).indexOf(lookupUrl) > -1) {
+    if (lookupUrl !== null && Object.keys(pathToPageId).indexOf(lookupUrl) > -1) {
         return 'pages/' + pathToPageId[lookupUrl] + '.json';
     } else { return '404.json'; }
 }
