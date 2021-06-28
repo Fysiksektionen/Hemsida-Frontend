@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContentObject, Page } from '../../../types/api_object_types';
-import callApi from '../../../api/main';
+import { api } from '../../../api/main';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import PageNotFound from '../../../pages/PageNotFound';
 import {
@@ -104,6 +104,9 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
             ? setPageData({ ...pageData, contentSv: content as ContentObject })
             : setPageData({ ...pageData, contentEn: content as ContentObject });
         setPageDataHasChanged(false);
+        api.post({ path: 'pages/' + id, query: { data: pageData } });
+        console.log('saveContent:');
+        console.log(pageData);
     }
 
     // Send page with updated content down for rendering in children.
@@ -176,7 +179,7 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
     // This component is really just a wrapper for PageEditorMainView, since dynamic API calling is easier this way.
 
-    const { data } = useSWR([id], () => callApi<Page>({ path: 'pages/' + id, validator: 'Page' }), {});
+    const { data } = useSWR([id], () => api.get<Page>({ path: 'pages/' + id, validator: 'Page' }), {});
 
     // TODO: Handle errors.
     if (data === undefined) return (<CenteredLoadingBar/>);

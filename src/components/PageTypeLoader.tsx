@@ -9,7 +9,7 @@ import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
 
 // Import fake data
-import callApi from '../api/main';
+import { get as callApi } from '../api/main';
 
 type PageTypeLoaderProps = {
     page?: Page

@@ -6,7 +6,7 @@ import { APIResponse } from '../types/general';
 import SiteSchema from './schemas/Site.json';
 import PageSchema from './schemas/Page.json';
 
-export type responseValidatorTypes = 'Page' | 'Page[]' | 'Site';
+export type responseValidatorTypes = 'Page' | 'Page[]' | 'Site' | 'none';
 
 // Compile Ajv Schemas
 const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
@@ -14,7 +14,8 @@ const validators = {
     Page: ajv.compile(PageSchema),
     Site: ajv.compile(SiteSchema),
     // TODO: Perhaps we should check that data actually is an array. Ideally ajv would have a schema for this.
-    'Page[]': (data: any) => data.map(validators.Page).every((v: any) => v === true)
+    'Page[]': (data: any) => data.map(validators.Page).every((v: any) => v === true),
+    none: () => true
 };
 
 type validateProps = {

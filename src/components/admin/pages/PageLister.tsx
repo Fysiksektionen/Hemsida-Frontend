@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Col, Row, Card, Container } from 'react-bootstrap';
-import callApi from '../../../api/main';
+import { get as callApi } from '../../../api/main';
 import { Page } from '../../../types/api_object_types';
 import { AdminLocation } from '../../../types/admin_components';
 import useSWR from 'swr';

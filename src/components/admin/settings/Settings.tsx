@@ -6,7 +6,7 @@ import { MinimalPage, Site } from '../../../types/api_object_types';
 import { SiteFooterCT, SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
 import FooterEditor from './FooterEditor';
 import useSWR from 'swr';
-import callApi from '../../../api/main';
+import { get as callApi } from '../../../api/main';
 import CenteredLoadingBar from '../../CenteredLoadingBar';
 
 // TODO: Add current state updated onChange

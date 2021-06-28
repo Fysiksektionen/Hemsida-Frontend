@@ -4,44 +4,76 @@ import { apiRootUrl, callDelay, useMockApi } from './config';
 import route from './mock/router';
 import validateResponse, { responseValidatorTypes } from './responseValidtor';
 
-// TODO: Generalize to allow for POST requests, etc.
-type CallApiProps = {
+function getAbsoluteURL(path:string) {
+    // TODO: This is kinda ugly...
+    return (apiRootUrl + '/' + path).replace(/\/\//g, '/').replace(/\/\//g, '/').replace(':/', '://');
+}
+
+type ExtendedAPIResponse<T> = APIResponse<T> & {
+    validator: responseValidatorTypes,
+    isValid: boolean
+}
+
+/*
+ * GET
+ */
+type getProps = {
     path: string,
     validator: responseValidatorTypes,
-    getParams?: NodeJS.Dict<string|undefined>
+    query?: NodeJS.Dict<string | undefined>
 }
 
 /**
- * Returns a static predefined value in apiPathToResp given a n api-path.
+ * Returns a static predefined value in apiPathToResp given in api-path.
  * @param path: Path relative to api-root to call
- * @param getParams: Dict containing GET-args for the call.
+ * @param query: Dict containing GET-args for the call.
  */
-export default async function callApi<T>({ path, validator, getParams }: CallApiProps): Promise<APIResponse<T>> {
-    const getParamsString = getGETParamsStringFromObject(getParams);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const fullPath = apiRootUrl + path + getParamsString;
+export async function get<T>({ path, validator, query }: getProps):Promise<ExtendedAPIResponse<T>> {
+    const getParamsString = getGETParamsStringFromObject(query);
 
     let resp;
     if (useMockApi) { // Mock code
         const routedPath = apiRootUrl + route(path) + getParamsString;
         console.log('[API] (Mock) Fetching: ' + routedPath + '. Routed from:', path);
         // TODO: Check that we got a valid APIResponse<any>.
-        resp = await (await fetch(routedPath, {})).json() as unknown as APIResponse<any>;
+        resp = await (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
         // Add delay
         await new Promise(resolve => setTimeout(resolve, callDelay));
     } else {
-        console.log('[API] Fetching: ' + apiRootUrl + path);
-        resp = await (await fetch(apiRootUrl + path, {})).json() as unknown as APIResponse<any>;
+        const url = getAbsoluteURL(path);
+        console.log('[API] Fetching: ' + url);
+        resp = await (await fetch(url, {})).json() as unknown as APIResponse<T>;
     }
 
     // Validate schema.
-    const respIsValid = validateResponse({ response: resp, validator: validator });
-    console.log('[API] Response is ' + (respIsValid ? '' : 'in') + 'valid for ' + path);
+    const isValid = validateResponse({ response: resp, validator: validator });
+    if (isValid) {
+        console.log('[API] Response is valid for ' + path);
+    } else {
+        console.warn('[API] Response schema-check failed for ' + path);
+    }
+    return { ...resp, validator: validator, isValid: isValid };
+}
 
-    return resp;
-};
+get.defaultProps = <getProps>{ query: {} };
 
-callApi.defaultProps = <CallApiProps>{
-    path: '',
-    getParams: {}
+/*
+ * POST
+ */
+type postProps = {
+    path: string,
+    query: object
+}
+
+export async function post<T>({ path, query }: postProps):Promise<APIResponse<T>> {
+    return (await fetch(getAbsoluteURL(path), {
+        method: 'POST',
+        body: JSON.stringify(query),
+        headers: { 'Content-Type': 'application/json' }
+    })).json() as unknown as APIResponse<T>;
+}
+
+export const api = {
+    get: get,
+    post: post
 };

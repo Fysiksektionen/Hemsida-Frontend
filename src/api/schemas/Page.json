@@ -10,6 +10,10 @@
                     "type": "number"
                 }
             },
+            "required": [
+                "detailUrl",
+                "id"
+            ],
             "type": "object"
         },
         {
@@ -18,6 +22,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "name"
+            ],
             "type": "object"
         },
         {
@@ -53,6 +60,17 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "children",
+                "contentEn",
+                "contentSv",
+                "lastEditedAt",
+                "pageType",
+                "parent",
+                "published",
+                "publishedAt",
+                "slug"
+            ],
             "type": "object"
         }
     ],
@@ -70,6 +88,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -84,6 +106,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -98,6 +124,10 @@
                                     "$ref": "#/definitions/NodeJS.Dict"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "items"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -113,6 +143,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -127,6 +161,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -141,6 +179,10 @@
                                     "type": "string"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "text"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -156,6 +198,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -170,6 +216,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -184,6 +234,10 @@
                                     "$ref": "#/definitions/Image"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "image"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -199,6 +253,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -213,6 +271,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -227,6 +289,10 @@
                                     "$ref": "#/definitions/Menu"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "menu"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -242,6 +308,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -256,6 +326,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -270,6 +344,10 @@
                                     "$ref": "#/definitions/MinimalPage"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "page"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -285,6 +363,10 @@
                                     "type": "number"
                                 }
                             },
+                            "required": [
+                                "detailUrl",
+                                "id"
+                            ],
                             "type": "object"
                         },
                         {
@@ -299,6 +381,10 @@
                                     "$ref": "#/definitions/ContentObjectDBType"
                                 }
                             },
+                            "required": [
+                                "attributes",
+                                "dbType"
+                            ],
                             "type": "object"
                         },
                         {
@@ -316,6 +402,10 @@
                                     "type": "array"
                                 }
                             },
+                            "required": [
+                                "dbType",
+                                "items"
+                            ],
                             "type": "object"
                         }
                     ]
@@ -344,6 +434,10 @@
                             "type": "number"
                         }
                     },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
                     "type": "object"
                 },
                 {
@@ -352,6 +446,9 @@
                             "type": "string"
                         }
                     },
+                    "required": [
+                        "href"
+                    ],
                     "type": "object"
                 }
             ]
@@ -379,6 +476,12 @@
                             "type": "string"
                         }
                     },
+                    "required": [
+                        "id",
+                        "isMenu",
+                        "link",
+                        "name"
+                    ],
                     "type": "object"
                 },
                 {
@@ -407,6 +510,12 @@
                                                 "type": "string"
                                             }
                                         },
+                                        "required": [
+                                            "id",
+                                            "isMenu",
+                                            "link",
+                                            "name"
+                                        ],
                                         "type": "object"
                                     },
                                     {
@@ -417,6 +526,9 @@
                             "type": "array"
                         }
                     },
+                    "required": [
+                        "items"
+                    ],
                     "type": "object"
                 }
             ]
@@ -432,6 +544,10 @@
                             "type": "number"
                         }
                     },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
                     "type": "object"
                 },
                 {
@@ -440,6 +556,9 @@
                             "type": "string"
                         }
                     },
+                    "required": [
+                        "name"
+                    ],
                     "type": "object"
                 }
             ]

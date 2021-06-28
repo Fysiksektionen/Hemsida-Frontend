@@ -8,7 +8,7 @@ import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
 import './App.css';
-import callApi from './api/main';
+import { get as callApi } from './api/main';
 
 function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);

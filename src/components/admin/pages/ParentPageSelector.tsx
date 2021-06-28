@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Col, Form } from 'react-bootstrap';
-import callApi from '../../../api/main';
+import { get as callApi } from '../../../api/main';
 import { Page, MinimalPage } from '../../../types/api_object_types';
 
 type MinimalPage2 = MinimalPage & {name: string}
