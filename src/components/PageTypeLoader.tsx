@@ -7,6 +7,7 @@ import PageNotFound from '../pages/PageNotFound';
 import { LocaleContext, locales } from '../contexts';
 import { Page } from '../types/api_object_types';
 import CenteredLoadingBar from './CenteredLoadingBar';
+import { CenteredError } from './Centered';
 
 // Import fake data
 import { get as callApi } from '../api/main';
@@ -42,15 +43,21 @@ function loadPage(pageData: Page): JSX.Element {
 function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
     const apiPath = (page !== undefined && page.id > 0) ? page.id : '/resolve-url/?path=' + location.pathname;
-    // TODO: use error handling.
-    // TODO: Due to HTTP limitations, the following may cause problems with the root page not showing correctly when attaching to the real backend.
-    const { data /*, error */ } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath, validator: 'Page' }), {});
-    return (
-        <>
-            {(data !== undefined) && loadPage(data.data)}
-            {(data === undefined) && (<CenteredLoadingBar/>)}
-        </>
-    );
+    const { data, error } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath, validator: 'Page' }), {});
+
+    if (error !== undefined) {
+        if (error.code === 404) {
+            return <PageNotFound/>;
+        } else {
+            return <CenteredError message = {error.message} />;
+        }
+    } else {
+        if (data === undefined) {
+            return <CenteredLoadingBar/>;
+        } else {
+            return loadPage(data.data);
+        };
+    }
 }
 
 /**

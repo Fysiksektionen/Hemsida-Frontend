@@ -1,6 +1,7 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
 import { apiRootUrl, callDelay, useMockApi } from './config';
+import { HTTPError } from './errors';
 import route from './mock/router';
 import validateResponse, { responseValidatorTypes } from './responseValidtor';
 
@@ -31,28 +32,36 @@ type getProps = {
 export async function get<T>({ path, validator, query }: getProps):Promise<ExtendedAPIResponse<T>> {
     const getParamsString = getGETParamsStringFromObject(query);
 
-    let resp;
+    let res;
     if (useMockApi) { // Mock code
         const routedPath = apiRootUrl + route(path) + getParamsString;
         console.log('[API] (Mock) Fetching: ' + routedPath + '. Routed from:', path);
         // TODO: Check that we got a valid APIResponse<any>.
-        resp = await (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
+        res = await (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
         // Add delay
         await new Promise(resolve => setTimeout(resolve, callDelay));
     } else {
         const url = getAbsoluteURL(path);
         console.log('[API] Fetching: ' + url);
-        resp = await (await fetch(url, {})).json() as unknown as APIResponse<T>;
+        const resp = await fetch(url, {});
+        // TODO: Decide if we use http status or code from json
+        if (resp.ok) {
+            res = await resp.json() as unknown as APIResponse<T>;
+        } else {
+            res = undefined;
+            console.log('[API] HTTPError: ' + resp.status); // TODO add more info here.
+            throw new HTTPError(resp.status, 'HTTP error ' + resp.status.toString() + ' (' + (await resp.json()).error + ').');
+        }
     }
 
     // Validate schema.
-    const isValid = validateResponse({ response: resp, validator: validator });
+    const isValid = validateResponse({ response: res, validator: validator });
     if (isValid) {
         console.log('[API] Response is valid for ' + path);
     } else {
         console.warn('[API] Response schema-check failed for ' + path);
     }
-    return { ...resp, validator: validator, isValid: isValid };
+    return { ...res, validator: validator, isValid: isValid };
 }
 
 get.defaultProps = <getProps>{ query: {} };

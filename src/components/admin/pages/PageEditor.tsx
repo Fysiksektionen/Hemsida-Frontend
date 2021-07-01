@@ -16,6 +16,7 @@ import LocaleSelector from '../../LocaleSelector';
 import PageMetaForm from './PageMetaForm';
 import { AdminLocation } from '../../../types/admin_components';
 import CenteredLoadingBar from '../../CenteredLoadingBar';
+import { CenteredError } from '../../Centered';
 import useSWR from 'swr';
 
 type PageEditorProps = {
@@ -179,11 +180,19 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
     // This component is really just a wrapper for PageEditorMainView, since dynamic API calling is easier this way.
 
-    const { data } = useSWR([id], () => api.get<Page>({ path: 'pages/' + id, validator: 'Page' }), {});
+    const { data, error } = useSWR([id], () => api.get<Page>({ path: 'pages/' + id, validator: 'Page' }), {});
 
-    // TODO: Handle errors.
-    if (data === undefined) return (<CenteredLoadingBar/>);
-    else if (data.code === 404) return (<PageNotFound/>);
-    // else if (loadingState === 'error') return (<Container><Row className='justify-content-center mt-6'><h3>Något blev fel.</h3></Row></Container>);
-    else return (<PageEditorMainView id={id} page={data.data as unknown as Page} setLocationHook={setLocationHook}/>);
+    if (error !== undefined) {
+        if (error.code === 404) {
+            return <PageNotFound/>;
+        } else {
+            return <CenteredError message = {error.message} />;
+        }
+    } else {
+        if (data === undefined) {
+            return <CenteredLoadingBar/>;
+        } else {
+            return (<PageEditorMainView id={id} page={data.data as unknown as Page} setLocationHook={setLocationHook}/>);
+        };
+    }
 }

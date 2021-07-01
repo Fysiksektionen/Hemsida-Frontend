@@ -13,7 +13,8 @@
             "jsx": true
         },
         "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react",
@@ -34,7 +35,9 @@
         "@typescript-eslint/no-unused-vars": ["warn"],
         "no-duplicate-imports": ["error"],
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+        "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies,
+        "@typescript-eslint/no-floating-promises": ["warn"], // Checks for async function calls without await
+        "no-void": ["error", { "allowAsStatement": true }] // Allows the above to be overridden by writing void before the async function
     },
     "overrides": [
         {
