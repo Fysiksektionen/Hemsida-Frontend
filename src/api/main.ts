@@ -5,9 +5,10 @@ import { HTTPError } from './errors';
 import route from './mock/router';
 import validateResponse, { responseValidatorTypes } from './responseValidtor';
 
-function getAbsoluteURL(path:string) {
-    // TODO: This is kinda ugly...
-    return (apiRootUrl + '/' + path).replace(/\/\//g, '/').replace(/\/\//g, '/').replace(':/', '://');
+function getAbsoluteURL(path: string) {
+    path = (path.substr(0, 1) === '/') ? path.substr(1) : path;
+    const apiRootUrlNoSlash = (apiRootUrl.substr(-1) === '/') ? apiRootUrl.substr(0, apiRootUrl.length - 1) : apiRootUrl;
+    return apiRootUrlNoSlash + '/' + path;
 }
 
 type ExtendedAPIResponse<T> = APIResponse<T> & {
@@ -49,7 +50,7 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
             res = await resp.json() as unknown as APIResponse<T>;
         } else {
             res = undefined;
-            console.log('[API] HTTPError: ' + resp.status); // TODO add more info here.
+            console.log('[API] HTTPError: ' + resp.status); // TODO : add more info here.
             throw new HTTPError(resp.status, 'HTTP error ' + resp.status.toString() + ' (' + (await resp.json()).error + ').');
         }
     }

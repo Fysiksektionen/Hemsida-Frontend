@@ -1,61 +1,51 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import { Col, Form } from 'react-bootstrap';
-import { get as callApi } from '../../../api/main';
+import useSWR from 'swr';
+import { api } from '../../../api/main';
 import { Page, MinimalPage } from '../../../types/api_object_types';
 
 type MinimalPage2 = MinimalPage & {name: string}
-type loadingStates = 'preparing' | 'waiting' | MinimalPage2[] | 'error';
 
 export default function ParentPageSelector(props: {page: Page, setPageHook: (page: Page) => void}) {
-    const [loadingState, setLoadingState] = useState<loadingStates>('preparing');
+    // const [loadingState, setLoadingState] = useState<loadingStates>('preparing');
 
-    // TODO: Use SWR
-    if (loadingState === 'preparing') {
-        callApi<Page[]>({ path: 'pages/', validator: 'Page[]' }).then((resp) => {
-            // console.log('ParentPageSelector got response from API.');
-            const minSiteList: MinimalPage2[] = [];
+    // TODO: add error handling
+    const minSiteList: MinimalPage2[] = [];
 
-            if (resp.code === 200) {
-                for (const site of resp.data) {
-                    // TODO: Ideally, TypeScript would do the type casting, but idk how it's done. Using "as MinimalPage2" really only checks if it contains all properties, and does not remove excessive ones.
-                    minSiteList.push({
-                        id: site.id,
-                        detailUrl: site.detailUrl,
-                        name: site.name
-                    } as MinimalPage2);
-                }
-            }
-            if (minSiteList.length > 0) {
-                setLoadingState(minSiteList);
-                // console.log(minSiteList);
-            } else {
-                setLoadingState('error');
-            }
-        });
-        setLoadingState('waiting');
+    const { data, error } = useSWR(['pages/'], (path) => api.get<Page[]>({ path: path, validator: 'Page[]' }), {});
+    if (data) {
+        for (const site of data.data) {
+            // TODO: Ideally, TypeScript would do the type casting, but idk how it's done. Using "as MinimalPage2" really only checks if it contains all properties, and does not remove excessive ones.
+            minSiteList.push({
+                id: site.id,
+                detailUrl: site.detailUrl,
+                name: site.name
+            } as MinimalPage2);
+        }
     }
 
     return (
         <Form.Group controlId="parent" as={Col} md={4}>
-            <Form.Label>{(loadingState === 'preparing' || loadingState === 'waiting') ? 'Loading parent pages...' : (loadingState === 'error' ? 'Error' : 'Parent page')}</Form.Label>
-            {typeof loadingState !== 'string'
-                ? (// TODO: Make type checks here more rigorous
+            <Form.Label>{(data === undefined) ? 'Loading parent pages...' : (error !== undefined ? 'Error' : 'Parent page')}</Form.Label>
+            {
+                (// TODO: Make type checks here more rigorous
                     <Form.Control
                         as='select'
                         defaultValue={props.page.parent.name}
                         onChange={(event: ChangeEvent<any>) => {
                             props.setPageHook({
                                 ...props.page,
-                                parent: (loadingState as unknown as MinimalPage2[])[event.target.value] as MinimalPage
+                                parent: minSiteList[event.target.value] as MinimalPage
                             });
                         }}
                     >
                         {
-                            Object.entries(loadingState).map((entry, index) => (
+                            Object.entries(minSiteList).map((entry, index) => (
                                 <option key={index} value={(entry[0])}>{(entry[1] as unknown as MinimalPage2).name}</option>
                             ))
                         }
-                    </Form.Control>)
-                : (<></>)}
+                    </Form.Control>
+                )
+            }
         </Form.Group>);
 }
