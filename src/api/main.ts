@@ -41,6 +41,7 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
         res = await (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
         // Add delay
         await new Promise(resolve => setTimeout(resolve, callDelay));
+        if (res.code > 299) { throw new HTTPError(res.code, 'Mock API Emulated error'); }
     } else {
         const url = getAbsoluteURL(path);
         console.log('[API] Fetching: ' + url);
