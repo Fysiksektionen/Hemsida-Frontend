@@ -10,8 +10,8 @@
                 "detailUrl": "",
                 "href": "mediafiles/placeholder_images/news_placeholder.jpg"
             },
-            "title": "Dummy news 1",
-            "preamble": "Some news text here",
+            "title": "Det blir en mottagning",
+            "preamble": "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.",
             "publishedAt": "2020-12-24"
         },
         {
@@ -24,7 +24,7 @@
                 "href": "mediafiles/placeholder_images/news_placeholder1.jpg"
             },
             "title": "Nyhet om fem unga fysiker som sitter och sjunger",
-            "preamble": "Some news text here",
+        "preamble": "Eget aliquet nibh praesent tristique opera. Vitae ultricies leo integral malesuada nunc vel. Suspendisse faucibus interdum posuere trummis dolor sit. Cursus vitae spotlight mauris rhoncus.",
             "publishedAt": "2020-12-24"
         },
         {
@@ -37,7 +37,7 @@
                 "href": "mediafiles/placeholder_images/news_placeholder2.jpg"
             },
             "title": "En nyhet som ingen kommer att läsa",
-            "preamble": "Visst är det synd?",
+            "preamble": "A diam sollicitudin tempor id ed iskall. Sit amet mattis vulputate enim arcu. Ullamcorper velit sed astonishing morbi tincidunt. Donec massa sapien fysiker et molestie al cocktail. Pulvinar mattis nunc sed blandit liber.",
             "publishedAt": "2020-12-24"
         },
         {
@@ -49,8 +49,8 @@
                 "detailUrl": "",
                 "href": "mediafiles/placeholder_images/news_placeholder3.jpg"
             },
-            "title": "CSN: Vart tar de vägen på sommaren?",
-            "preamble": "Placeat et dolorum aut assumenda excepturi dolorum et semester.",
+            "title": "En nyhet som ännu färre kommer att läsa",
+            "preamble": "Nulla pharetra diam sit amet nisl cash. Pharetra diam sit amet nisl semester adipiscing bibendum est ultricies. Egestas erat imperdiet sed vakuum. Nunc pulvinar sapien et ligula.",
             "publishedAt": "2020-12-24"
         }
     ]

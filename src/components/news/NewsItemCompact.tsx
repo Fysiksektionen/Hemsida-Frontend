@@ -19,6 +19,7 @@ function BottomText(props: {opened: boolean}) {
 
 function NewsItemCompact(props : NewsPageMinimal) {
     const [open, setOpen] = useState(false);
+    // TODO: properly handle formatting of preamble
     return (
         <div onClick={() => setOpen(!open)}>
             <NewsArticleBase {...props}>
@@ -26,14 +27,7 @@ function NewsItemCompact(props : NewsPageMinimal) {
                     <Collapse in={open} className="collapse-with-default-height">
                         <div>
                             <p>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                                labore wes anderson cred nesciunt sapiente ea proident.
-                            </p>
-                            <p>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                                labore wes anderson cred nesciunt sapiente ea proident.
+                                {props.preamble}
                             </p>
                         </div>
                     </Collapse>

@@ -11,7 +11,6 @@ import { CenteredError } from './Centered';
 
 // Import fake data
 import { get as callApi } from '../api/main';
-import NewsFeedPage from '../pages/NewsFeedPage';
 
 type PageTypeLoaderProps = {
     page?: Page
