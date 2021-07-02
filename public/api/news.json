@@ -1,0 +1,57 @@
+{
+    "code": 206,
+    "data": [
+        {
+            "id": 1,
+            "detailUrl": "",
+            "name": "",
+            "image": {
+                "id": 1,
+                "detailUrl": "",
+                "href": "mediafiles/placeholder_images/news_placeholder.jpg"
+            },
+            "title": "Dummy news 1",
+            "preamble": "Some news text here",
+            "publishedAt": "2020-12-24"
+        },
+        {
+            "id": 2,
+            "detailUrl": "",
+            "name": "",
+            "image": {
+                "id": 1,
+                "detailUrl": "",
+                "href": "mediafiles/placeholder_images/news_placeholder1.jpg"
+            },
+            "title": "Nyhet om fem unga fysiker som sitter och sjunger",
+            "preamble": "Some news text here",
+            "publishedAt": "2020-12-24"
+        },
+        {
+            "id": 3,
+            "detailUrl": "",
+            "name": "",
+            "image": {
+                "id": 1,
+                "detailUrl": "",
+                "href": "mediafiles/placeholder_images/news_placeholder2.jpg"
+            },
+            "title": "En nyhet som ingen kommer att läsa",
+            "preamble": "Visst är det synd?",
+            "publishedAt": "2020-12-24"
+        },
+        {
+            "id": 4,
+            "detailUrl": "",
+            "name": "",
+            "image": {
+                "id": 1,
+                "detailUrl": "",
+                "href": "mediafiles/placeholder_images/news_placeholder3.jpg"
+            },
+            "title": "CSN: Vart tar de vägen på sommaren?",
+            "preamble": "Placeat et dolorum aut assumenda excepturi dolorum et semester.",
+            "publishedAt": "2020-12-24"
+        }
+    ]
+}

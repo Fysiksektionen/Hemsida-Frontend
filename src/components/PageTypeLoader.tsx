@@ -11,6 +11,7 @@ import { CenteredError } from './Centered';
 
 // Import fake data
 import { get as callApi } from '../api/main';
+import NewsFeedPage from '../pages/NewsFeedPage';
 
 type PageTypeLoaderProps = {
     page?: Page
@@ -20,21 +21,18 @@ function loadPage(pageData: Page): JSX.Element {
     // If defined in pageTypeMap, render page. Else give PageNotFound.
     // TODO: Add more checks
 
-    if (pageData !== undefined && pageData.pageType in pageTypeMap) {
+    if (pageData.pageType in pageTypeMap) {
         return (
             <LocaleContext.Consumer>
                 {locale =>
                     <div id="dynamic_page_content" className='w-100'>
-                        {
-                            pageData !== undefined
-                                ? pageTypeMap[pageData.pageType]((locale === locales.sv ? pageData.contentSv : pageData.contentEn))
-                                : <></>
-                        }
+                        {React.createElement(pageTypeMap[pageData.pageType], (locale === locales.sv ? pageData.contentSv : pageData.contentEn))}
                     </div>
                 }
             </LocaleContext.Consumer>
         );
     } else {
+        console.error('Cannot load page: pageType "' + pageData.pageType + '" not in pageTypeMap.');
         return <PageNotFound />;
     }
 }

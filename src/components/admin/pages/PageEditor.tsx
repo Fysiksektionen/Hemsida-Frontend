@@ -178,7 +178,7 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
 export default function PageEditor({ setLocationHook, id, page }: PageEditorProps) {
     // This component is really just a wrapper for PageEditorMainView, since dynamic API calling is easier this way.
 
-    const { data, error } = useSWR([id], () => api.get<Page>({ path: 'pages/' + id, validator: 'Page' }), {});
+    const { data, error } = useSWR(['pages/' + id], (path) => api.get<Page>({ path: path, validator: 'Page' }), {});
 
     if (error !== undefined) {
         if (error.code === 404) {
