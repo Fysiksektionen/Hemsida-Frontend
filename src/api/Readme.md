@@ -1,11 +1,21 @@
 # API-interface
 Det mesta sköts via `api.get<T>({ path, validator, query }`. Notera att `T` och `validator` måste vara samma (fast validator är en string). T är enbart där för att TypeScript inte ska bli sur. Förhoppningsvis går det att inferera typen från `validator` framöver.
 
+## SWR
+Som hook används useSwr, vilken importeras genom `import useSwr from 'swr'`. Exempel på användning är:
+```js
+const { data, error } = useSWR([path], (path) => api.get<T>({ path: apiPath, validator: 'T' }), {});
+```
+Både `data` och `error` är undefined medan requesten ej är färdig. Lyckas den, sätts `data` till det returnerade värdet, som `ExtendedAPIResponse<T>`, dvs. ett `APIResponse<T>` med ytterligare information om <a href="#validation">valideringen</a>.
+
+I exemplet ovan kallar swr vår anonyma funktion `(path) => callApi<T>({ path: apiPath, validator: 'T' })` med argumenten från listan som ges som första parameter (dvs. `[path]`). Alla argument som kan ändras bör ges via listan, då SWR cachar svaren baserat på dessa. De enda egenskaper som bör vara hårdkodade i den anonyma funktionen är således enbart validatoron och typen `T`, vilka bör vara samma.
+
 ## Konfiguration
 Sköts i filen [config.ts](config.ts). De fält som kan sättas är för närvarande:
-* `useMockApi` - sätts denna till true hanteras HTTP-requests av React-devservern m.h.a. de filer som återfinns i (/public/api)[../public/api]. Sätts den till false används `apiRootUrl` istället.
-* `apiRootUrl` - URL:en där api:t återfinns. Mock-api:t har ett prefix som är _/api/_, men det bör noteras att mock-api:t routar om requests till lämplig JSON-fil (se [mock](mock)-mappen).
-* `callDelay` - det antal millisekunder som mock-api:t lägger till varje request för att simulera inväntan av svar.
+* `USE_MOCK_API` - sätts denna till true hanteras HTTP-requests av React-devservern m.h.a. de filer som återfinns i (/public/api)[../public/api]. Sätts den till false används `apiRootUrl` istället.
+* `API_ROOT_URL` - URL:en där api:t återfinns. Mock-api:t har ett prefix som är _/api/_, men det bör noteras att mock-api:t routar om requests till lämplig JSON-fil (se [mock](mock)-mappen).
+* `MOCK_API_CALL_DELAY` - det antal millisekunder som mock-api:t lägger till varje request för att simulera inväntan av svar.
+* `API_VERBOSE` - sätt till `true` för att få debug-information om api-calls.
 
 ## Validering
-Svar av typen `Site`, `Page` och `Page[]` kontrolleras mot JSON-scheman i mappen [schemas](schemas). Dessa genereras med hjälp av filen [updateSchemas.sh](updateSchemas.sh). Framöver bör dessa scheman genereras från [Docs-repot](https://github.com/Fysiksektionen/Hemsida-Docs).
+<i id="validation"></i>Svar av typen `Site`, `Page`, `Page[]`, `NewsPageMinimal` och `NewsPageMinimal` kontrolleras mot JSON-scheman i mappen [schemas](schemas). Dessa genereras med hjälp av filen [updateSchemas.sh](updateSchemas.sh). I framtiden bör dessa scheman genereras från [Docs-repot](https://github.com/Fysiksektionen/Hemsida-Docs), men den specifikationen är för närvarande under utveckling
