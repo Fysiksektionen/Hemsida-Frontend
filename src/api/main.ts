@@ -1,15 +1,17 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
-import { apiRootUrl, callDelay, useMockApi } from './config';
+import { API_ROOT_URL, API_VERBOSE, MOCK_API_CALL_DELAY, USE_MOCK_API } from './config';
 import { HTTPError } from './errors';
 import route from './mock/router';
 import validateResponse, { responseValidatorTypes } from './responseValidtor';
 
 function getAbsoluteURL(path: string) {
     path = (path.substr(0, 1) === '/') ? path.substr(1) : path;
-    const apiRootUrlNoSlash = (apiRootUrl.substr(-1) === '/') ? apiRootUrl.substr(0, apiRootUrl.length - 1) : apiRootUrl;
+    const apiRootUrlNoSlash = (API_ROOT_URL.substr(-1) === '/') ? API_ROOT_URL.substr(0, API_ROOT_URL.length - 1) : API_ROOT_URL;
     return apiRootUrlNoSlash + '/' + path;
 }
+
+function log(s: string): void { if (API_VERBOSE) { console.log(s); } }
 
 type ExtendedAPIResponse<T> = APIResponse<T> & {
     validator: responseValidatorTypes,
@@ -34,24 +36,24 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
     const getParamsString = getGETParamsStringFromObject(query);
 
     let res;
-    if (useMockApi) { // Mock code
-        const routedPath = apiRootUrl + route(path) + getParamsString;
-        console.log('[API] (Mock) Fetching: ' + routedPath + '. Routed from:', path);
+    if (USE_MOCK_API) { // Mock code
+        const routedPath = API_ROOT_URL + route(path) + getParamsString;
+        log('[API] (Mock) Fetching: ' + routedPath + '. Routed from: ' + path);
         // TODO: Check that we got a valid APIResponse<any>.
         res = await (await fetch(routedPath, {})).json() as unknown as APIResponse<T>;
         // Add delay
-        await new Promise(resolve => setTimeout(resolve, callDelay));
+        await new Promise(resolve => setTimeout(resolve, MOCK_API_CALL_DELAY));
         if (res.code > 299) { throw new HTTPError(res.code, 'Mock API Emulated error'); }
     } else {
         const url = getAbsoluteURL(path);
-        console.log('[API] Fetching: ' + url);
+        log('[API] Fetching: ' + url);
         const resp = await fetch(url, {});
         // TODO: Decide if we use http status or code from json
         if (resp.ok) {
             res = await resp.json() as unknown as APIResponse<T>;
         } else {
             res = undefined;
-            console.log('[API] HTTPError: ' + resp.status); // TODO : add more info here.
+            log('[API] HTTPError: ' + resp.status); // TODO : add more info here.
             throw new HTTPError(resp.status, 'HTTP error ' + resp.status.toString() + ' (' + (await resp.json()).error + ').');
         }
     }
@@ -59,7 +61,7 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
     // Validate schema.
     const isValid = validateResponse({ response: res, validator: validator });
     if (isValid) {
-        console.log('[API] Response is valid for ' + path);
+        log('[API] Response is valid for ' + path);
     } else {
         console.warn('[API] Response schema-check failed for ' + path);
     }

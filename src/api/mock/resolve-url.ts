@@ -1,3 +1,5 @@
+import { API_VERBOSE } from '../config';
+
 const pathToPageId: { [key: string]: number } = {
     '': 1,
     '/': 1,
@@ -15,7 +17,7 @@ const pathToPageId: { [key: string]: number } = {
 export default function resolveUrl({ url }:{url: string}):string {
     const lookupUrl = new URLSearchParams(url.split('?')[1].split('#')[0]).get('path');
 
-    console.log('[API] (Mock-ResolveUrl) Lookup URL is: ' + lookupUrl);
+    if (API_VERBOSE) console.log('[API] (Mock-ResolveUrl) Lookup URL is: ' + lookupUrl);
 
     if (lookupUrl !== null && Object.keys(pathToPageId).indexOf(lookupUrl) > -1) {
         return 'pages/' + pathToPageId[lookupUrl] + '.json';
