@@ -1,0 +1,87 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "allOf": [
+        {
+            "properties": {
+                "detailUrl": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "detailUrl",
+                "id"
+            ],
+            "type": "object"
+        },
+        {
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        },
+        {
+            "properties": {
+                "image": {
+                    "$ref": "#/definitions/Image"
+                },
+                "preamble": {
+                    "type": "string"
+                },
+                "publishedAt": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "image",
+                "preamble",
+                "publishedAt",
+                "title"
+            ],
+            "type": "object"
+        }
+    ],
+    "definitions": {
+        "Image": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "href"
+                    ],
+                    "type": "object"
+                }
+            ]
+        }
+    }
+}
+

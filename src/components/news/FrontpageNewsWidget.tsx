@@ -10,7 +10,7 @@ import { api } from '../../api/main';
 
 export default function NewsWidget() {
     // TODO: add error handling and validation
-    const { data } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'none' }), {});
+    const { data } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
 
     // TODO: Check if news response is empty
     // TODO: double-check that data.data.length works properly below.

@@ -39,7 +39,8 @@ function loadPage(pageData: Page): JSX.Element {
 // TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty when only an id is provided. We should check for it.
 function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
     const location = useLocation();
-    const apiPath = (page !== undefined && page.id > 0) ? page.id : '/resolve-url/?path=' + location.pathname;
+    // TODO: using string concatenation for the path GET parameter is kinda ugly...
+    const apiPath = (page !== undefined && page.id > 0) ? '/pages/' + page.id : '/resolve-url/?path=' + location.pathname;
     const { data, error } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath, validator: 'Page' }), {});
 
     if (error !== undefined) {
