@@ -19,7 +19,7 @@ function BottomText(props: {opened: boolean}) {
 
 function NewsItemCompact(props : NewsPageMinimal) {
     const [open, setOpen] = useState(false);
-    // TODO: properly handle formatting of preamble
+    // TODO: properly handle formatting of preamble (eg. line breaks)
     return (
         <div onClick={() => setOpen(!open)}>
             <NewsArticleBase {...props}>

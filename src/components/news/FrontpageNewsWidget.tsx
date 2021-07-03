@@ -9,11 +9,10 @@ import { NewsPageMinimal } from '../../types/news';
 import { api } from '../../api/main';
 
 export default function NewsWidget() {
-    // TODO: add error handling and validation
-    const { data } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
+    // TODO: Handle empty array responses and errors
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { data, error } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
 
-    // TODO: Check if news response is empty
-    // TODO: double-check that data.data.length works properly below.
     return (data !== undefined && data.data.length > 0)
         ? (
             <Col xs={12} xl={10}>

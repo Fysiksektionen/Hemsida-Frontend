@@ -19,13 +19,18 @@ const elementaryValidators = {
     none: () => true
 };
 
-function arrayValidator(validator: Ajv.ValidateFunction):((data: any) => boolean) { // PromiseLike<any>
-    // TODO: Perhaps we should check that data actually is an array. Ideally ajv would have a schema for this.
+/**
+ * Returns a _function_ that checks whether all elements in an array is valid according to the given validator.
+ * If the returned function recieves a non-array as input, false is returned.
+ * @param validator the validator to test each array element against.
+ */
+function arrayValidator(validator: Ajv.ValidateFunction):((data: any) => boolean) {
     return (data: any) => {
         return Array.isArray(data) && data.map(d => validator(d)).every(v => v === true);
     };
 }
 
+// All validators, both elementary and array-based.
 const validators = {
     ...elementaryValidators,
     'Page[]': arrayValidator(elementaryValidators.Page),
@@ -37,6 +42,12 @@ type validateProps = {
     validator: responseValidatorTypes,
 }
 
+/**
+ * Validates response.data using a validator whose name is given by the validator param string.
+ * @param response - the APIResponse<T> whose data property is to bevalidated.
+ * @param validator - a string corresponding to the validator to be used.
+ * @returns true if validation passes, false otherwise.
+ */
 export default function validateResponse({ response, validator }:validateProps):boolean {
     if (Object.keys(validators).indexOf(validator) > -1) {
         try {

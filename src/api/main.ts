@@ -5,6 +5,11 @@ import { HTTPError } from './errors';
 import callMockApi from './mock/mockApi';
 import validateResponse, { responseValidatorTypes } from './responseValidator';
 
+/**
+ * Returns an absolute path to the api call, given a relative api call path.
+ * @param path path relative to api root.
+ * @returns an absolute path for the api call.
+ */
 function getAbsoluteURL(path: string) {
     path = (path.substr(0, 1) === '/') ? path.substr(1) : path;
     const apiRootUrlNoSlash = (API_ROOT_URL.substr(-1) === '/') ? API_ROOT_URL.substr(0, API_ROOT_URL.length - 1) : API_ROOT_URL;
@@ -17,6 +22,9 @@ function getAbsoluteURL(path: string) {
  */
 function log(s: string): void { if (API_VERBOSE) { console.log(s); } }
 
+/**
+ * An extension to APIResponse<T> which also adds validation information.
+ */
 export type ExtendedAPIResponse<T> = APIResponse<T> & {
     validator: responseValidatorTypes,
     isValid: boolean
@@ -32,7 +40,7 @@ export type getProps = {
 }
 
 /**
- * Sends a GET-request to the api.
+ * Sends a GET-request to the api, and validate the response against a schema.
  * @type T: Should be the same as the validator.
  * @param path: Path relative to api-root to call
  * @param validator: The schema to validate the response against. Use 'none' to ignore schema validation (not recommended).
@@ -41,32 +49,36 @@ export type getProps = {
 export async function get<T>({ path, validator, query }: getProps):Promise<ExtendedAPIResponse<T>> {
     if (validator === 'none') { log('[API] No validator set for request to: ' + path + '. This is not recommended.'); }
 
-    let res;
-    if (USE_MOCK_API) { // Mock code
-        res = await callMockApi<T>({ path, validator });
-    } else { // Non-mock
+    let result;
+
+    if (USE_MOCK_API) {
+        // Mock code
+        result = await callMockApi<T>({ path, validator });
+    } else {
+        // Non-mock code
         const url = getAbsoluteURL(path) + '?' + getGETParamsStringFromObject(query);
+
         log('[API] Fetching: ' + url);
-        const resp = await fetch(url, {});
-        // TODO: Decide if we use http status or code from json
-        if (resp.ok) {
-            // TODO: Check that we got a valid APIResponse<any>.
-            res = await resp.json() as unknown as APIResponse<T>;
+        const response = await fetch(url, {});
+
+        if (response.ok) { // TODO: Decide if we use http status (eg. response.ok) or code from json
+            result = await response.json() as unknown as APIResponse<T>;
+
+            // Check if we have a valid APIResponse<any>
+            if (result.data === undefined || result.code === undefined) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); }
         } else {
-            res = undefined;
-            log('[API] HTTPError: ' + resp.status); // TODO : add more info here.
-            throw new HTTPError(resp.status, 'HTTP error ' + resp.status.toString() + ' (' + (await resp.json()).error + ').');
+            // log('[API] HTTPError: ' + resp.status);
+            throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
         }
     }
 
-    // Validate schema.
-    const isValid = validateResponse({ response: res, validator: validator });
+    // Schema validation
+    const isValid = validateResponse({ response: result, validator: validator });
     if (isValid) {
         if (validator !== 'none') { log('[API] Response is valid for ' + path); }
-    } else {
-        console.warn('[API] Response schema-check failed for ' + path);
-    }
-    return { ...res, validator: validator, isValid: isValid };
+    } else { console.warn('[API] Response schema-check failed for ' + path); }
+
+    return { ...result, validator: validator, isValid: isValid };
 }
 
 get.defaultProps = <getProps>{ query: {} };
@@ -79,6 +91,12 @@ type postProps = {
     query: object
 }
 
+/**
+ * Sends a post-request to the api (work in progress).
+ * @param path - relative api path for the request
+ * @param query - the POST query
+ * @returns the server response
+ */
 export async function post<T>({ path, query }: postProps):Promise<APIResponse<T>> {
     return (await fetch(getAbsoluteURL(path), {
         method: 'POST',

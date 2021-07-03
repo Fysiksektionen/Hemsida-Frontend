@@ -99,13 +99,14 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
     });
 
     // Save the current content to the "saved" pageData state.
-    // TODO: Show some kind of confirmation of proper upload.
+    // TODO: Show some kind of confirmation on upload success.
     function saveContent() {
         pageLocale === locales.sv
             ? setPageData({ ...pageData, contentSv: content as ContentObject })
             : setPageData({ ...pageData, contentEn: content as ContentObject });
         setPageDataHasChanged(false);
-        api.post({ path: 'pages/' + id, query: { data: pageData } });
+        // TODO: Call api here, eg.
+        // api.post({ path: 'pages/' + id, query: { data: pageData } });
     }
 
     // Send page with updated content down for rendering in children.

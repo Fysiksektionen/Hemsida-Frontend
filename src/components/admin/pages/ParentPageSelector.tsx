@@ -16,6 +16,7 @@ export default function ParentPageSelector(props: {page: Page, setPageHook: (pag
     if (data) {
         for (const site of data.data) {
             // TODO: Ideally, TypeScript would do the type casting, but idk how it's done. Using "as MinimalPage2" really only checks if it contains all properties, and does not remove excessive ones.
+            // This has the effect of potentially sending the entire parent as a Page (not MinimalPage) when saving. We could ignore this if we get confirmation that the backend does filtering.
             minSiteList.push({
                 id: site.id,
                 detailUrl: site.detailUrl,

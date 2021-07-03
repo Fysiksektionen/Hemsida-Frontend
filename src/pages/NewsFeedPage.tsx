@@ -105,7 +105,8 @@ function NewsFeedPageMainView(props: (ContentObject & {newsArticles: NewsPageMin
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function NewsFeedPage(props: ContentObject) {
-    // TODO: add error handling
-    const { data } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
+    // TODO: handle errors and empty responses
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { data, error } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
     return NewsFeedPageMainView({ ...props, newsArticles: data !== undefined ? data.data : [] });
 }
