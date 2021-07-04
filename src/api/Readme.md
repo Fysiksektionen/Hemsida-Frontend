@@ -12,9 +12,7 @@ I exemplet ovan kallar swr vår anonyma funktion `(path) => callApi<T>({ path: a
 
 ## Konfiguration
 Sköts i filen [config.ts](config.ts). De fält som kan sättas är för närvarande:
-* `USE_MOCK_API` - sätts denna till true hanteras HTTP-requests av React-devservern m.h.a. de filer som återfinns i (/public/api)[../public/api]. Sätts den till false används `apiRootUrl` istället.
-* `API_ROOT_URL` - URL:en där api:t återfinns. Mock-api:t har ett prefix som är _/api/_, men det bör noteras att mock-api:t routar om requests till lämplig JSON-fil (se [mock](mock)-mappen).
-* `MOCK_API_CALL_DELAY` - det antal millisekunder som mock-api:t lägger till varje request för att simulera inväntan av svar.
+* `API_ROOT_URL` - URL:en där api:t återfinns. Mock-api:t har ett prefix som är _/api/_. Se mappen [mock_backend](../mock_backend) för mer info.
 * `API_VERBOSE` - sätt till `true` för att få debug-information om api-calls.
 
 ## Validering

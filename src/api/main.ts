@@ -1,8 +1,7 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
-import { API_ROOT_URL, API_VERBOSE, USE_MOCK_API } from './config';
+import { API_ROOT_URL, API_VERBOSE } from './config';
 import { HTTPError } from './errors';
-import callMockApi from './mock/mockApi';
 import validateResponse, { responseValidatorTypes } from './responseValidator';
 
 /**
@@ -51,25 +50,19 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
 
     let result;
 
-    if (USE_MOCK_API) {
-        // Mock code
-        result = await callMockApi<T>({ path, validator });
+    const url = getAbsoluteURL(path) + (query ? '?' + getGETParamsStringFromObject(query) : '');
+
+    log('[API] Fetching: ' + url);
+    const response = await fetch(url, {});
+
+    if (response.ok) { // TODO: Decide if we use http status (eg. response.ok) or code from json
+        result = await response.json() as unknown as APIResponse<T>;
+
+        // Check if we have a valid APIResponse<any>
+        if (result.data === undefined || result.code === undefined) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); }
     } else {
-        // Non-mock code
-        const url = getAbsoluteURL(path) + '?' + getGETParamsStringFromObject(query);
-
-        log('[API] Fetching: ' + url);
-        const response = await fetch(url, {});
-
-        if (response.ok) { // TODO: Decide if we use http status (eg. response.ok) or code from json
-            result = await response.json() as unknown as APIResponse<T>;
-
-            // Check if we have a valid APIResponse<any>
-            if (result.data === undefined || result.code === undefined) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); }
-        } else {
-            // log('[API] HTTPError: ' + resp.status);
-            throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
-        }
+        // log('[API] HTTPError: ' + resp.status);
+        throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
     }
 
     // Schema validation
