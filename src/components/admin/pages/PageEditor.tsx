@@ -106,7 +106,7 @@ function PageEditorMainView({ setLocationHook, id, page }: PageEditorMVProps) {
             : setPageData({ ...pageData, contentEn: content as ContentObject });
         setPageDataHasChanged(false);
         // TODO: Call api here, eg.
-        // api.post({ path: 'pages/' + id, query: { data: pageData } });
+        api.put({ path: 'pages/' + id, query: { data: pageData } });
     }
 
     // Send page with updated content down for rendering in children.

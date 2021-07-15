@@ -1,6 +1,6 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
-import { API_ROOT_URL, API_VERBOSE } from './config';
+import { API_ROOT_URL, API_VERBOSE, USE_APIRESPONSE_FORMAT } from './config';
 import { HTTPError } from './errors';
 import validateResponse, { responseValidatorTypes } from './responseValidator';
 
@@ -59,7 +59,9 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
         result = await response.json() as unknown as APIResponse<T>;
 
         // Check if we have a valid APIResponse<any>
-        if (result.data === undefined || result.code === undefined) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); }
+        if ((result.data === undefined || result.code === undefined) && USE_APIRESPONSE_FORMAT) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); } else if (!USE_APIRESPONSE_FORMAT) {
+            result = { code: response.status, data: result as unknown as T } as APIResponse<T>;
+        }
     } else {
         // log('[API] HTTPError: ' + resp.status);
         throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
@@ -98,7 +100,22 @@ export async function post<T>({ path, query }: postProps):Promise<APIResponse<T>
     })).json() as unknown as APIResponse<T>;
 }
 
+/**
+ * Sends a post-request to the api (work in progress).
+ * @param path - relative api path for the request
+ * @param query - the POST query
+ * @returns the server response
+ */
+export async function put<T>({ path, query }: postProps):Promise<APIResponse<T>> {
+    return (await fetch(getAbsoluteURL(path), {
+        method: 'PUT',
+        body: JSON.stringify(query),
+        headers: { 'Content-Type': 'application/json' }
+    })).json() as unknown as APIResponse<T>;
+}
+
 export const api = {
     get: get,
-    post: post
+    post: post,
+    put: put
 };
