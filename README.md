@@ -1,5 +1,5 @@
 # Fysiksektionens hemsida - Frontend
-
+[![ESLint check](https://github.com/Fysiksektionen/Hemsida-Frontend/actions/workflows/eslint-check.yml/badge.svg?branch=github-workflows-test)](https://github.com/Fysiksektionen/Hemsida-Frontend/actions/workflows/eslint-check.yml)  
 <p align="center">
     <img src="./public/mediafiles/placeholder_images/Fysiksektionen_logo.svg" width="300" height="300" alt=""/>
 </p>
