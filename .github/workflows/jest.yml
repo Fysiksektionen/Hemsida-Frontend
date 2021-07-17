@@ -2,7 +2,7 @@ name: Jest
 
 on:
   push:
-    branches: [ github-workflows-test, backend-connect-test ]
+#    branches: [ github-workflows-test, backend-connect-test ]
 
 jobs:
   jest:
