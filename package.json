@@ -62,6 +62,8 @@
     "@types/jest": "^26.0.23",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
     "json-server": "^0.16.3",
     "nodemon": "^2.0.9",
     "slate-hyperscript": "^0.62.0",
