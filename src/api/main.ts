@@ -1,8 +1,9 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
-import { API_ROOT_URL, API_VERBOSE, USE_APIRESPONSE_FORMAT } from './config';
+import { API_ROOT_URL, API_VERBOSE, USE_APIRESPONSE_FORMAT, USE_SNAKE_CASE } from './config';
 import { HTTPError } from './errors';
 import validateResponse, { responseValidatorTypes } from './responseValidator';
+import humps from 'humps';
 
 /**
  * Returns an absolute path to the api call, given a relative api call path.
@@ -50,10 +51,14 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
 
     let result;
 
-    const url = getAbsoluteURL(path) + (query ? '?' + getGETParamsStringFromObject(query) : '');
+    const url = getAbsoluteURL(path) + (query ? getGETParamsStringFromObject(query) : '');
 
     log('[API] Fetching: ' + url);
-    const response = await fetch(url, {});
+    const response = await fetch(url, {
+        headers: {
+            Accept: 'application/json'
+        }
+    });
 
     if (response.ok) { // TODO: Decide if we use http status (eg. response.ok) or code from json
         result = await response.json() as unknown as APIResponse<T>;
@@ -66,6 +71,8 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
         // log('[API] HTTPError: ' + resp.status);
         throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
     }
+
+    if (USE_SNAKE_CASE) { result = humps.camelizeKeys(result) as APIResponse<T>; };
 
     // Schema validation
     const isValid = validateResponse({ response: result, validator: validator });

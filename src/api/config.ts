@@ -6,3 +6,6 @@ export const API_ROOT_URL = 'http://localhost:8080/api';
 // Set to true if the response is expected to be on the APIResponse<T> format, and false if it's on the T fomat.
 // If using json-server, set this to true.
 export const USE_APIRESPONSE_FORMAT = false;
+
+// If using a snake_case formatted backend, set this to true.
+export const USE_SNAKE_CASE = true;
