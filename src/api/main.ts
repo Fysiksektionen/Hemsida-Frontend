@@ -1,6 +1,6 @@
 import { getGETParamsStringFromObject } from '../components/admin/utils';
 import { APIResponse } from '../types/general';
-import { API_ROOT_URL, API_VERBOSE, USE_APIRESPONSE_FORMAT, USE_SNAKE_CASE } from './config';
+import { API_ROOT_URL, API_VERBOSE, API_USE_APIRESPONSE_FORMAT, API_USE_SNAKE_CASE } from './config';
 import { HTTPError } from './errors';
 import validateResponse, { responseValidatorTypes } from './responseValidator';
 import humps from 'humps';
@@ -64,7 +64,7 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
         result = await response.json() as unknown as APIResponse<T>;
 
         // Check if we have a valid APIResponse<any>
-        if ((result.data === undefined || result.code === undefined) && USE_APIRESPONSE_FORMAT) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); } else if (!USE_APIRESPONSE_FORMAT) {
+        if ((result.data === undefined || result.code === undefined) && API_USE_APIRESPONSE_FORMAT) { throw new Error('Server returned a response that does not correspond to a valid APIResponse.'); } else if (!API_USE_APIRESPONSE_FORMAT) {
             result = { code: response.status, data: result as unknown as T } as APIResponse<T>;
         }
     } else {
@@ -72,7 +72,7 @@ export async function get<T>({ path, validator, query }: getProps):Promise<Exten
         throw new HTTPError(response.status, 'HTTP error ' + response.status.toString() + ' (' + (await response.json()).error + ').');
     }
 
-    if (USE_SNAKE_CASE) { result = humps.camelizeKeys(result) as APIResponse<T>; };
+    if (API_USE_SNAKE_CASE) { result = humps.camelizeKeys(result) as APIResponse<T>; };
 
     // Schema validation
     const isValid = validateResponse({ response: result, validator: validator });

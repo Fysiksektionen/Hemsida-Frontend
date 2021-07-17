@@ -18,7 +18,7 @@ function NewsItemTiny(props : NewsPageMinimal) {
             </Col>
             <Col className="col-7 pt-2 pl-0">
                 <h6>{props.title}</h6>
-                <small className="position-absolute" style={{ bottom: '0.5rem' }}>{props.publishedAt}</small>
+                <small className="position-absolute" style={{ bottom: '0.5rem' }}>{new Date(props.publishedAt).toLocaleDateString()}</small>
             </Col>
         </Row>
     );

@@ -10,7 +10,7 @@ export function NewsArticleBase(props : NewsPageMinimal & {children?: React.Reac
             </div>
             <div className="p-4 news-article-base-text">
                 <h4 className="mb-0">{props.title}</h4>
-                <small>{props.publishedAt}</small>
+                <small>{new Date(props.publishedAt).toLocaleDateString()}</small>
                 {props.children}
             </div>
         </div>
