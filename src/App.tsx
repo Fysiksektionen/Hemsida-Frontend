@@ -30,8 +30,8 @@ function App() {
                         {data &&
                         <Header content={
                             locale === locales.sv
-                                ? data.data.headerContentSv
-                                : data.data.headerContentEn
+                                ? data.data.bannerContentSv
+                                : data.data.bannerContentEn
                         } setLocale={setLocale} />}
                         {!error &&
                         <div className="content">

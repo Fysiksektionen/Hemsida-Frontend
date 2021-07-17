@@ -7,12 +7,12 @@ import {
     useCTReducer
 } from '../../../contexts';
 import Header from '../../Header';
-import { SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
+import { SiteBannerCT } from '../../../types/content_objects/content_trees/site';
 import { Button, Col, Row } from 'react-bootstrap';
 import LocaleSelector from '../../LocaleSelector';
 
 export type HeaderEditorProps = {
-    headerContentInitial: {sv: SiteHeaderCT, en: SiteHeaderCT},
+    headerContentInitial: {sv: SiteBannerCT, en: SiteBannerCT},
 }
 
 /**
@@ -37,12 +37,12 @@ export default function HeaderEditor({ headerContentInitial }: HeaderEditorProps
     function saveContent(event: MouseEvent) {
         headerLocale === locales.sv
             ? setHeaderContent({
-                content: { ...headerContent.content, sv: content as SiteHeaderCT },
+                content: { ...headerContent.content, sv: content as SiteBannerCT },
                 hasChanged: false
             }
             )
             : setHeaderContent({
-                content: { ...headerContent.content, en: content as SiteHeaderCT },
+                content: { ...headerContent.content, en: content as SiteBannerCT },
                 hasChanged: false
             }
             );
@@ -64,7 +64,7 @@ export default function HeaderEditor({ headerContentInitial }: HeaderEditorProps
                         {/* eslint-disable @typescript-eslint/no-unused-vars */}
                         <ContentTreeContext.Provider value={dispatch}>
                             <div className="border border-dark col-12 px-0">
-                                <Header content={content as SiteHeaderCT}/>
+                                <Header content={content as SiteBannerCT}/>
                             </div>
                         </ContentTreeContext.Provider>
                     </EditorialModeContext.Provider>

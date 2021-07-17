@@ -3,7 +3,7 @@ import { AdminPageProps } from '../../../types/admin_components';
 import { Button, Col, Container, Form } from 'react-bootstrap';
 import HeaderEditor from './HeaderEditor';
 import { MinimalPage, Site } from '../../../types/api_object_types';
-import { SiteFooterCT, SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
+import { SiteFooterCT, SiteBannerCT } from '../../../types/content_objects/content_trees/site';
 import FooterEditor from './FooterEditor';
 import useSWR from 'swr';
 import { get as callApi } from '../../../api/main';
@@ -21,8 +21,8 @@ type SiteSettings = {
 }
 
 type SiteContents = {
-    headerContentSv: SiteHeaderCT,
-    headerContentEn: SiteHeaderCT,
+    bannerContentSv: SiteBannerCT,
+    bannerContentEn: SiteBannerCT,
     footerContentSv: SiteFooterCT,
     footerContentEn: SiteFooterCT
 }
@@ -114,8 +114,8 @@ function SettingsAdminPageMainView(props: AdminPageProps & {data: Site}) {
                 <h3>Header</h3>
                 <HeaderEditor
                     headerContentInitial={{
-                        sv: state.contents.initialData.headerContentSv,
-                        en: state.contents.initialData.headerContentEn
+                        sv: state.contents.initialData.bannerContentSv,
+                        en: state.contents.initialData.bannerContentEn
                     }}
                 />
             </>

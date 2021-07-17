@@ -4,7 +4,7 @@
  * This file should only contain types that help us parse the raw response of the server.
  * Do not add related types that are not returned by the server.
  */
-import { SiteFooterCT, SiteHeaderCT } from './content_objects/content_trees/site';
+import { SiteFooterCT, SiteBannerCT } from './content_objects/content_trees/site';
 
 type IDDetail = {
     id: number,
@@ -35,8 +35,8 @@ export type Page = MinimalPage & {
 export type Site = {
     rootUrl: string,
     rootPage: MinimalPage,
-    headerContentSv: SiteHeaderCT,
-    headerContentEn: SiteHeaderCT,
+    bannerContentSv: SiteBannerCT,
+    bannerContentEn: SiteBannerCT,
     footerContentSv: SiteFooterCT,
     footerContentEn: SiteFooterCT
 }
