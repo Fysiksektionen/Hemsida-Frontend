@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
+import useSWR from 'swr';
 import { Locale, LocaleContext, locales } from './contexts';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import { Switch, Route } from 'react-router-dom';
 import { Site } from './types/api_object_types';
 import Admin from './components/admin/Admin';
 import PageTypeLoader from './components/PageTypeLoader';
-import './App.css';
 
-// Import fake data
-import { mockSiteResp } from './mock_data/mock_site_response';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { CenteredError } from './components/Centered';
+
+import './App.css';
+import { get as callApi } from './api/main';
 
 function App() {
     const [locale, setLocale] = useState<Locale>(locales.sv);
 
-    // TODO: Replace by server call to /api/site/
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [siteData, setSiteData] = useState<Site>(mockSiteResp.data);
+    const { data, error } = useSWR(['/site/'], (path) => callApi<Site>({ path: path, validator: 'Site' }), {});
 
     return (
         <div className="App">
@@ -26,23 +26,27 @@ function App() {
                         <Admin />
                     </Route>
                     <Route>
-                        {siteData &&
+                        {data &&
                         <Header content={
                             locale === locales.sv
-                                ? siteData.headerContentSv
-                                : siteData.headerContentEn
+                                ? data.data.headerContentSv
+                                : data.data.headerContentEn
                         } setLocale={setLocale} />}
+                        {!error &&
                         <div className="content">
                             <PageTypeLoader />
-                        </div>
-                        {siteData &&
+                        </div>}
+                        {error &&
+                        <div className="content">
+                            <CenteredError message={error.message} descriptionSv= '...när site-objektet skulle laddas.' descriptionEn = "Could not load site."/>
+                        </div>}
+                        {data &&
                         <Footer content={
                             locale === locales.sv
-                                ? siteData.footerContentSv
-                                : siteData.footerContentEn
+                                ? data.data.footerContentSv
+                                : data.data.footerContentEn
                         } />}
                     </Route>
-
                 </Switch>
             </LocaleContext.Provider>
         </div>

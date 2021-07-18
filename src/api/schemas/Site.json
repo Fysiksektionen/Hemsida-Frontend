@@ -1,0 +1,386 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "ContentImage": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "attributes": {
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
+                        },
+                        "dbType": {
+                            "$ref": "#/definitions/ContentObjectDBType"
+                        }
+                    },
+                    "required": [
+                        "attributes",
+                        "dbType"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "dbType": {
+                            "enum": [
+                                "image"
+                            ],
+                            "type": "string"
+                        },
+                        "image": {
+                            "$ref": "#/definitions/Image"
+                        }
+                    },
+                    "required": [
+                        "dbType",
+                        "image"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "ContentObjectDBType": {
+            "enum": [
+                "dict",
+                "image",
+                "list",
+                "menu",
+                "page",
+                "text"
+            ],
+            "type": "string"
+        },
+        "ContentText": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "attributes": {
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
+                        },
+                        "dbType": {
+                            "$ref": "#/definitions/ContentObjectDBType"
+                        }
+                    },
+                    "required": [
+                        "attributes",
+                        "dbType"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "dbType": {
+                            "enum": [
+                                "text"
+                            ],
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "dbType",
+                        "text"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "Image": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "href"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "MinimalPage": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "NodeJS.Dict": {
+            "additionalProperties": {
+                "$ref": "#/definitions/T"
+            },
+            "type": "object"
+        },
+        "SiteFooterCT": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "attributes": {
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
+                        },
+                        "dbType": {
+                            "$ref": "#/definitions/ContentObjectDBType"
+                        }
+                    },
+                    "required": [
+                        "attributes",
+                        "dbType"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "dbType": {
+                            "enum": [
+                                "dict"
+                            ],
+                            "type": "string"
+                        },
+                        "items": {
+                            "$ref": "#/definitions/NodeJS.Dict"
+                        }
+                    },
+                    "required": [
+                        "dbType",
+                        "items"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "items": {
+                            "properties": {
+                                "address": {
+                                    "$ref": "#/definitions/ContentText"
+                                },
+                                "currYear": {
+                                    "$ref": "#/definitions/ContentText"
+                                },
+                                "webmaster": {
+                                    "$ref": "#/definitions/ContentText"
+                                }
+                            },
+                            "required": [
+                                "address",
+                                "currYear",
+                                "webmaster"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "items"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "SiteHeaderCT": {
+            "allOf": [
+                {
+                    "properties": {
+                        "detailUrl": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "detailUrl",
+                        "id"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "attributes": {
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
+                        },
+                        "dbType": {
+                            "$ref": "#/definitions/ContentObjectDBType"
+                        }
+                    },
+                    "required": [
+                        "attributes",
+                        "dbType"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "dbType": {
+                            "enum": [
+                                "dict"
+                            ],
+                            "type": "string"
+                        },
+                        "items": {
+                            "$ref": "#/definitions/NodeJS.Dict"
+                        }
+                    },
+                    "required": [
+                        "dbType",
+                        "items"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "items": {
+                            "properties": {
+                                "logo": {
+                                    "$ref": "#/definitions/ContentImage"
+                                },
+                                "name": {
+                                    "$ref": "#/definitions/ContentText"
+                                }
+                            },
+                            "required": [
+                                "logo",
+                                "name"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "items"
+                    ],
+                    "type": "object"
+                }
+            ],
+            "description": "ContentTrees of the site object"
+        },
+        "T": {
+            "type": "object"
+        }
+    },
+    "properties": {
+        "footerContentEn": {
+            "$ref": "#/definitions/SiteFooterCT"
+        },
+        "footerContentSv": {
+            "$ref": "#/definitions/SiteFooterCT"
+        },
+        "headerContentEn": {
+            "$ref": "#/definitions/SiteHeaderCT"
+        },
+        "headerContentSv": {
+            "$ref": "#/definitions/SiteHeaderCT"
+        },
+        "rootPage": {
+            "$ref": "#/definitions/MinimalPage"
+        },
+        "rootUrl": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "footerContentEn",
+        "footerContentSv",
+        "headerContentEn",
+        "headerContentSv",
+        "rootPage",
+        "rootUrl"
+    ],
+    "type": "object"
+}
+

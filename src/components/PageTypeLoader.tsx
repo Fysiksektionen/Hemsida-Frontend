@@ -1,16 +1,61 @@
 import React from 'react';
+import useSWR from 'swr';
 import { useLocation } from 'react-router-dom';
 import pageTypeMap from '../pages/PageTypeMap';
 import PageNotFound from '../pages/PageNotFound';
-import { APIResponse } from '../types/general';
+// import { APIResponse } from '../types/general';
 import { LocaleContext, locales } from '../contexts';
 import { Page } from '../types/api_object_types';
+import CenteredLoadingBar from './CenteredLoadingBar';
+import { CenteredError } from './Centered';
 
 // Import fake data
-import { emptyResp, pathToResp } from '../mock_data/pages/mock_PageTypeLoader';
+import { get as callApi } from '../api/main';
 
 type PageTypeLoaderProps = {
     page?: Page
+}
+
+function loadPage(pageData: Page): JSX.Element {
+    // If defined in pageTypeMap, render page. Else give PageNotFound.
+    // TODO: Add more checks
+
+    if (pageData.pageType in pageTypeMap) {
+        return (
+            <LocaleContext.Consumer>
+                {locale =>
+                    <div id="dynamic_page_content" className='w-100'>
+                        {React.createElement(pageTypeMap[pageData.pageType], (locale === locales.sv ? pageData.contentSv : pageData.contentEn))}
+                    </div>
+                }
+            </LocaleContext.Consumer>
+        );
+    } else {
+        console.error('Cannot load page: pageType "' + pageData.pageType + '" not in pageTypeMap.');
+        return <PageNotFound />;
+    }
+}
+
+// TODO: The below 2 functions check if page === undefined, but we may have the case when the content is empty when only an id is provided. We should check for it.
+function ExternalPageRenderer({ page }:PageTypeLoaderProps): JSX.Element {
+    const location = useLocation();
+    // TODO: using string concatenation for the path GET parameter is kinda ugly...
+    const apiPath = (page !== undefined && page.id > 0) ? '/pages/' + page.id : '/resolve-url/?path=' + location.pathname;
+    const { data, error } = useSWR([apiPath], (apiPath) => callApi<Page>({ path: apiPath, validator: 'Page' }), {});
+
+    if (error !== undefined) {
+        if (error.code === 404) {
+            return <PageNotFound/>;
+        } else {
+            return <CenteredError message = {error.message} />;
+        }
+    } else {
+        if (data === undefined) {
+            return <CenteredLoadingBar/>;
+        } else {
+            return loadPage(data.data);
+        };
+    }
 }
 
 /**
@@ -19,39 +64,10 @@ type PageTypeLoaderProps = {
  * @returns {JSX} Div containing correct component for URL or PageNotFound
  *  component if no matching component was found.
  */
-export default function PageTypeLoader({ page } : PageTypeLoaderProps) {
-    const location = useLocation();
-
-    if (page === undefined) {
-        // Call /api/resolve-url?path=<path>
-        // const res = callAPI("/resolve-url", GET={path: params.path})
-        // Fake for now...
-        let res: APIResponse<Page>;
-        if (location.pathname in pathToResp) {
-            res = pathToResp[location.pathname];
-        } else {
-            res = emptyResp;
-        }
-        page = res.data;
-        // End of fake
-    }
-
-    // If defined in pageTypeMap, render page. Else give PageNotFound.
-    if (page.pageType in pageTypeMap) {
-        return (
-            <LocaleContext.Consumer>
-                {locale =>
-                    <div id="dynamic_page_content" className='w-100'>
-                        {
-                            page !== undefined
-                                ? pageTypeMap[page.pageType]((locale === locales.sv ? page.contentSv : page.contentEn))
-                                : <></>
-                        }
-                    </div>
-                }
-            </LocaleContext.Consumer>
-        );
+export default function PageTypeLoader({ page }: PageTypeLoaderProps): JSX.Element {
+    if (page !== undefined) {
+        return loadPage(page);
     } else {
-        return <PageNotFound />;
+        return (<ExternalPageRenderer/>);
     }
 }

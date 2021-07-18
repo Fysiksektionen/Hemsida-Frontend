@@ -1,9 +1,11 @@
 import { List, ListItem } from '@material-ui/core';
 import React from 'react';
+import useSWR from 'swr';
+import { api } from '../api/main';
 import NewsArticle from '../components/news/NewsArticle';
 import { MenuItem, SidebarMenu } from '../components/SidebarMenu';
-import { dummyArticles } from '../mock_data/mock_NewsFeedPage';
 import { ContentObject } from '../types/api_object_types';
+import { NewsPageMinimal } from '../types/news';
 
 const months: string[] = [
     'Januari',
@@ -45,11 +47,7 @@ const getRecentMonths = (): Date[] => {
 
 export const HEADER_HEIGHT = '150px';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function NewsFeedPage(props: ContentObject) {
-    // Get news articles, mocked for now:
-    const newsArticles = dummyArticles;
-
+function NewsFeedPageMainView(props: (ContentObject & {newsArticles: NewsPageMinimal[]})) {
     // assumes newsArticles is sorted by date
     const recentMonths = getRecentMonths();
     const menuItems: MenuItem[] = [];
@@ -62,7 +60,7 @@ export default function NewsFeedPage(props: ContentObject) {
 
     let usedMonth = (recentMonths[0].getMonth() + 1) % 12;
 
-    newsArticles.forEach(article => {
+    props.newsArticles.forEach(article => {
         const articleDate = new Date(article.publishedAt);
         if (articleDate.getMonth() < usedMonth || (articleDate.getMonth() === 11 && usedMonth === 0)) {
             usedMonth = articleDate.getMonth();
@@ -90,7 +88,7 @@ export default function NewsFeedPage(props: ContentObject) {
         Nyheter
             </h1>
             <List>
-                {newsArticles.map(article =>
+                {props.newsArticles.map(article =>
                     <ListItem
                         id={article.id.toString()}
                         key={article.id}
@@ -103,4 +101,12 @@ export default function NewsFeedPage(props: ContentObject) {
             </List>
         </SidebarMenu>
     );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function NewsFeedPage(props: ContentObject) {
+    // TODO: handle errors and empty responses
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { data, error } = useSWR(['/news/'], (path) => api.get<NewsPageMinimal[]>({ path: path, validator: 'NewsPageMinimal[]' }), {});
+    return NewsFeedPageMainView({ ...props, newsArticles: data !== undefined ? data.data : [] });
 }

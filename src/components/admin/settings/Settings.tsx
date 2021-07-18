@@ -1,12 +1,13 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { AdminPageProps } from '../../../types/admin_components';
-import { APIResponse } from '../../../types/general';
 import { Button, Col, Container, Form } from 'react-bootstrap';
-import callApi from '../call_api_temp';
 import HeaderEditor from './HeaderEditor';
 import { MinimalPage, Site } from '../../../types/api_object_types';
 import { SiteFooterCT, SiteHeaderCT } from '../../../types/content_objects/content_trees/site';
 import FooterEditor from './FooterEditor';
+import useSWR from 'swr';
+import { get as callApi } from '../../../api/main';
+import CenteredLoadingBar from '../../CenteredLoadingBar';
 
 // TODO: Add current state updated onChange
 type FormState<T> = {
@@ -31,19 +32,12 @@ type SettingsAdminPageState = {
     contents: FormState<SiteContents>
 }
 
-/**
- * Admin page for editing the site-object. (General settings of the project).
- * Header and Footer is edited here.
- * @param props: Object containing path information.
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function SettingsAdminPage(props: AdminPageProps) {
+function SettingsAdminPageMainView(props: AdminPageProps & {data: Site}) {
     // Create state that contains the settings and content of header/footer separately.
     const [state, setState] = useState<SettingsAdminPageState>(() => {
-        const data = (callApi({ path: 'site/', getParams: {} }) as APIResponse<Site>).data;
         return ({
-            settings: { hasChanged: false, initialData: data as SiteSettings },
-            contents: { hasChanged: false, initialData: data as SiteContents }
+            settings: { hasChanged: false, initialData: props.data as SiteSettings },
+            contents: { hasChanged: false, initialData: props.data as SiteContents }
         });
     });
 
@@ -139,3 +133,13 @@ export default function SettingsAdminPage(props: AdminPageProps) {
         </Container>
     );
 };
+
+/**
+ * Admin page for editing the site-object. (General settings of the project).
+ * Header and Footer is edited here.
+ * @param props: Object containing path information.
+ */
+export default function SettingsAdminPage(props: AdminPageProps) {
+    const { data } = useSWR(['site/'], (path) => callApi<Site>({ path: path, validator: 'Site' }), {});
+    return data === undefined ? (<CenteredLoadingBar/>) : (<SettingsAdminPageMainView {...props} data={data.data}/>);
+}
