@@ -124,7 +124,7 @@ export const frontpage = {
                         id: 14,
                         detailUrl: 'https://f.kth.se/api/content_objects/1/',
                         dbType: 'dict',
-                        attributes: { color: '#ff642b' },
+                        attributes: { color: '#dc3545' },
                         items: {
                             title: {
                                 id: 15,
