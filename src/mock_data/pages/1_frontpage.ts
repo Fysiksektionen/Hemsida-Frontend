@@ -43,7 +43,7 @@ export const frontpage = {
                         id: 3,
                         detailUrl: 'https://f.kth.se/api/content_objects/1/',
                         dbType: 'dict',
-                        attributes: { color: '#ff642b' },
+                        attributes: { color: '#ffffff' },
                         items: {
                             title: {
                                 id: 4,
